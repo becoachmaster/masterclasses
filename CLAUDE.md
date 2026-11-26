@@ -6,6 +6,10 @@ Este repositorio es el sistema de trabajo de Gio (coach ontológico, marca BeCoa
 - Objetivo actual: **construir comunidad**. Las clases son abiertas y gratuitas. Más adelante se lanzará un programa pago, cuando Gio decida que está listo. No se vende nada en las clases a menos que Gio lo pida.
 - Idioma: responde siempre en español neutro/colombiano con tuteo (tú, tienes, estás). Nunca voseo (vos, tenés, sos).
 
+## Lo que importa es el resultado
+
+El entregable de cada clase es la clase diseñada (`clase.json`, escaleta, notas públicas) y su presentación, guardadas en `clases/NNN-slug/` en GitHub. Los scripts, hooks y comandos de este repositorio son ayudas, no requisitos. Si en la nube, o en otro entorno, otro camino llega antes o mejor a ese resultado, úsalo. Lo que sí se mantiene es el contenido (rigor ontológico, tono, continuidad entre clases) y el estilo visual de BeCoach.
+
 ## Mapa del repositorio
 
 | Ruta | Qué contiene | ¿Quién lo edita? |
