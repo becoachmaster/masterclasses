@@ -3,8 +3,11 @@
 Correcciones de Gio que aplican a todas las clases. Claude agrega una línea cada vez que Gio corrige algo generalizable, sin esperar a que lo pida.
 
 ## Diapositivas
+- 2026-11-26 · Estilo simple (sistema v2) para todas las clases nuevas: paleta azul + Brasa, composición centrada, tarjetas blancas, píldoras y círculos numerados (ver `guia-diseno.md` y `plantillas/slides-simple/`). Reemplaza al sistema de cristal en tierra, que queda solo en las clases 005 y 006.
+- 2026-11-26 · Los colores dentro de los gráficos llevan degradado (tono → tono oscuro). El color plano queda para detalles que deben romper el patrón o notarse más: la línea de tendencia, el punto foco, una meta.
+- 2026-11-26 · Vidrio desenfocado en tarjetas que van sobre fotos, patrones o ilustraciones, y en las tarjetas que contienen gráficos. No se agregan formas decorativas de fondo: se ven mal.
 - 2026-11-02 · Todas las clases llevan la diapositiva `@plataforma` (app.becoach.pro: todas las clases, guías prácticas, descargables, acceso gratuito), oscura o clara según el contexto de las diapositivas vecinas.
-- 2026-11-02 · Sistema de cristal para todas las clases nuevas (ver `guia-diseno.md` y `plantillas/muestra/`): fondos oscuros siempre con degradado, tarjetas de cristal, un solo foco Brasa con brillo, más variedad de composiciones y alternancia de fondos oscuros y claros. El café ya no es fondo salvo casos puntuales.
+- 2026-11-02 · (Reemplazada el 2026-11-26 por el estilo simple.) Sistema de cristal para todas las clases nuevas (ver `guia-diseno.md` y `plantillas/muestra/`): fondos oscuros siempre con degradado, tarjetas de cristal, un solo foco Brasa con brillo, más variedad de composiciones y alternancia de fondos oscuros y claros. El café ya no es fondo salvo casos puntuales.
 - 2026-11-02 · La esquina superior derecha (x > 1360, y < 340) queda vacía: ahí va la cámara de Gio en el video editado. En la clase 4 la cámara tapó contenido de las diapositivas.
 - 2026-09-24 · Sin pretítulos (etiquetas pequeñas en mayúsculas encima de los títulos). Tampoco dentro de las tarjetas: el título de la tarjeta dice lo que es.
 - 2026-09-24 · Sin marcas de tiempo en pantalla (minutos, "fase 1 de 4 · 2 min").

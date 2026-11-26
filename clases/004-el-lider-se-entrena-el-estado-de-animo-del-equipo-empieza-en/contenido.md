@@ -5,7 +5,7 @@
 - **Clase:** 004
 - **Fecha:** 2026-10-29
 - **Pilar:** Integración
-- **Estado:** presentacion
+- **Estado:** cerrada
 
 ## Ficha
 
@@ -14,7 +14,7 @@
 - **Quiebre:** Encuesta: ¿un líder nace o se hace? Y en el chat: piensa en tu última reunión de equipo. ¿Con qué ánimo llegaste tú y con qué ánimo salió el equipo?
 - **Ejercicio:** En papel y en tres pasos: (1) Mi equipo: qué frases escuché esta semana y en qué estado de ánimo lo ubico; (2) Yo: desde qué estado de ánimo llegué a la última reunión y qué sombra de mi estilo apareció; (3) Una acción: qué conversación o gesto puede mover al equipo un paso hacia la ambición. Cosecha en el chat sin nombres.
 - **Compromiso:** Elegir una reunión concreta de esta semana, con día definido; antes de entrar, hacerse las 3 preguntas y tener la conversación o el gesto elegido en la práctica.
-- **Bucle abierto:** Si del resentimiento se sale con una conversación pendiente, ¿cómo pedimos y prometemos para que el resentimiento no se acumule?
+- **Bucle abierto:** Si mi estado de ánimo se le contagia al equipo, ¿cómo me hago cargo de mis emociones para responder en vez de reaccionar?
 - **Frase ancla:** Tu equipo no escucha lo que dices, escucha desde dónde lo dices.
 
 **Temas:** ¿El líder nace o se hace? El liderazgo como competencias que se entrenan · Emoción y estado de ánimo · Los 4 estados de ánimo: resentimiento, resignación, aceptación y ambición · Los 4 estilos de liderazgo y su sombra bajo presión · Contagio emocional: el ánimo del líder es el clima del equipo · Errores comunes del líder frente al ánimo del equipo · Cómo salir de la resignación y del resentimiento · Lenguaje, emoción y cuerpo en la autogestión del líder · Alinear el ánimo del equipo con la visión y las metas

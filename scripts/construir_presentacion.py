@@ -7,13 +7,16 @@ Tokens automáticos en el orden de deck.json:
   @plataforma   Invitación a app.becoach.pro (oscura); @plataforma:claro para la versión clara.
                 Va en todas las clases con estilo cristal, antes de la frase ancla.
 
-Estilo: si deck.json trae "estilo": "cristal", las tres diapositivas automáticas usan el sistema de
-cristal (motor/deck.css). Sin ese campo conservan el estilo anterior: así las clases 001-004 no cambian
-si se reconstruyen.
+Estilo (campo "estilo" de deck.json):
+  "simple"   Sistema BeCoach v2 (desde el 2026-11-26): paleta azul + Brasa, composición centrada, tarjetas
+             Mac, vidrio desenfocado y paleta de datos (motor/simple.css). Plantillas en plantillas/slides-simple/.
+  "cristal"  Sistema de cristal en tierra y café (clases 005-006). Plantillas en plantillas/slides/.
+  (sin campo) Estilo anterior: así las clases 001-004 no cambian si se reconstruyen.
 
 Uso: python scripts/construir_presentacion.py [clase] [--todas] [--muestra] [--catalogo]
   --muestra   construye plantillas/muestra/ (la clase 4 en el estilo de cristal, para copiar de ahí)
-  --catalogo  construye plantillas/catalogo.html con todas las plantillas de plantillas/slides/
+  --catalogo  construye plantillas/catalogo-simple.html (plantillas/slides-simple/, estilo simple)
+              y plantillas/catalogo.html (plantillas/slides/, sistema de cristal)
 Sale con código 2 si hay advertencias de estilo, para que Claude las vea y las corrija.
 """
 import argparse
@@ -140,10 +143,19 @@ def slide_seguimiento_cristal(previa):
     )
 
 
-def css_con_fuentes(v1=False):
-    """Incrusta motor/fuentes/*.woff2 en el CSS para que la presentación no dependa de internet.
-    v1=True usa el motor congelado de la marca v1 (tierra y café), solo para las clases ya dictadas."""
+def css_estilo(estilo=None, v1=False):
+    """CSS del motor según la marca y el estilo.
+    v1=True: motor congelado de la marca v1 (tierra y café), solo para las clases ya dictadas (001-006).
+    "simple": motor/deck.css completo (base + bloque de marca del manual) + motor/simple.css."""
     css = (MOTOR / ("deck-v1.css" if v1 else "deck.css")).read_text(encoding="utf-8")
+    if estilo == "simple" and not v1:
+        css += "\n" + (MOTOR / "simple.css").read_text(encoding="utf-8")
+    return css
+
+
+def css_con_fuentes(estilo=None, v1=False):
+    """Incrusta motor/fuentes/*.woff2 en el CSS para que la presentación no dependa de internet."""
+    css = css_estilo(estilo, v1)
     for fuente in (MOTOR / "fuentes").glob("*.woff2"):
         datos = base64.b64encode(fuente.read_bytes()).decode("ascii")
         css = css.replace(f"url(fuentes/{fuente.name})", f"url(data:font/woff2;base64,{datos})")
@@ -213,6 +225,80 @@ def slide_plataforma(datos, claro=False):
     )
 
 
+# ---------- Diapositivas automáticas en el estilo simple (sistema v2) ----------
+
+
+def slide_pilares_simple(datos):
+    tarjetas = ""
+    for i, p in enumerate(pilares(), 1):
+        activo = p["id"] == datos.get("pilar")
+        tarjetas += (
+            f'<div class="card center{" foco" if activo else ""} rise" style="--i:{i}; padding:48px 36px; gap:18px">'
+            f'<div class="badge{" brasa-b" if activo else ""}"><x-icon name="{esc(p.get("icono", "Target"))}" style="width:44px; height:44px"></x-icon></div>'
+            f'<h3>{esc(p["nombre"])}</h3>'
+            f'<p class="small"{" style=\"color:#141B2D\"" if activo else ""}>{esc(p.get("descripcion", ""))}</p></div>')
+    hoy = next((p["nombre"] for p in pilares() if p["id"] == datos.get("pilar")), None)
+    nota = f"Hoy trabajamos el pilar: {hoy}." if hoy else "Esta clase aún no tiene pilar asignado en clase.json."
+    pill = f'<p class="pill soft rise" style="--i:4">Hoy trabajamos {esc(hoy)}</p>' if hoy else ""
+    return (
+        f'<section id="pilares" class="s" data-transition="fade" style="{F}"><div class="puntos"></div>'
+        '<h2 class="rise" style="--i:0">Los 3 pilares del liderazgo personal</h2>'
+        f'<div class="grid3">{tarjetas}</div>{pill}'
+        f'<aside>APERTURA. Explica en un minuto los tres pilares y ubica a la audiencia. {esc(nota)} La tarjeta con borde Brasa es el pilar de hoy.</aside></section>')
+
+
+def slide_repaso_simple(previa):
+    datos = previa[1]
+    tarjetas = ""
+    for i, a in enumerate((datos.get("repaso") or datos.get("aprendizajes", []))[:3], 1):
+        tarjetas += (f'<div class="card vidrio rise" style="--i:{i}; gap:18px; padding:36px 40px"><div class="badge">{i}</div>'
+                     f'<p style="font-size:34px; font-weight:700; line-height:1.3">{esc(a)}</p></div>')
+    ancla = datos.get("frase_ancla", "")
+    ancla_html = (f'<div class="card vidrio center rise" style="--i:4; width:1560px; padding:30px 48px">'
+                  f'<p class="serif" style="font-size:46px; line-height:1.2">«{esc(ancla)}»</p></div>') if ancla else ""
+    return (
+        f'<section id="repaso" class="s" data-transition="fade" style="{F}; gap:36px"><div class="puntos"></div>'
+        '<h2 class="rise" style="--i:0">Lo que aprendimos la clase anterior</h2>'
+        f'<p class="pill soft rise" style="--i:0">{esc(datos.get("titulo", ""))}</p>'
+        f'<div class="grid3">{tarjetas}</div>{ancla_html}'
+        '<aside>APERTURA. Repasa en dos minutos. Pide en el chat: ¿cuál de estos aprendizajes aplicaste esta semana? Para quienes llegan por primera vez, este repaso es la puerta de entrada al hilo del programa.</aside></section>')
+
+
+def slide_seguimiento_simple(previa):
+    compromiso = previa[1].get("compromiso", "")
+    return (
+        f'<section id="seguimiento" class="s az" data-transition="fade" style="{F}"><div class="puntos"></div>'
+        '<h2 class="rise" style="--i:0; font-size:96px; max-width:800px">¿Cumpliste tu <span class="foco-t">compromiso</span>?</h2>'
+        f'<div class="card vidrio center rise" style="--i:1; width:1400px; padding:40px 56px"><p style="font-size:40px; font-weight:600; line-height:1.35">{esc(compromiso)}</p></div>'
+        '<div class="row rise" style="--i:2; gap:20px"><p class="pill white">Sí</p><p class="pill white">No</p><p class="pill white">A medias</p></div>'
+        '<aside>APERTURA · SEGUIMIENTO. Pide en el chat: sí, no o a medias. Lee dos o tres historias breves. Si alguien no lo cumplió, no hay juicio: pregunta qué se interpuso. Este momento sostiene el hábito y hace que la gente vuelva.</aside></section>')
+
+
+def slide_plataforma_simple(datos):
+    items = "".join(
+        f'<div class="card rise" style="--i:{k + 1}; flex-direction:row; align-items:center; gap:24px; padding:22px 30px">'
+        f'<div class="badge" style="width:64px; height:64px">{_ico(ic, 34, "#FFFFFF")}</div>'
+        f'<p style="font-size:34px; font-weight:800">{esc(t)}</p></div>' for k, (t, ic) in enumerate(PLATAFORMA["items"]))
+    numero = datos.get("numero", 0)
+    clases = [d for _, d in cargar_clases() if d.get("numero", 0) <= numero][-4:][::-1] or [datos]
+    minis = "".join(
+        f'<div class="card{" brasac" if k == 0 else ""}" style="padding:20px 22px; gap:10px; height:190px; justify-content:space-between">'
+        f'{_ico("play", 40, "#141B2D" if k == 0 else "#3D5A8C")}'
+        f'<p style="font-size:24px; font-weight:800; line-height:1.2">Clase {d.get("numero", 0)} · {esc(d.get("titulo", ""))}</p></div>'
+        for k, d in enumerate(clases))
+    return (
+        f'<section id="plataforma" class="s" data-transition="fade" style="{F}; gap:40px"><div class="puntos"></div>'
+        f'<h2 class="rise" style="--i:0; color:#1E2A4E">{esc(PLATAFORMA["url"])}</h2>'
+        '<div class="row" style="gap:48px; align-items:stretch">'
+        f'<div class="col" style="width:620px; gap:20px">{items}<p class="pill rise" style="--i:4; align-self:flex-start">✓ {esc(PLATAFORMA["acceso"])}</p></div>'
+        '<div class="card vidrio rise" style="--i:2; width:840px; padding:0; gap:0; overflow:hidden">'
+        '<div class="row" style="justify-content:flex-start; gap:12px; height:64px; padding:0 24px; border-bottom:1px solid rgba(61,90,140,.15)">'
+        '<span style="width:14px; height:14px; border-radius:50%; background:#FF5A1F"></span><span style="width:14px; height:14px; border-radius:50%; background:#A9BEE0"></span><span style="width:14px; height:14px; border-radius:50%; background:#DCE4F0"></span>'
+        f'<p style="margin-left:14px; font-size:24px; font-weight:700; color:#4E5A70">{esc(PLATAFORMA["url"])}</p></div>'
+        f'<div class="grid2" style="width:auto; gap:18px; padding:24px">{minis}</div></div></div>'
+        '<aside>PLATAFORMA. Cuenta que todas las clases quedan grabadas y ordenadas por partes en app.becoach.pro, con guías prácticas y descargables, y que el acceso es gratuito. Pide que entren hoy y vean la parte de esta clase que más les sirvió. Deja el enlace en el chat.</aside></section>')
+
+
 PATRONES_PROHIBIDOS = [
     (r"\ben el chat\b", "indicación de chat en pantalla"),
     (r"\bencuesta\b", "indicación de encuesta en pantalla"),
@@ -248,15 +334,17 @@ def construir(carpeta, datos):
     deck = leer_json(carpeta / "slides" / "deck.json")
     orden = deck.get("orden") or deck.get("order") or []
     previa = clase_anterior(datos.get("numero", 0))
-    cristal = deck.get("estilo") == "cristal"
+    estilo = deck.get("estilo")
+    simple = estilo == "simple"
+    cristal = estilo == "cristal"
     # Marca: "v1" (tierra y café) solo en las clases dictadas antes del 2026-11-26; todas las demás, manual v2 (azul).
     v1 = deck.get("marca") == "v1"
     partes, avisos = [], []
     for id_slide in orden:
         if id_slide in ("@plataforma", "@plataforma:claro"):
-            partes.append(slide_plataforma(datos, claro=id_slide.endswith(":claro")))
+            partes.append(slide_plataforma_simple(datos) if simple else slide_plataforma(datos, claro=id_slide.endswith(":claro")))
         elif id_slide == "@pilares":
-            partes.append(slide_pilares_cristal(datos) if cristal else slide_pilares(datos))
+            partes.append(slide_pilares_simple(datos) if simple else slide_pilares_cristal(datos) if cristal else slide_pilares(datos))
         elif id_slide in ("@repaso", "@seguimiento"):
             if not previa:
                 avisos.append(f"{id_slide}: no hay clase anterior; se omite.")
@@ -265,7 +353,9 @@ def construir(carpeta, datos):
                 avisos.append("@repaso: la clase anterior no tiene aprendizajes. Ciérrala con /cerrar-clase.")
             if id_slide == "@seguimiento" and not previa[1].get("compromiso"):
                 avisos.append("@seguimiento: la clase anterior no tiene compromiso registrado.")
-            if cristal:
+            if simple:
+                partes.append(slide_repaso_simple(previa) if id_slide == "@repaso" else slide_seguimiento_simple(previa))
+            elif cristal:
                 partes.append(slide_repaso_cristal(previa) if id_slide == "@repaso" else slide_seguimiento_cristal(previa))
             else:
                 partes.append(slide_repaso(previa) if id_slide == "@repaso" else slide_seguimiento(previa))
@@ -277,7 +367,7 @@ def construir(carpeta, datos):
             html = archivo.read_text(encoding="utf-8").strip()
             avisos += revisar(id_slide, html)
             partes.append(html)
-    if cristal and not any(i.startswith("@plataforma") for i in orden):
+    if (cristal or simple) and not any(i.startswith("@plataforma") for i in orden):
         avisos.append("Falta @plataforma (invitación a app.becoach.pro). Ponla antes de la frase ancla; @plataforma:claro si va mejor en claro.")
     en_carpeta = {p.stem for p in (carpeta / "slides").glob("*.html")}
     sueltas = sorted(en_carpeta - set(orden))
@@ -287,7 +377,7 @@ def construir(carpeta, datos):
     plantilla = (MOTOR / "plantilla.html").read_text(encoding="utf-8")
     titulo = deck.get("titulo") or datos.get("titulo", "Clase")
     salida = (plantilla.replace("{{TITULO}}", esc(titulo))
-              .replace("{{CSS}}", css_con_fuentes(v1))
+              .replace("{{CSS}}", css_con_fuentes(estilo, v1))
               .replace("{{JS}}", (MOTOR / "deck.js").read_text(encoding="utf-8"))
               .replace("{{SLIDES}}", diapositivas(partes, v1)))
     escribir_si_cambia(carpeta / "presentacion.html", salida)
@@ -301,19 +391,19 @@ def diapositivas(partes, v1=False):
     return html if v1 else a_v2(html)[0]
 
 
-def construir_catalogo():
-    """Todas las plantillas de plantillas/slides/ en una sola presentación, en orden alfabético."""
+def construir_catalogo(carpeta="slides", estilo=None, nombre="catalogo.html"):
+    """Todas las plantillas de una carpeta de plantillas/ en una sola presentación, en orden alfabético."""
     partes, avisos = [], []
-    for archivo in sorted((PLANTILLAS / "slides").glob("*.html")):
+    for archivo in sorted((PLANTILLAS / carpeta).glob("*.html")):
         html = archivo.read_text(encoding="utf-8").strip()
         avisos += revisar(archivo.stem, html)
         partes.append(html)
     plantilla = (MOTOR / "plantilla.html").read_text(encoding="utf-8")
     salida = (plantilla.replace("{{TITULO}}", "Catálogo de plantillas")
-              .replace("{{CSS}}", css_con_fuentes())
+              .replace("{{CSS}}", css_con_fuentes(estilo))
               .replace("{{JS}}", (MOTOR / "deck.js").read_text(encoding="utf-8"))
               .replace("{{SLIDES}}", diapositivas(partes)))
-    escribir_si_cambia(PLANTILLAS / "catalogo.html", salida)
+    escribir_si_cambia(PLANTILLAS / nombre, salida)
     return len(partes), avisos
 
 
@@ -325,11 +415,14 @@ def main():
     ap.add_argument("--catalogo", action="store_true")
     a = ap.parse_args()
     if a.catalogo:
-        n, avisos = construir_catalogo()
-        print(f"plantillas/catalogo.html · {n} plantillas")
-        for aviso in avisos:
+        todos = []
+        for carpeta, estilo, nombre in (("slides-simple", "simple", "catalogo-simple.html"), ("slides", None, "catalogo.html")):
+            n, avisos = construir_catalogo(carpeta, estilo, nombre)
+            print(f"plantillas/{nombre} · {n} plantillas")
+            todos += avisos
+        for aviso in todos:
             print(f"  ⚠ {aviso}", file=sys.stderr)
-        sys.exit(2 if avisos else 0)
+        sys.exit(2 if todos else 0)
     if a.muestra:
         muestra = PLANTILLAS / "muestra"
         objetivos = [(muestra, leer_json(muestra / "clase.json"))]

@@ -27,3 +27,11 @@ Registro con fecha. Claude agrega una entrada cada vez que Gio decide algo sobre
 - Se publica la presentación tal cual, con el motor de cristal (opción elegida frente al tipo «Slides» nativo, para no perder `@pilares`, `@repaso`, notas del orador ni el estilo).
 - El link de cada clase se guarda en el campo `artefacto` de `clase.json` y se republica en cada ajuste. El hook avisa cuándo republicar. Primera clase publicada: la 006.
 - El archivo local `presentacion.html` sigue siendo la fuente y el respaldo para proyectar en Zoom.
+
+## 2026-11-26 · Marca v2: azul + Brasa y estilo simple
+- La paleta pasa de tierra y café a **azul** (`#1E2A4E`, el color del logo) y se mantiene la **Brasa** (`#FF5A1F`) como foco. Estilo Mac limpio. El manual de marca completo vive en el sistema de diseño «BeCoach» en claude.ai (https://claude.ai/artifact/JR6WZ7PAx5Fm2hGApZk4Jt).
+- Las presentaciones nuevas usan el **estilo simple** (`"estilo": "simple"` en `deck.json`), adaptado del taller de marketing con IA: composición centrada, títulos grandes, tarjetas blancas, píldoras, círculos numerados y tablas con encabezado azul. Motor: `motor/simple.css`; plantillas: `plantillas/slides-simple/`.
+- Las clases 005 y 006 conservan el sistema de cristal en tierra (`"estilo": "cristal"`), y las 001 a 004 su estilo original.
+- Se sigue usando el motor propio (no el tipo «Slides»): conserva `@pilares`, `@repaso`, `@seguimiento`, `@plataforma`, las notas del orador y la zona de la cámara.
+- Gráficos con paleta de datos propia (azul de datos, Brasa, turquesa), con degradado en barras, segmentos, áreas y celdas; máximo tres series.
+- El **vidrio desenfocado** se usa en tarjetas sobre fotos, patrones o ilustraciones. No se agregan formas de fondo solo para lucirlo: Gio las probó y no van.
