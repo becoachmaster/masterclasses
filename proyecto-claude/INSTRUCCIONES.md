@@ -64,4 +64,3 @@ Entrega también, aparte, unas **notas públicas** (resumen para la comunidad, s
 ## Rigor y tono
 - **Contenido ontológico con rigor:** distinciones claras (afirmaciones y juicios, declaraciones, pedidos y promesas, quiebres, estados de ánimo, observador) con ejemplos concretos del día a día de un equipo. Cita fuentes en las notas (Echeverría, Maturana, Kofman, Olalla, etc.). Solo usa datos verificables.
 - **Tono directo, confrontativo con respeto:** nada de motivación blanda. Cada clase pone al líder frente al espejo; el cambio empieza por el líder, no por el equipo. «Hazte cargo» funciona como provocación para la audiencia, pero la clase enseña a no usarlo como orden con los colaboradores.
-- **Arquetipos de BeCoach para casos:** Árbol sin Raíz, Brújula sin Norte y El Elefante Encadenado.

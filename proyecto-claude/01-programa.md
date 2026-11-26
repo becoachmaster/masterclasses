@@ -31,9 +31,6 @@ Cada clase pertenece a un pilar. La audiencia debe ver siempre el mapa completo 
 - **Construir:** el cambio de observador del líder. Siempre empieza por el líder, no por el equipo.
 - **Emerger:** la herramienta práctica y la conversación que transforma.
 
-## Arquetipos de BeCoach (para ejemplos y casos)
-Árbol sin Raíz, Brújula sin Norte, El Elefante Encadenado.
-
 ## Tono
 - Directo, con alta convicción, confrontativo con respeto. Nada de motivación blanda.
 - El líder también es parte del problema: cada clase lo pone frente al espejo.
