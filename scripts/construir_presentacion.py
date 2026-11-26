@@ -21,6 +21,7 @@ import base64
 import re
 import sys
 
+from migrar_v1 import a_v2
 from _comun import MOTOR, PLANTILLAS, RAIZ, buscar_clase, cargar_clases, clase_anterior, esc, leer_json, pilares, escribir_si_cambia
 
 F = "font-family:'Manrope', Arial, sans-serif"
@@ -139,9 +140,10 @@ def slide_seguimiento_cristal(previa):
     )
 
 
-def css_con_fuentes():
-    """Incrusta motor/fuentes/*.woff2 en el CSS para que la presentación no dependa de internet."""
-    css = (MOTOR / "deck.css").read_text(encoding="utf-8")
+def css_con_fuentes(v1=False):
+    """Incrusta motor/fuentes/*.woff2 en el CSS para que la presentación no dependa de internet.
+    v1=True usa el motor congelado de la marca v1 (tierra y café), solo para las clases ya dictadas."""
+    css = (MOTOR / ("deck-v1.css" if v1 else "deck.css")).read_text(encoding="utf-8")
     for fuente in (MOTOR / "fuentes").glob("*.woff2"):
         datos = base64.b64encode(fuente.read_bytes()).decode("ascii")
         css = css.replace(f"url(fuentes/{fuente.name})", f"url(data:font/woff2;base64,{datos})")
@@ -247,6 +249,8 @@ def construir(carpeta, datos):
     orden = deck.get("orden") or deck.get("order") or []
     previa = clase_anterior(datos.get("numero", 0))
     cristal = deck.get("estilo") == "cristal"
+    # Marca: "v1" (tierra y café) solo en las clases dictadas antes del 2026-11-26; todas las demás, manual v2 (azul).
+    v1 = deck.get("marca") == "v1"
     partes, avisos = [], []
     for id_slide in orden:
         if id_slide in ("@plataforma", "@plataforma:claro"):
@@ -283,11 +287,18 @@ def construir(carpeta, datos):
     plantilla = (MOTOR / "plantilla.html").read_text(encoding="utf-8")
     titulo = deck.get("titulo") or datos.get("titulo", "Clase")
     salida = (plantilla.replace("{{TITULO}}", esc(titulo))
-              .replace("{{CSS}}", css_con_fuentes())
+              .replace("{{CSS}}", css_con_fuentes(v1))
               .replace("{{JS}}", (MOTOR / "deck.js").read_text(encoding="utf-8"))
-              .replace("{{SLIDES}}", "\n".join(partes)))
+              .replace("{{SLIDES}}", diapositivas(partes, v1)))
     escribir_si_cambia(carpeta / "presentacion.html", salida)
     return len(partes), avisos
+
+
+def diapositivas(partes, v1=False):
+    """Une las diapositivas. En la marca v2 traduce los colores v1 que queden (las automáticas de este script y
+    cualquier diapositiva copiada de una clase vieja) con la tabla de migracion (migrar_v1.py, copia de becoach-marca)."""
+    html = "\n".join(partes)
+    return html if v1 else a_v2(html)[0]
 
 
 def construir_catalogo():
@@ -301,7 +312,7 @@ def construir_catalogo():
     salida = (plantilla.replace("{{TITULO}}", "Catálogo de plantillas")
               .replace("{{CSS}}", css_con_fuentes())
               .replace("{{JS}}", (MOTOR / "deck.js").read_text(encoding="utf-8"))
-              .replace("{{SLIDES}}", "\n".join(partes)))
+              .replace("{{SLIDES}}", diapositivas(partes)))
     escribir_si_cambia(PLANTILLAS / "catalogo.html", salida)
     return len(partes), avisos
 

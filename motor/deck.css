@@ -1,5 +1,8 @@
-/* Motor de presentación BeCoach. Lienzo fijo de 1920 × 1080 escalado a la ventana. */
-html, body { margin: 0; height: 100%; background: #0E0D0C; overflow: hidden; }
+/* Motor de presentación BeCoach. Lienzo fijo de 1920 × 1080 escalado a la ventana.
+   Marca: manual v2 (azul + Brasa), https://marca.becoach.pro. Los tokens y las clases de superficie
+   (fondo, cristal, claro, azul, brasa, foco, baldosa, halo…) vienen en el bloque de marca de abajo, que escribe
+   becoach-marca/scripts/distribuir.py: no lo edites aquí. Las clases 001-006 usan deck-v1.css. */
+html, body { margin: 0; height: 100%; background: #0A0F1F; overflow: hidden; }
 body { font-family: 'Manrope', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 
 .escena { position: relative; width: 1920px; height: 1080px; transform-origin: 0 0; }
@@ -16,7 +19,7 @@ body { font-family: 'Manrope', Arial, sans-serif; -webkit-font-smoothing: antial
 .escena section ul, .escena section ol { padding-left: 1.2em; }
 .escena section li + li { margin-top: .3em; }
 .escena section table { border-collapse: collapse; }
-.escena section th, .escena section td { padding: 22px 28px; border: 1px solid #D6CEC3; vertical-align: top; text-align: left; }
+.escena section th, .escena section td { padding: 22px 28px; border: 1px solid #D7DEE8; vertical-align: top; text-align: left; }
 .escena section hr { border: 0; }
 .escena section img { display: block; }
 x-icon { display: inline-block; flex-shrink: 0; }
@@ -28,7 +31,7 @@ x-shape[kind="arrow-down"] { clip-path: polygon(35% 0, 65% 0, 65% 62%, 100% 62%,
 
 .ayuda {
   position: fixed; right: 20px; bottom: 16px; padding: 10px 16px; border-radius: 999px;
-  background: rgba(21,20,19,.85); color: #F2EEE8; font-size: 14px; letter-spacing: .2px;
+  background: rgba(18,26,51,.88); color: #F5F7FA; font-size: 14px; letter-spacing: .2px;
   opacity: 0; transition: opacity .3s; pointer-events: none;
 }
 .ayuda.visible { opacity: 1; }
@@ -37,48 +40,158 @@ body.sin-cursor { cursor: none; }
 @media (prefers-reduced-motion: reduce) { .escena > section { transition: none; } }
 
 /* Vista de presentador */
-body.presentador { background: #151413; color: #F2EEE8; overflow: auto; }
+body.presentador { background: #121A33; color: #F5F7FA; overflow: auto; }
 .pr { display: grid; grid-template-columns: 1.6fr 1fr; gap: 24px; padding: 24px; min-height: 100vh; box-sizing: border-box; }
 .pr-marco { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: #000; }
 .pr-lado { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-.pr-fila { display: flex; justify-content: space-between; align-items: baseline; font-size: 18px; color: #B9B1A7; }
-.pr-reloj { font-size: 40px; font-weight: 700; color: #C9AC91; font-variant-numeric: tabular-nums; }
-.pr-notas { flex: 1; overflow: auto; font-size: 22px; line-height: 1.5; background: #1F1E1C; border-radius: 10px; padding: 20px 24px; }
+.pr-fila { display: flex; justify-content: space-between; align-items: baseline; font-size: 18px; color: #A9B4C8; }
+.pr-reloj { font-size: 40px; font-weight: 700; color: #A9BEE0; font-variant-numeric: tabular-nums; }
+.pr-notas { flex: 1; overflow: auto; font-size: 22px; line-height: 1.5; background: #1A2442; border-radius: 10px; padding: 20px 24px; }
 .pr-botones { display: flex; gap: 10px; flex-wrap: wrap; }
-.pr-botones button { font: inherit; font-size: 16px; padding: 10px 18px; border-radius: 8px; border: 1px solid #3A3733; background: #26231F; color: #F2EEE8; cursor: pointer; }
-.pr-botones button:hover, .pr-botones button:focus-visible { border-color: #C9AC91; outline: none; }
-.pr-fin { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #B9B1A7; font-size: 20px; }
-.pr-titulo-sig { font-size: 16px; color: #B9B1A7; }
+.pr-botones button { font: inherit; font-size: 16px; padding: 10px 18px; border-radius: 8px; border: 1px solid #2A3658; background: #1E2A4E; color: #F5F7FA; cursor: pointer; }
+.pr-botones button:hover, .pr-botones button:focus-visible { border-color: #A9BEE0; outline: none; }
+.pr-fin { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #A9B4C8; font-size: 20px; }
+.pr-titulo-sig { font-size: 16px; color: #A9B4C8; }
 .pr > div { min-width: 0; }
 .pr-marco > .escena { position: absolute; left: 0; top: 0; }
 
-/* ===== Sistema de cristal (2026-11-02) =====
-   Tipografías guardadas en motor/fuentes: construir_presentacion.py las incrusta en presentacion.html,
+/* ===== Tipografías =====
+   Guardadas en motor/fuentes: construir_presentacion.py las incrusta en presentacion.html,
    así la presentación se ve igual sin internet. Solo el subconjunto latino (cubre español completo). */
 @font-face { font-family: 'Manrope'; font-style: normal; font-weight: 400 800; font-display: block;
   src: url(fuentes/manrope-latin.woff2) format('woff2'); }
 @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 500; font-display: block;
   src: url(fuentes/fraunces-latin.woff2) format('woff2'); }
 
-/* Fondos: los oscuros siempre con degradado, nunca planos. Van como clase en el <section>. */
-.escena section.fondo { background: radial-gradient(1100px 760px at 8% -6%, rgba(62,74,79,.75), rgba(62,74,79,0) 62%), radial-gradient(1000px 700px at 100% 108%, rgba(255,90,31,.22), rgba(255,90,31,0) 60%), linear-gradient(160deg,#1E1C1B 0%,#151413 55%,#0E0D0C 100%); color: #F7F5F1; }
-.escena section.fondo-mineral { background: radial-gradient(1300px 900px at 0% 0%, rgba(62,74,79,.95), rgba(62,74,79,0) 65%), radial-gradient(900px 700px at 100% 100%, rgba(201,172,145,.16), rgba(201,172,145,0) 60%), linear-gradient(160deg,#20292C 0%,#161A1B 55%,#0E0D0C 100%); color: #F7F5F1; }
-.escena section.fondo-claro { background: radial-gradient(1100px 760px at 6% -8%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%), radial-gradient(1000px 760px at 102% 110%, rgba(201,172,145,.55), rgba(201,172,145,0) 62%), linear-gradient(160deg,#F2EDE6 0%,#ECE7E0 55%,#E2D9CD 100%); color: #1A1918; }
-.escena section.fondo-niebla { background: radial-gradient(1100px 760px at 6% -8%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%), radial-gradient(1000px 760px at 102% 110%, rgba(62,74,79,.22), rgba(62,74,79,0) 62%), linear-gradient(160deg,#EEF1F2 0%,#E6EAEC 55%,#D9DFE2 100%); color: #1A1918; }
+/* ===== Sistema de cristal azul: tokens y clases del manual ===== */
+/* marca:inicio */
+/* Bloque de marca · manual BeCoach v2.1 · https://marca.becoach.pro
+Generado por becoach-marca/scripts/distribuir.py. No lo edites aquí: cambia el manual y vuelve a correrlo. */
+:root {
+  --brasa-alta: #FF7A45;
+  --brasa: #FF5A1F;
+  --brasa-baja: #E04A12;
+  --brasa-profunda: #C43A08;
+  --azul-alto: #2C3E6E;
+  --azul: #1E2A4E;
+  --azul-bajo: #121A33;
+  --azul-noche: #0A0F1F;
+  --azul-luz: #3A5A9A;
+  --azul-acero: #3D5A8C;
+  --azul-hielo: #A9BEE0;
+  --azul-bruma: #DCE4F0;
+  --blanco: #FFFFFF;
+  --nube: #F5F7FA;
+  --nube-baja: #E8EDF4;
+  --niebla: #D6DFEC;
+  --tinta: #141B2D;
+  --tinta-suave: #4E5A70;
+  --gris-hielo: #A9B4C8;
+  --linea: #D7DEE8;
+  --fondo: #F5F7FA;
+  --superficie: #FFFFFF;
+  --texto: #141B2D;
+  --texto-suave: #4E5A70;
+  --acento: #3D5A8C;
+  --foco-texto: #C43A08;
+  --borde: #D7DEE8;
+  --logo: #1E2A4E;
+  --accion: #FF5A1F;
+  --texto-sobre-accion: #141B2D;
+  --texto-sobre-azul: #FFFFFF;
+  --exito: #1E7A4C;
+  --alerta: #A35F00;
+  --error: #B3261E;
+  --sombra-claro: 0 1px 2px rgba(10,15,31,0.06), 0 12px 32px rgba(30,42,78,0.12);
+  --sombra-oscuro: inset 0 1px 0 rgba(255,255,255,0.14), 0 28px 70px rgba(5,8,18,0.55);
+  --sombra-brasa: 0 0 0 6px rgba(255,90,31,0.14), 0 24px 60px rgba(196,58,8,0.32);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-full: 9999px;
+  --font-sans: Manrope, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Arial, sans-serif;
+  --font-serif: Fraunces, Georgia, serif;
+}
+/* BeCoach · sistema de cristal azul (v2.1, 2026-11-26)
+   Reemplaza el bloque "Sistema de cristal" del kit de presentación.
+   Regla de los degradados: dos tonos de la misma familia, del tono a su
+   paso más oscuro (arriba a la izquierda → abajo a la derecha). Nunca se
+   mezclan familias (nada de Brasa dentro de un fondo azul). Nada plano. */
 
-/* Tarjetas. Radio 28 px en todas (Gio no quiere bordes más redondeados). */
-.cristal { background: linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.16); box-shadow: inset 0 1px 0 rgba(255,255,255,.20), 0 28px 70px rgba(0,0,0,.45); border-radius: 28px; }
-.cristal-opaco { background: linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.04)), #1C1A19; }
-.claro { background: linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.55)); border: 1px solid rgba(255,255,255,.95); box-shadow: inset 0 1px 0 #FFFFFF, 0 24px 60px rgba(74,52,38,.14); border-radius: 28px; }
-.vidrio { background: linear-gradient(180deg,rgba(30,28,27,.58),rgba(21,20,19,.42)); -webkit-backdrop-filter: blur(22px) saturate(1.2); backdrop-filter: blur(22px) saturate(1.2); border: 1px solid rgba(255,255,255,.18); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 24px 60px rgba(0,0,0,.40); border-radius: 28px; }
-.panel { background: rgba(8,8,8,.38); border: 1px solid rgba(255,255,255,.07); border-radius: 20px; }
-/* Foco Brasa: una sola vez por diapositiva. */
-.foco { border: 2px solid #FF5A1F; box-shadow: inset 0 1px 0 rgba(255,255,255,.20), 0 0 0 6px rgba(255,90,31,.14), 0 0 60px rgba(255,90,31,.30), 0 28px 70px rgba(0,0,0,.45); }
-.brasa { background: linear-gradient(160deg,#FF7A45 0%,#FF5A1F 55%,#E04A12 100%); border: 1px solid rgba(255,255,255,.35); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 0 0 6px rgba(255,90,31,.14), 0 24px 60px rgba(196,58,8,.35); border-radius: 28px; color: #151413; }
-.brillo { color: #FF5A1F; text-shadow: 0 0 40px rgba(255,90,31,.45); }
-.halo { position: absolute; pointer-events: none; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,90,31,.30), rgba(255,90,31,0)); }
-/* Fraunces solo para la voz de otra persona o de una clase anterior (citas). */
-.serif { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; }
+/* ---------- Fondos (clase del <section>) ---------- */
+.fondo { background:
+  radial-gradient(1100px 760px at 8% -6%, rgba(58,90,154,.55), rgba(58,90,154,0) 62%),
+  linear-gradient(160deg, var(--azul) 0%, var(--azul-noche) 100%);
+  color: var(--nube); }
+.fondo-profundo { background:
+  radial-gradient(1300px 900px at 0% 0%, rgba(58,90,154,.40), rgba(58,90,154,0) 65%),
+  linear-gradient(160deg, var(--azul-bajo) 0%, var(--azul-noche) 100%);
+  color: var(--nube); }
+.fondo-claro { background:
+  radial-gradient(1100px 760px at 6% -8%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%),
+  linear-gradient(160deg, var(--nube) 0%, var(--nube-baja) 100%);
+  color: var(--tinta); }
+.fondo-niebla { background:
+  radial-gradient(1100px 760px at 6% -8%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%),
+  linear-gradient(160deg, #EEF3FA 0%, var(--niebla) 100%);
+  color: var(--tinta); }
+/* Compatibilidad: las clases viejas siguen funcionando. */
+.fondo-mineral { background:
+  radial-gradient(1300px 900px at 0% 0%, rgba(58,90,154,.40), rgba(58,90,154,0) 65%),
+  linear-gradient(160deg, var(--azul-bajo) 0%, var(--azul-noche) 100%);
+  color: var(--nube); }
+
+/* ---------- Tarjetas ---------- */
+/* Cristal sobre oscuro: translúcido, borde fino, luz arriba, sombra profunda. */
+.cristal { background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.16); box-shadow: var(--sombra-oscuro);
+  border-radius: var(--radius-lg); color: var(--nube); }
+.cristal-opaco { background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03)), #16203B; }
+/* Claro: blanco Mac sobre fondos claros, del blanco a la nube. */
+.claro { background: linear-gradient(180deg, #FFFFFF 0%, #F7F9FC 100%);
+  border: 1px solid rgba(215,222,232,.9); box-shadow: var(--sombra-claro);
+  border-radius: var(--radius-lg); color: var(--tinta); }
+/* Azul: tarjeta sólida de marca, del azul al azul bajo. */
+.azul { background: linear-gradient(160deg, var(--azul) 0%, var(--azul-bajo) 100%);
+  border: 1px solid rgba(255,255,255,.12); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 24px 60px rgba(10,15,31,.35);
+  border-radius: var(--radius-lg); color: #FFFFFF; }
+/* Brasa: el foco relleno, de la brasa alta a la brasa. Texto en tinta. */
+.brasa { background: linear-gradient(160deg, var(--brasa-alta) 0%, var(--brasa) 100%);
+  border: 1px solid rgba(255,255,255,.35); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), var(--sombra-brasa);
+  border-radius: var(--radius-lg); color: var(--tinta); }
+/* Foco: se suma a cristal o claro. Borde y halo Brasa. */
+.foco { border: 2px solid var(--brasa);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.20), 0 0 0 6px rgba(255,90,31,.14), 0 0 60px rgba(255,90,31,.28), 0 28px 70px rgba(5,8,18,.45); }
+.panel { background: rgba(5,8,18,.40); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius-md); }
+.vidrio { background: linear-gradient(180deg, rgba(30,42,78,.58), rgba(18,26,51,.42));
+  -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3);
+  border: 1px solid rgba(255,255,255,.18); box-shadow: var(--sombra-oscuro); border-radius: var(--radius-lg); }
+
+/* Baldosa de ícono (88 a 120 px, radio 24 a 28). */
+.baldosa { display: flex; align-items: center; justify-content: center; border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--blanco), var(--azul-bruma)); border: 1px solid rgba(61,90,140,.18); color: var(--azul-acero); }
+.cristal .baldosa, .fondo .baldosa, .fondo-profundo .baldosa { background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.04)); border-color: rgba(255,255,255,.16); color: var(--azul-hielo); }
+
+/* ---------- Botones (web y redes) ---------- */
+.boton { display: inline-flex; align-items: center; gap: 10px; font: 700 16px/1 var(--font-sans);
+  padding: 14px 24px; min-height: 48px; border-radius: var(--radius-sm); border: 1px solid transparent; cursor: pointer; }
+.boton-brasa { background: linear-gradient(180deg, var(--brasa-alta), var(--brasa)); color: var(--tinta);
+  border-color: rgba(255,255,255,.35); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 8px 20px rgba(196,58,8,.28); }
+.boton-azul { background: linear-gradient(180deg, var(--azul), var(--azul-bajo)); color: #FFFFFF;
+  border-color: rgba(255,255,255,.10); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 8px 20px rgba(10,15,31,.25); }
+.boton-claro { background: linear-gradient(180deg, #FFFFFF, #F1F4F9); color: var(--tinta); border-color: var(--linea); box-shadow: var(--sombra-claro); }
+.boton-brasa:active { box-shadow: inset 0 2px 8px rgba(196,58,8,.45); }
+.boton-azul:hover { background: linear-gradient(180deg, var(--azul-alto), var(--azul)); }
+.boton:focus-visible { outline: 3px solid var(--azul-hielo); outline-offset: 2px; }
+
+/* ---------- Texto ---------- */
+.brillo { color: var(--brasa); text-shadow: 0 0 40px rgba(255,90,31,.45); }
+.brillo-claro { color: var(--brasa-profunda); }
+.halo { position: absolute; pointer-events: none; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255,90,31,.28), rgba(255,90,31,0)); }
+.serif { font-family: var(--font-serif); font-style: italic; font-weight: 500; }
+/* marca:fin */
+
 /* Zona de la cámara en el video (modo pip del montaje): no poner contenido ahí.
    Para verla, abre presentacion.html?zona */
 body.ver-zona .escena > section::after { content: ""; position: absolute; left: 1360px; top: 0; width: 560px; height: 340px; border: 3px dashed rgba(255,90,31,.85); background: rgba(255,90,31,.12); pointer-events: none; z-index: 9; }

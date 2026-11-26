@@ -7,66 +7,77 @@
 
 <!-- Fuente: conocimiento/guia-diseno.md -->
 
-# Guía de diseño de las diapositivas · sistema de cristal
+# Guía de diseño de las diapositivas · sistema de cristal azul
 
-Vigente desde el 2026-11-02 (aprobado por Gio en la hoja de estilo de Claude Design: https://claude.ai/artifact/ALjaZrUvvRGoYaHRoWnbsw, cuadros 1 a 19). Es el mismo sistema de los gráficos de video y de los reels: lo que se ve en la clase en vivo, en el video editado y en redes es una sola marca.
+**Marca vigente: manual de marca BeCoach v2.1 (2026-11-26), https://marca.becoach.pro** (repositorio `C:/Dev/becoach-marca`). La marca pasó de tierra y café al azul y mantiene la Brasa como foco. Si algo de esta guía choca con el manual, manda el manual. Los colores y las clases de superficie del motor (`motor/deck.css`) los escribe el bloque de marca desde el manual.
 
-**La referencia viva es `plantillas/muestra/`**: la clase 4 completa en este sistema (`presentacion.html` y una diapositiva por archivo en `slides/`). Antes de construir una presentación, abre la muestra en Chrome (`plantillas/muestra/presentacion.html?zona`) y copia de `plantillas/slides/` el tipo que necesitas. Las clases 001 a 004 conservan su estilo anterior; las plantillas viejas están en `plantillas/slides-v1/`.
+Historia: el sistema de cristal se aprobó el 2026-11-02 en la hoja de estilo de Claude Design (https://claude.ai/artifact/ALjaZrUvvRGoYaHRoWnbsw); el 2026-11-26 pasó a la paleta azul. Es el mismo sistema de los gráficos de video y de los reels: lo que se ve en la clase en vivo, en el video editado y en redes es una sola marca.
+
+**La referencia viva es `plantillas/muestra/`**: la clase 4 rehecha en este sistema (`presentacion.html` y una diapositiva por archivo en `slides/`). Antes de construir una presentación, abre la muestra en Chrome (`plantillas/muestra/presentacion.html?zona`) y copia de `plantillas/slides/` el tipo que necesitas. **Las clases 001 a 006 ya se dictaron y conservan la marca v1 (tierra y café)**: su `deck.json` lleva `"marca": "v1"` y se construyen con `motor/deck-v1.css`. Las plantillas más viejas están en `plantillas/slides-v1/`.
 
 ## Lienzo
 - Cada diapositiva es un `<section>` de 1920 × 1080 px. El fondo va como **clase** del `<section>` (`class="fondo"`); el resto, con estilos en línea.
-- `deck.json` lleva `"estilo": "cristal"`: así `@pilares`, `@repaso` y `@seguimiento` salen en el mismo sistema.
+- `deck.json` lleva `"estilo": "cristal"`: así `@pilares`, `@repaso` y `@seguimiento` salen en el mismo sistema. No lleva `"marca"` (eso es solo para las clases v1).
 - Composición con `position:absolute` desde el borde: margen izquierdo 110 px, borde derecho 1810 px, título arriba en `top:96px`.
 - Notas del orador dentro de `<aside>…</aside>` al final de cada `<section>`.
 
 ## La esquina de la cámara (regla firme)
 En el video editado, la cámara de Gio va arriba a la derecha. **La zona x > 1360 px, y < 340 px queda vacía en todas las diapositivas.** Los títulos de arriba miden como mucho 1200 px de ancho; las tarjetas que llegan al borde derecho empiezan en `top:345px` o más abajo. Para comprobarlo, abre `presentacion.html?zona`: la zona se marca en naranja.
 
-## Fondos (siempre con degradado, nunca planos)
+## Fondos (siempre con degradado de dos tonos de la misma familia, nunca planos)
 | Clase | Uso |
 |---|---|
-| `fondo` | Oscuro principal: carbón con luz mineral arriba a la izquierda y Brasa abajo a la derecha |
-| `fondo-mineral` | Oscuro alterno: divisores, repaso, estilos bajo presión, cierre |
-| `fondo-claro` | Arena con degradado: modelo central, comparaciones, práctica y frase ancla |
-| `fondo-niebla` | Gris azulado claro: preguntas de apertura |
+| `fondo` | Oscuro principal: azul → azul noche, con brillo de azul luz arriba a la izquierda. Sin Brasa en el fondo |
+| `fondo-profundo` | Oscuro alterno: azul bajo → azul noche. Divisores, repaso, estilos bajo presión, cierre (`fondo-mineral` sigue funcionando como alias) |
+| `fondo-claro` | Claro Mac: nube → nube baja, con brillo blanco. Modelo central, comparaciones, práctica y frase ancla |
+| `fondo-niebla` | Claro azulado: preguntas de apertura |
 
-Alterna oscuros y claros para dar ritmo. El café ya no es fondo, salvo casos muy puntuales que Gio pida.
+Alterna oscuros y claros para dar ritmo. La Brasa nunca va dentro de un fondo: solo como `halo` detrás del foco.
 
 ## Tarjetas
 | Clase | Qué es |
 |---|---|
 | `cristal` | Tarjeta de cristal sobre oscuro: translúcida, borde fino, luz arriba y sombra profunda |
 | `cristal cristal-opaco` | Cristal que tapa lo de atrás (nodos de un diagrama encima de líneas) |
-| `claro` | Cristal blanco sobre fondos claros |
+| `claro` | Tarjeta blanca Mac sobre fondos claros, borde de 1 px y sombra suave |
+| `azul` | Tarjeta azul sólida (azul → azul bajo): destaca sobre claro sin gastar el foco |
 | `vidrio` | Cristal con desenfoque real del fondo; solo sobre fotos o video |
 | `panel` | Panel interior oscuro dentro de una tarjeta de cristal |
-| `foco` | Se suma a `cristal`: borde y halo Brasa. Es el foco |
-| `brasa` | Tarjeta rellena de Brasa con degradado; el texto encima va en tinta `#1A1918` |
-| `brillo` | Texto Brasa con resplandor (la palabra clave) |
-| `halo` | Luz Brasa difusa detrás de un elemento (`<div class="halo" style="left…; top…; width…; height…">`) |
+| `baldosa` | Fondo de ícono (88 a 120 px): blanco → azul bruma sobre claro, cristal sobre oscuro |
+| `foco` | Se suma a `cristal` o `claro`: borde y halo Brasa. Es el foco |
+| `brasa` | Tarjeta rellena de Brasa (brasa alta → brasa); el texto encima va en tinta `#141B2D`, nunca en blanco |
+| `brillo` | Texto Brasa con resplandor (la palabra clave sobre oscuro); `brillo-claro` sobre claro (Brasa profunda) |
+| `halo` | Luz Brasa difusa detrás del foco (`<div class="halo" style="left…; top…; width…; height…">`) |
 | `serif` | Fraunces itálica, **solo** para citas (la voz de otra persona o de la clase anterior) |
 
-Radio 28 px en todo (Gio no quiere bordes más redondeados). Íconos dentro de una baldosa de 88 a 120 px con radio 24 a 28.
+Radio 28 px como máximo (Gio no quiere bordes más redondeados). Íconos dentro de una baldosa de 88 a 120 px con radio 24 a 28.
 
 ## Uso de Brasa
-- **Un solo foco por diapositiva**: la tarjeta `foco`, la tarjeta `brasa`, la palabra `brillo` o el elemento central de la ilustración. Un grupo con el mismo rol (los números 1, 2, 3 de una lista de pasos) cuenta como uno.
-- Sobre oscuro: `#FF5A1F` en texto, íconos y rellenos. Sobre claro: Brasa solo como relleno (`brasa`); en texto usa Brasa profunda `#C43A08`.
-- Los íconos y números repetidos van en Tostado `#C9AC91` sobre oscuro y en Café `#7A5C4A` sobre claro.
+- **Un solo foco por diapositiva**: la tarjeta `foco`, la tarjeta `brasa`, la palabra `brillo` o el elemento central de la ilustración. Un grupo con el mismo rol (los números 1, 2, 3 de una lista de pasos) cuenta como uno. La Brasa no pasa del 10 % de la diapositiva.
+- Sobre oscuro: `#FF5A1F` en texto (sobre azul bajo o azul noche; sobre azul solo desde 24 px), íconos y rellenos. Sobre claro: Brasa solo como relleno (`brasa`); en texto usa Brasa profunda `#C43A08`.
+- Los íconos y números repetidos van en azul hielo `#A9BEE0` sobre oscuro y en azul acero `#3D5A8C` sobre claro.
 - La frase ancla de cierre no lleva Brasa.
 
-## Paleta
+## Paleta (del manual; detalle y contrastes en https://marca.becoach.pro)
 | Nombre | Hex | Uso |
 |---|---|---|
+| Azul | `#1E2A4E` | La marca y el logo; inicio de los fondos oscuros y tarjetas azules |
+| Azul bajo / azul noche | `#121A33` / `#0A0F1F` | Final de los degradados y fondos oscuros |
+| Azul luz | `#3A5A9A` | Solo como brillo radial de los fondos oscuros |
 | Brasa | `#FF5A1F` | El foco |
 | Brasa profunda | `#C43A08` | Brasa para texto sobre claro |
-| Tostado | `#C9AC91` | Acento secundario sobre oscuro: íconos, números, flechas, etiquetas de ejes |
-| Café | `#7A5C4A` | Íconos y detalles sobre claro |
-| Mineral | `#3E4A4F` | Luz de los fondos oscuros, contraste frío |
-| Texto sobre oscuro | `#F7F5F1` y `rgba(247,245,241,.68)` | Principal y secundario |
-| Texto sobre claro | `#1A1918` y `#5E554D` | Principal y secundario |
+| Azul hielo | `#A9BEE0` | Acento secundario sobre oscuro: íconos, números, flechas, etiquetas de ejes |
+| Azul acero | `#3D5A8C` | Íconos, números y detalles sobre claro |
+| Azul bruma | `#DCE4F0` | Tinte de alivio sobre claro (baldosas, celdas resaltadas) |
+| Texto sobre oscuro | nube `#F5F7FA` y gris hielo `#A9B4C8` | Principal y secundario |
+| Texto sobre claro | tinta `#141B2D` y tinta suave `#4E5A70` | Principal y secundario |
+| Línea | `#D7DEE8` | Bordes de 1 px y tablas sobre claro |
+
+## Logo
+Logotipo azul sobre claro y blanco sobre oscuro, arriba o abajo a la izquierda, **nunca en la zona de la cámara** y nunca en Brasa. Archivos: `https://marca.becoach.pro/assets/logos/`.
 
 ## Tipografía
-- Manrope en todo (`font-family:'Manrope', Arial, sans-serif`), pesos 600 a 800. El motor la incrusta: funciona sin internet.
+- Manrope en todo (`font-family:'Manrope', Arial, sans-serif`), pesos 500 a 800. El motor la incrusta: funciona sin internet.
 - Títulos: 76 a 100 px, peso 800, `letter-spacing:-2.5px`, `line-height:1.04`.
 - Declaraciones y portada: 112 a 136 px.
 - Texto de tarjetas: 32 a 56 px. Apoyo: 28 a 44 px. **Nunca menos de 24 px.**
@@ -132,7 +143,7 @@ Todas están en `plantillas/catalogo.html` (se construye con `python scripts/con
 
 - **Solo datos verificables, con la fuente en pantalla** (autor o institución y año), en 26 px y gris al pie.
 - **Escala honesta:** con porcentajes, la barra mide el porcentaje real (0 a 100). Nunca se recorta el eje para exagerar.
-- **Un solo foco:** una barra, una parte o una cifra en Brasa; las demás en Tostado (oscuro) o Café (claro).
+- **Un solo foco:** una barra, una parte o una cifra en Brasa; las demás en azul hielo (oscuro) o azul acero (claro).
 - **Topes:** 6 barras, 3 partes de dona, 4 series de pendiente, tabla de 4 columnas × 5 filas. Si sobran categorías, agrupa en "Otros".
 - **Ritmo:** como máximo una diapositiva de datos de cada cuatro; un gráfico detrás de otro no se lee.
 - **El título dice la conclusión**, no el tema ("4 de cada 10 personas pasan el día con estrés", no "Estrés laboral").
@@ -148,7 +159,7 @@ Traídas del sistema original de slides:
 - **Claro y oscuro cuentan la historia:** oscuro para el problema y la tensión, claro para el método y la salida. El paso de uno a otro coincide con el giro del argumento.
 
 ## Ilustraciones
-- SVG en línea con trazo redondeado (`stroke-linecap:round`) en Tostado, Café o Brasa, dentro de baldosas o tarjetas de cristal. Se hacen con divs de cristal y formas simples (órbitas, mesas, calendarios, matrices), no con dibujos planos sueltos.
+- SVG en línea con trazo redondeado (`stroke-linecap:round`) en azul hielo (oscuro), azul acero (claro) o Brasa (solo el foco), dentro de baldosas o tarjetas de cristal. Se hacen con divs de cristal y formas simples (órbitas, mesas, calendarios, matrices), no con dibujos planos sueltos.
 - Deben representar la idea (la mesa de la reunión, el puesto libre, la mini matriz que ubica cada estado), no decorar.
 - Siguen disponibles `<x-icon name="…">` (Search, Users, CheckCircle, Key, Chat, Warning, Trust, Anchor, Heart, Cycle, Lightbulb, Target, Eye, Calendar, Compass, Mirror).
 

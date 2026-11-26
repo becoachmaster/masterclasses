@@ -1,0 +1,85 @@
+/* Motor de presentación BeCoach · VERSIÓN 1 (tierra y café), CONGELADA el 2026-11-26.
+   Solo la usan las clases ya dictadas (001-006, "marca": "v1" en deck.json). No la edites: la marca vigente está en deck.css. */
+html, body { margin: 0; height: 100%; background: #0E0D0C; overflow: hidden; }
+body { font-family: 'Manrope', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+
+.escena { position: relative; width: 1920px; height: 1080px; transform-origin: 0 0; }
+#deck { position: absolute; left: 0; top: 0; }
+
+.escena > section {
+  position: absolute; left: 0; top: 0; width: 1920px; height: 1080px;
+  box-sizing: border-box; overflow: hidden;
+  opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility .35s;
+}
+.escena > section.activa { opacity: 1; visibility: visible; }
+.escena section * { margin: 0; box-sizing: border-box; }
+.escena section aside { display: none; }
+.escena section ul, .escena section ol { padding-left: 1.2em; }
+.escena section li + li { margin-top: .3em; }
+.escena section table { border-collapse: collapse; }
+.escena section th, .escena section td { padding: 22px 28px; border: 1px solid #D6CEC3; vertical-align: top; text-align: left; }
+.escena section hr { border: 0; }
+.escena section img { display: block; }
+x-icon { display: inline-block; flex-shrink: 0; }
+x-icon svg { display: block; width: 100%; height: 100%; }
+x-shape { display: block; flex-shrink: 0; }
+x-shape[kind="arrow-right"] { clip-path: polygon(0 35%, 62% 35%, 62% 0, 100% 50%, 62% 100%, 62% 65%, 0 65%); }
+x-shape[kind="arrow-left"] { clip-path: polygon(100% 35%, 38% 35%, 38% 0, 0 50%, 38% 100%, 38% 65%, 100% 65%); }
+x-shape[kind="arrow-down"] { clip-path: polygon(35% 0, 65% 0, 65% 62%, 100% 62%, 50% 100%, 0 62%, 35% 62%); }
+
+.ayuda {
+  position: fixed; right: 20px; bottom: 16px; padding: 10px 16px; border-radius: 999px;
+  background: rgba(21,20,19,.85); color: #F2EEE8; font-size: 14px; letter-spacing: .2px;
+  opacity: 0; transition: opacity .3s; pointer-events: none;
+}
+.ayuda.visible { opacity: 1; }
+body.sin-cursor { cursor: none; }
+
+@media (prefers-reduced-motion: reduce) { .escena > section { transition: none; } }
+
+/* Vista de presentador */
+body.presentador { background: #151413; color: #F2EEE8; overflow: auto; }
+.pr { display: grid; grid-template-columns: 1.6fr 1fr; gap: 24px; padding: 24px; min-height: 100vh; box-sizing: border-box; }
+.pr-marco { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: #000; }
+.pr-lado { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.pr-fila { display: flex; justify-content: space-between; align-items: baseline; font-size: 18px; color: #B9B1A7; }
+.pr-reloj { font-size: 40px; font-weight: 700; color: #C9AC91; font-variant-numeric: tabular-nums; }
+.pr-notas { flex: 1; overflow: auto; font-size: 22px; line-height: 1.5; background: #1F1E1C; border-radius: 10px; padding: 20px 24px; }
+.pr-botones { display: flex; gap: 10px; flex-wrap: wrap; }
+.pr-botones button { font: inherit; font-size: 16px; padding: 10px 18px; border-radius: 8px; border: 1px solid #3A3733; background: #26231F; color: #F2EEE8; cursor: pointer; }
+.pr-botones button:hover, .pr-botones button:focus-visible { border-color: #C9AC91; outline: none; }
+.pr-fin { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #B9B1A7; font-size: 20px; }
+.pr-titulo-sig { font-size: 16px; color: #B9B1A7; }
+.pr > div { min-width: 0; }
+.pr-marco > .escena { position: absolute; left: 0; top: 0; }
+
+/* ===== Sistema de cristal (2026-11-02) =====
+   Tipografías guardadas en motor/fuentes: construir_presentacion.py las incrusta en presentacion.html,
+   así la presentación se ve igual sin internet. Solo el subconjunto latino (cubre español completo). */
+@font-face { font-family: 'Manrope'; font-style: normal; font-weight: 400 800; font-display: block;
+  src: url(fuentes/manrope-latin.woff2) format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 500; font-display: block;
+  src: url(fuentes/fraunces-latin.woff2) format('woff2'); }
+
+/* Fondos: los oscuros siempre con degradado, nunca planos. Van como clase en el <section>. */
+.escena section.fondo { background: radial-gradient(1100px 760px at 8% -6%, rgba(62,74,79,.75), rgba(62,74,79,0) 62%), radial-gradient(1000px 700px at 100% 108%, rgba(255,90,31,.22), rgba(255,90,31,0) 60%), linear-gradient(160deg,#1E1C1B 0%,#151413 55%,#0E0D0C 100%); color: #F7F5F1; }
+.escena section.fondo-mineral { background: radial-gradient(1300px 900px at 0% 0%, rgba(62,74,79,.95), rgba(62,74,79,0) 65%), radial-gradient(900px 700px at 100% 100%, rgba(201,172,145,.16), rgba(201,172,145,0) 60%), linear-gradient(160deg,#20292C 0%,#161A1B 55%,#0E0D0C 100%); color: #F7F5F1; }
+.escena section.fondo-claro { background: radial-gradient(1100px 760px at 6% -8%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%), radial-gradient(1000px 760px at 102% 110%, rgba(201,172,145,.55), rgba(201,172,145,0) 62%), linear-gradient(160deg,#F2EDE6 0%,#ECE7E0 55%,#E2D9CD 100%); color: #1A1918; }
+.escena section.fondo-niebla { background: radial-gradient(1100px 760px at 6% -8%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%), radial-gradient(1000px 760px at 102% 110%, rgba(62,74,79,.22), rgba(62,74,79,0) 62%), linear-gradient(160deg,#EEF1F2 0%,#E6EAEC 55%,#D9DFE2 100%); color: #1A1918; }
+
+/* Tarjetas. Radio 28 px en todas (Gio no quiere bordes más redondeados). */
+.cristal { background: linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.16); box-shadow: inset 0 1px 0 rgba(255,255,255,.20), 0 28px 70px rgba(0,0,0,.45); border-radius: 28px; }
+.cristal-opaco { background: linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.04)), #1C1A19; }
+.claro { background: linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.55)); border: 1px solid rgba(255,255,255,.95); box-shadow: inset 0 1px 0 #FFFFFF, 0 24px 60px rgba(74,52,38,.14); border-radius: 28px; }
+.vidrio { background: linear-gradient(180deg,rgba(30,28,27,.58),rgba(21,20,19,.42)); -webkit-backdrop-filter: blur(22px) saturate(1.2); backdrop-filter: blur(22px) saturate(1.2); border: 1px solid rgba(255,255,255,.18); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 24px 60px rgba(0,0,0,.40); border-radius: 28px; }
+.panel { background: rgba(8,8,8,.38); border: 1px solid rgba(255,255,255,.07); border-radius: 20px; }
+/* Foco Brasa: una sola vez por diapositiva. */
+.foco { border: 2px solid #FF5A1F; box-shadow: inset 0 1px 0 rgba(255,255,255,.20), 0 0 0 6px rgba(255,90,31,.14), 0 0 60px rgba(255,90,31,.30), 0 28px 70px rgba(0,0,0,.45); }
+.brasa { background: linear-gradient(160deg,#FF7A45 0%,#FF5A1F 55%,#E04A12 100%); border: 1px solid rgba(255,255,255,.35); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 0 0 6px rgba(255,90,31,.14), 0 24px 60px rgba(196,58,8,.35); border-radius: 28px; color: #151413; }
+.brillo { color: #FF5A1F; text-shadow: 0 0 40px rgba(255,90,31,.45); }
+.halo { position: absolute; pointer-events: none; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,90,31,.30), rgba(255,90,31,0)); }
+/* Fraunces solo para la voz de otra persona o de una clase anterior (citas). */
+.serif { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; }
+/* Zona de la cámara en el video (modo pip del montaje): no poner contenido ahí.
+   Para verla, abre presentacion.html?zona */
+body.ver-zona .escena > section::after { content: ""; position: absolute; left: 1360px; top: 0; width: 560px; height: 340px; border: 3px dashed rgba(255,90,31,.85); background: rgba(255,90,31,.12); pointer-events: none; z-index: 9; }

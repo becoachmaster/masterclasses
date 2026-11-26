@@ -1,5 +1,7 @@
 # BeCoach · Clases semanales de liderazgo
 
+> **Marca:** manual BeCoach v2.1 (https://marca.becoach.pro, local `C:/Dev/becoach-marca`). `motor/deck.css` recibe tokens y clases del manual en su bloque de marca (no lo edites). Las clases 001-006 llevan `"marca": "v1"` en `deck.json` y se construyen con `motor/deck-v1.css` (tierra y café, congelado); las clases nuevas salen en azul. `construir_presentacion.py` traduce a la v2 cualquier color v1 que quede (`scripts/migrar_v1.py`).
+
 Este repositorio es el sistema de trabajo de Gio (coach ontológico, marca BeCoach) para diseñar, construir y registrar sus clases semanales abiertas de coaching ontológico para líderes de equipo.
 
 - Formato: clase en vivo por Zoom, 50 minutos, una vez por semana.
@@ -32,7 +34,7 @@ El entregable de cada clase es la clase diseñada (`clase.json`, escaleta, notas
 | `clases/NNN-slug/contenido.md` | Todo el contenido de la clase en texto: ficha, diapositivas en orden y notas del orador. Léelo en vez de abrir las diapositivas una por una | **Generado por script. No editar.** |
 | `clases/NNN-slug/notas-publicas.md` | Resumen para la comunidad y el futuro sitio web | Claude, al cerrar la clase |
 | `motor/` | Motor de presentación (CSS, JS, plantilla HTML) | Solo si Gio pide cambios de funcionamiento |
-| `plantillas/` | Plantillas de clase, escaleta, notas y diapositivas (`slides/`, sistema de cristal; las anteriores en `slides-v1/`) | Rara vez |
+| `plantillas/` | Plantillas de clase, escaleta, notas y diapositivas (`slides/`, sistema de cristal azul del manual de marca v2; las anteriores en `slides-v1/`) | Rara vez |
 | `plantillas/muestra/` | La clase 4 completa en el sistema de cristal: referencia visual para copiar. Se construye con `construir_presentacion.py --muestra` | Solo si cambia el sistema |
 | `scripts/` | Automatizaciones en Python (solo librería estándar) | Rara vez |
 

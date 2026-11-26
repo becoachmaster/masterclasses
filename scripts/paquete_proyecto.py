@@ -52,11 +52,11 @@ def kit(clases):
             .replace("<style>", FUENTES_GOOGLE + "\n<style>", 1)
             .replace("{{CSS}}", css_artefacto())
             .replace("{{JS}}", (MOTOR / "deck.js").read_text(encoding="utf-8"))
-            .replace("{{SLIDES}}", "\n".join(slides)))
-    aviso = ("<!--\nKIT DE PRESENTACIÓN BECOACH (sistema de cristal)\n"
+            .replace("{{SLIDES}}", cp.diapositivas(slides)))
+    aviso = ("<!--\nKIT DE PRESENTACIÓN BECOACH (sistema de cristal azul, manual de marca v2: https://marca.becoach.pro)\n"
              "Para crear la presentación de una clase como artefacto: copia este archivo COMPLETO (head, <style> y <script>) "
              "y reemplaza solo las <section> dentro de <main id=\"deck\">.\n"
-             "- Cada <section> es una diapositiva de 1920x1080; el fondo va como clase (fondo, fondo-mineral, fondo-claro, fondo-niebla).\n"
+             "- Cada <section> es una diapositiva de 1920x1080; el fondo va como clase (fondo, fondo-profundo, fondo-claro, fondo-niebla).\n"
              "- Las diapositivas @pilares, @repaso, @seguimiento y @plataforma de este kit son ejemplos: "
              "cópialas y cambia los textos con los datos de la clase anterior y el pilar de la clase.\n"
              "- Notas del orador en <aside> al final de cada <section>: no se ven en pantalla (tecla P = vista de presentador).\n"
