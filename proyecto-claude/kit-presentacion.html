@@ -1,0 +1,312 @@
+<!--
+KIT DE PRESENTACIÓN BECOACH (sistema de cristal)
+Para crear la presentación de una clase como artefacto: copia este archivo COMPLETO (head, <style> y <script>) y reemplaza solo las <section> dentro de <main id="deck">.
+- Cada <section> es una diapositiva de 1920x1080; el fondo va como clase (fondo, fondo-mineral, fondo-claro, fondo-niebla).
+- Las diapositivas @pilares, @repaso, @seguimiento y @plataforma de este kit son ejemplos: cópialas y cambia los textos con los datos de la clase anterior y el pilar de la clase.
+- Notas del orador en <aside> al final de cada <section>: no se ven en pantalla (tecla P = vista de presentador).
+- Teclas: flechas o clic para avanzar, F pantalla completa, P presentador.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="BeCoach · motor de presentación">
+<title>Kit de presentación BeCoach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,500&family=Manrope:wght@400..800&display=block" rel="stylesheet">
+<style>
+/* Motor de presentación BeCoach. Lienzo fijo de 1920 × 1080 escalado a la ventana. */
+html, body { margin: 0; height: 100%; background: #0E0D0C; overflow: hidden; }
+body { font-family: 'Manrope', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+
+.escena { position: relative; width: 1920px; height: 1080px; transform-origin: 0 0; }
+#deck { position: absolute; left: 0; top: 0; }
+
+.escena > section {
+  position: absolute; left: 0; top: 0; width: 1920px; height: 1080px;
+  box-sizing: border-box; overflow: hidden;
+  opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility .35s;
+}
+.escena > section.activa { opacity: 1; visibility: visible; }
+.escena section * { margin: 0; box-sizing: border-box; }
+.escena section aside { display: none; }
+.escena section ul, .escena section ol { padding-left: 1.2em; }
+.escena section li + li { margin-top: .3em; }
+.escena section table { border-collapse: collapse; }
+.escena section th, .escena section td { padding: 22px 28px; border: 1px solid #D6CEC3; vertical-align: top; text-align: left; }
+.escena section hr { border: 0; }
+.escena section img { display: block; }
+x-icon { display: inline-block; flex-shrink: 0; }
+x-icon svg { display: block; width: 100%; height: 100%; }
+x-shape { display: block; flex-shrink: 0; }
+x-shape[kind="arrow-right"] { clip-path: polygon(0 35%, 62% 35%, 62% 0, 100% 50%, 62% 100%, 62% 65%, 0 65%); }
+x-shape[kind="arrow-left"] { clip-path: polygon(100% 35%, 38% 35%, 38% 0, 0 50%, 38% 100%, 38% 65%, 100% 65%); }
+x-shape[kind="arrow-down"] { clip-path: polygon(35% 0, 65% 0, 65% 62%, 100% 62%, 50% 100%, 0 62%, 35% 62%); }
+
+.ayuda {
+  position: fixed; right: 20px; bottom: 16px; padding: 10px 16px; border-radius: 999px;
+  background: rgba(21,20,19,.85); color: #F2EEE8; font-size: 14px; letter-spacing: .2px;
+  opacity: 0; transition: opacity .3s; pointer-events: none;
+}
+.ayuda.visible { opacity: 1; }
+body.sin-cursor { cursor: none; }
+
+@media (prefers-reduced-motion: reduce) { .escena > section { transition: none; } }
+
+/* Vista de presentador */
+body.presentador { background: #151413; color: #F2EEE8; overflow: auto; }
+.pr { display: grid; grid-template-columns: 1.6fr 1fr; gap: 24px; padding: 24px; min-height: 100vh; box-sizing: border-box; }
+.pr-marco { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: #000; }
+.pr-lado { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.pr-fila { display: flex; justify-content: space-between; align-items: baseline; font-size: 18px; color: #B9B1A7; }
+.pr-reloj { font-size: 40px; font-weight: 700; color: #C9AC91; font-variant-numeric: tabular-nums; }
+.pr-notas { flex: 1; overflow: auto; font-size: 22px; line-height: 1.5; background: #1F1E1C; border-radius: 10px; padding: 20px 24px; }
+.pr-botones { display: flex; gap: 10px; flex-wrap: wrap; }
+.pr-botones button { font: inherit; font-size: 16px; padding: 10px 18px; border-radius: 8px; border: 1px solid #3A3733; background: #26231F; color: #F2EEE8; cursor: pointer; }
+.pr-botones button:hover, .pr-botones button:focus-visible { border-color: #C9AC91; outline: none; }
+.pr-fin { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #B9B1A7; font-size: 20px; }
+.pr-titulo-sig { font-size: 16px; color: #B9B1A7; }
+.pr > div { min-width: 0; }
+.pr-marco > .escena { position: absolute; left: 0; top: 0; }
+
+/* ===== Sistema de cristal (2026-11-02) =====
+   Tipografías guardadas en motor/fuentes: construir_presentacion.py las incrusta en presentacion.html,
+   así la presentación se ve igual sin internet. Solo el subconjunto latino (cubre español completo). */
+/* Fondos: los oscuros siempre con degradado, nunca planos. Van como clase en el <section>. */
+.escena section.fondo { background: radial-gradient(1100px 760px at 8% -6%, rgba(62,74,79,.75), rgba(62,74,79,0) 62%), radial-gradient(1000px 700px at 100% 108%, rgba(255,90,31,.22), rgba(255,90,31,0) 60%), linear-gradient(160deg,#1E1C1B 0%,#151413 55%,#0E0D0C 100%); color: #F7F5F1; }
+.escena section.fondo-mineral { background: radial-gradient(1300px 900px at 0% 0%, rgba(62,74,79,.95), rgba(62,74,79,0) 65%), radial-gradient(900px 700px at 100% 100%, rgba(201,172,145,.16), rgba(201,172,145,0) 60%), linear-gradient(160deg,#20292C 0%,#161A1B 55%,#0E0D0C 100%); color: #F7F5F1; }
+.escena section.fondo-claro { background: radial-gradient(1100px 760px at 6% -8%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%), radial-gradient(1000px 760px at 102% 110%, rgba(201,172,145,.55), rgba(201,172,145,0) 62%), linear-gradient(160deg,#F2EDE6 0%,#ECE7E0 55%,#E2D9CD 100%); color: #1A1918; }
+.escena section.fondo-niebla { background: radial-gradient(1100px 760px at 6% -8%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%), radial-gradient(1000px 760px at 102% 110%, rgba(62,74,79,.22), rgba(62,74,79,0) 62%), linear-gradient(160deg,#EEF1F2 0%,#E6EAEC 55%,#D9DFE2 100%); color: #1A1918; }
+
+/* Tarjetas. Radio 28 px en todas (Gio no quiere bordes más redondeados). */
+.cristal { background: linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.16); box-shadow: inset 0 1px 0 rgba(255,255,255,.20), 0 28px 70px rgba(0,0,0,.45); border-radius: 28px; }
+.cristal-opaco { background: linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.04)), #1C1A19; }
+.claro { background: linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.55)); border: 1px solid rgba(255,255,255,.95); box-shadow: inset 0 1px 0 #FFFFFF, 0 24px 60px rgba(74,52,38,.14); border-radius: 28px; }
+.vidrio { background: linear-gradient(180deg,rgba(30,28,27,.58),rgba(21,20,19,.42)); -webkit-backdrop-filter: blur(22px) saturate(1.2); backdrop-filter: blur(22px) saturate(1.2); border: 1px solid rgba(255,255,255,.18); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 24px 60px rgba(0,0,0,.40); border-radius: 28px; }
+.panel { background: rgba(8,8,8,.38); border: 1px solid rgba(255,255,255,.07); border-radius: 20px; }
+/* Foco Brasa: una sola vez por diapositiva. */
+.foco { border: 2px solid #FF5A1F; box-shadow: inset 0 1px 0 rgba(255,255,255,.20), 0 0 0 6px rgba(255,90,31,.14), 0 0 60px rgba(255,90,31,.30), 0 28px 70px rgba(0,0,0,.45); }
+.brasa { background: linear-gradient(160deg,#FF7A45 0%,#FF5A1F 55%,#E04A12 100%); border: 1px solid rgba(255,255,255,.35); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 0 0 6px rgba(255,90,31,.14), 0 24px 60px rgba(196,58,8,.35); border-radius: 28px; color: #151413; }
+.brillo { color: #FF5A1F; text-shadow: 0 0 40px rgba(255,90,31,.45); }
+.halo { position: absolute; pointer-events: none; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,90,31,.30), rgba(255,90,31,0)); }
+/* Fraunces solo para la voz de otra persona o de una clase anterior (citas). */
+.serif { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; }
+/* Zona de la cámara en el video (modo pip del montaje): no poner contenido ahí.
+   Para verla, abre presentacion.html?zona */
+body.ver-zona .escena > section::after { content: ""; position: absolute; left: 1360px; top: 0; width: 560px; height: 340px; border: 3px dashed rgba(255,90,31,.85); background: rgba(255,90,31,.12); pointer-events: none; z-index: 9; }
+
+</style>
+</head>
+<body>
+<script>if (/[?&]zona(=|&|$)/.test(location.search)) document.body.classList.add("ver-zona");</script>
+<main id="deck" class="escena" aria-label="Kit de presentación BeCoach">
+<section id="portada" class="fondo" data-transition="fade" style="font-family:'Manrope', Arial, sans-serif"><div class="halo" style="position:absolute; left:1030px; top:270px; width:840px; height:840px"></div><div style="position:absolute; left:1200px; top:440px; width:500px; height:500px; border-radius:50%; border:2px solid rgba(255,255,255,.10)"></div><div style="position:absolute; left:1290px; top:530px; width:320px; height:320px; border-radius:50%; border:2px dashed rgba(201,172,145,.45)"></div><div class="cristal foco" style="position:absolute; left:1360px; top:600px; width:180px; height:180px; border-radius:50%; display:flex; align-items:center; justify-content:center"><div style="width:92px; height:92px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #FF8A55, #FF5A1F 60%, #C43A08); box-shadow:0 0 50px rgba(255,90,31,.7)"></div></div><div class="cristal" style="position:absolute; left:1406px; top:396px; width:88px; height:88px; border-radius:50%; display:flex; align-items:center; justify-content:center"><svg width="46" height="46" viewBox="0 0 96 96" fill="none" stroke="#F7F5F1" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:46px; height:46px"><circle cx="48" cy="32" r="14"/><path d="M20 82c3-15 14-23 28-23s25 8 28 23"/></svg></div><div class="cristal" style="position:absolute; left:1623px; top:521px; width:88px; height:88px; border-radius:50%; display:flex; align-items:center; justify-content:center"><svg width="46" height="46" viewBox="0 0 96 96" fill="none" stroke="#C9AC91" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:46px; height:46px"><circle cx="48" cy="32" r="14"/><path d="M20 82c3-15 14-23 28-23s25 8 28 23"/></svg></div><div class="cristal" style="position:absolute; left:1623px; top:771px; width:88px; height:88px; border-radius:50%; display:flex; align-items:center; justify-content:center"><svg width="46" height="46" viewBox="0 0 96 96" fill="none" stroke="#F7F5F1" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:46px; height:46px"><circle cx="48" cy="32" r="14"/><path d="M20 82c3-15 14-23 28-23s25 8 28 23"/></svg></div><div class="cristal" style="position:absolute; left:1406px; top:896px; width:88px; height:88px; border-radius:50%; display:flex; align-items:center; justify-content:center"><svg width="46" height="46" viewBox="0 0 96 96" fill="none" stroke="#C9AC91" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:46px; height:46px"><circle cx="48" cy="32" r="14"/><path d="M20 82c3-15 14-23 28-23s25 8 28 23"/></svg></div><div class="cristal" style="position:absolute; left:1189px; top:771px; width:88px; height:88px; border-radius:50%; display:flex; align-items:center; justify-content:center"><svg width="46" height="46" viewBox="0 0 96 96" fill="none" stroke="#F7F5F1" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:46px; height:46px"><circle cx="48" cy="32" r="14"/><path d="M20 82c3-15 14-23 28-23s25 8 28 23"/></svg></div><div class="cristal" style="position:absolute; left:1189px; top:521px; width:88px; height:88px; border-radius:50%; display:flex; align-items:center; justify-content:center"><svg width="46" height="46" viewBox="0 0 96 96" fill="none" stroke="#C9AC91" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:46px; height:46px"><circle cx="48" cy="32" r="14"/><path d="M20 82c3-15 14-23 28-23s25 8 28 23"/></svg></div><p style="position:absolute; left:110px; top:90px; font-size:34px; font-weight:800; letter-spacing:-0.3px">BeCoach</p><h1 style="position:absolute; left:110px; top:520px; width:1000px; font-size:112px; font-weight:800; letter-spacing:-3.5px; line-height:1.02">Estados de ánimo en el equipo</h1><p style="position:absolute; left:110px; top:800px; width:860px; font-size:38px; font-weight:600; line-height:1.32; color:rgba(247,245,241,.68)">Cómo gestionarlos y alinearlos con la visión y los objetivos</p><aside>APERTURA 0:00 – 0:01. Bienvenida breve. Pide papel y lápiz: los van a necesitar en la práctica. La ilustración: el ánimo del líder (el centro) llega a todo el equipo.</aside></section>
+<section id="pilares" class="fondo" data-transition="fade" style="font-family:'Manrope', Arial, sans-serif; padding:96px 110px; display:flex; flex-direction:column; justify-content:space-between"><h2 style="width:1180px; font-size:84px; font-weight:800; line-height:1.04; letter-spacing:-2.5px">Los 3 pilares del liderazgo personal</h2><div style="display:flex; gap:36px; height:560px"><div class="cristal" style="flex:1; display:flex; flex-direction:column; gap:24px; padding:52px 48px"><x-icon name="Anchor" style="color:#C9AC91; width:72px; height:72px"></x-icon><h3 style="font-size:50px; font-weight:800; line-height:1.12; letter-spacing:-1px">Responsabilidad personal</h3><p style="font-size:32px; font-weight:600; line-height:1.4; color:rgba(247,245,241,.68)">Hacerme cargo de lo que depende de mí y de cómo respondo a lo que pasa.</p></div><div class="cristal foco" style="flex:1; display:flex; flex-direction:column; gap:24px; padding:52px 48px"><x-icon name="Heart" style="color:#FF5A1F; width:72px; height:72px"></x-icon><h3 style="font-size:50px; font-weight:800; line-height:1.12; letter-spacing:-1px">Conexión</h3><p style="font-size:32px; font-weight:600; line-height:1.4; color:#F7F5F1">Construir confianza y conversaciones que acercan al equipo.</p></div><div class="cristal" style="flex:1; display:flex; flex-direction:column; gap:24px; padding:52px 48px"><x-icon name="Cycle" style="color:#C9AC91; width:72px; height:72px"></x-icon><h3 style="font-size:50px; font-weight:800; line-height:1.12; letter-spacing:-1px">Integración</h3><p style="font-size:32px; font-weight:600; line-height:1.4; color:rgba(247,245,241,.68)">Llevar lo declarado a la práctica diaria y sostenerlo en el tiempo.</p></div></div><aside>APERTURA. Explica en un minuto los tres pilares y ubica a la audiencia. Hoy trabajamos el pilar: Conexión. La tarjeta con borde Brasa es el pilar de hoy.</aside></section>
+<section id="repaso" class="fondo-mineral" data-transition="fade" style="font-family:'Manrope', Arial, sans-serif"><div style="position:absolute; left:110px; top:96px; width:1180px; display:flex; flex-direction:column; gap:14px"><h2 style="font-size:76px; font-weight:800; line-height:1.04; letter-spacing:-2px">Lo que aprendimos la clase anterior</h2><p style="font-size:38px; font-weight:700; color:#C9AC91">De la reacción a la respuesta</p></div><div style="position:absolute; left:110px; top:420px; width:1000px; display:flex; flex-direction:column; gap:24px"><div class="cristal" style="display:flex; align-items:center; gap:32px; padding:0 40px; height:172px"><p style="width:70px; flex:none; font-size:56px; font-weight:800; color:#C9AC91">01</p><p style="font-size:36px; font-weight:700; line-height:1.3">El problema es actuar sin leer la emoción.</p></div><div class="cristal" style="display:flex; align-items:center; gap:32px; padding:0 40px; height:172px"><p style="width:70px; flex:none; font-size:56px; font-weight:800; color:#C9AC91">02</p><p style="font-size:36px; font-weight:700; line-height:1.3">Cada emoción trae un mensaje.</p></div><div class="cristal" style="display:flex; align-items:center; gap:32px; padding:0 40px; height:172px"><p style="width:70px; flex:none; font-size:56px; font-weight:800; color:#C9AC91">03</p><p style="font-size:36px; font-weight:700; line-height:1.3">Nombra, separa, descubre, elige.</p></div></div><div class="cristal" style="position:absolute; left:1190px; top:440px; width:620px; height:520px; padding:56px; display:flex; flex-direction:column; justify-content:center"><p class="serif brillo" style="font-size:180px; line-height:.6; height:80px">“</p><p class="serif" style="margin-top:24px; font-size:54px; line-height:1.18">Tu equipo no ve lo que sientes; ve lo que haces con lo que sientes.</p></div><aside>APERTURA. Repasa en dos minutos. Pide en el chat: ¿cuál de estos aprendizajes aplicaste esta semana? Para quienes llegan por primera vez, este repaso es la puerta de entrada al hilo del programa.</aside></section>
+<section id="seguimiento" class="fondo" data-transition="fade" style="font-family:'Manrope', Arial, sans-serif"><div class="halo" style="left:-200px; top:300px; width:1100px; height:1000px"></div><h2 style="position:absolute; left:110px; top:300px; width:1200px; font-size:120px; font-weight:800; line-height:1.02; letter-spacing:-3.5px">¿Cumpliste tu <span class="brillo">compromiso</span>?</h2><div class="cristal" style="position:absolute; left:110px; top:640px; width:1500px; padding:44px 52px; font-size:42px; font-weight:600; line-height:1.35; color:rgba(247,245,241,.85)">Esta semana, antes de responderle a alguien de tu equipo en un momento de tensión, recorrer las 4 preguntas (nombra, separa, descubre, elige). Y durante 7 días, decodificar una emoción al día en el registro de la guía.</div><aside>APERTURA · SEGUIMIENTO. Pide en el chat: sí, no o a medias. Lee dos o tres historias breves. Si alguien no lo cumplió, no hay juicio: pregunta qué se interpuso. Este momento sostiene el hábito y hace que la gente vuelva.</aside></section>
+<section id="pregunta" class="fondo-niebla" data-transition="fade" style="font-family:'Manrope', Arial, sans-serif"><div class="claro" style="position:absolute; left:1120px; top:470px; width:620px; height:330px; border-radius:36px"></div><div style="position:absolute; left:1180px; top:530px; width:500px; height:210px; border-radius:24px; border:2px dashed rgba(62,74,79,.22)"></div><div class="claro" style="position:absolute; left:1230px; top:400px; width:68px; height:68px; border-radius:50%"></div><div class="claro" style="position:absolute; left:1385px; top:400px; width:68px; height:68px; border-radius:50%"></div><div class="claro" style="position:absolute; left:1540px; top:400px; width:68px; height:68px; border-radius:50%"></div><div class="claro" style="position:absolute; left:1230px; top:802px; width:68px; height:68px; border-radius:50%"></div><div class="claro" style="position:absolute; left:1385px; top:802px; width:68px; height:68px; border-radius:50%"></div><div class="claro" style="position:absolute; left:1540px; top:802px; width:68px; height:68px; border-radius:50%"></div><div class="brasa" style="position:absolute; left:1042px; top:595px; width:68px; height:68px; border-radius:50%"></div><p style="position:absolute; left:1036px; top:679px; width:80px; text-align:center; font-size:28px; font-weight:800; color:#C43A08">tú</p><div class="claro" style="position:absolute; left:1750px; top:595px; width:68px; height:68px; border-radius:50%"></div><h2 style="position:absolute; left:110px; top:300px; width:900px; font-size:100px; font-weight:800; letter-spacing:-3px; line-height:1.04; color:#1A1918">Piensa en tu última reunión de equipo.</h2><p style="position:absolute; left:110px; top:680px; width:820px; font-size:44px; font-weight:600; line-height:1.32; color:#5E554D">¿Con qué ánimo llegaste tú y con qué ánimo salió el equipo?</p><aside>QUIEBRE 0:10 – 0:12. CASCADA EN EL CHAT: todos escriben y envían al mismo tiempo. Lee varias respuestas en voz alta. Busca coincidencias entre cómo llegó el líder y cómo salió el equipo. El punto naranja eres tú en la mesa.</aside></section>
+<section id="modelo" class="fondo-claro" data-transition="fade" style="font-family:'Manrope', Arial, sans-serif"><h2 style="position:absolute; left:110px; top:96px; width:1200px; font-size:84px; font-weight:800; line-height:1.04; letter-spacing:-2.5px; color:#1A1918">Los 4 estados de ánimo</h2><p style="position:absolute; left:410px; top:346px; width:690px; font-size:32px; font-weight:800; line-height:1.32; color:#5E554D; text-align:center">Me opongo</p><p style="position:absolute; left:1120px; top:346px; width:690px; font-size:32px; font-weight:800; line-height:1.32; color:#5E554D; text-align:center">Lo acepto</p><p style="position:absolute; left:110px; top:490px; width:270px; font-size:32px; font-weight:800; line-height:1.32; color:#5E554D; text-align:right; line-height:1.25">No se puede cambiar</p><p style="position:absolute; left:110px; top:798px; width:270px; font-size:32px; font-weight:800; line-height:1.32; color:#5E554D; text-align:right; line-height:1.25">Sí se puede cambiar</p><div class="claro" style="position:absolute; left:410px; top:400px; width:690px; height:290px; padding:0 48px; display:flex; align-items:center; gap:40px"><div style="width:120px; height:120px; flex:none; border-radius:28px; display:flex; align-items:center; justify-content:center; background:rgba(122,92,74,.10); border:1px solid rgba(122,92,74,.18)"><svg width="72" height="72" viewBox="0 0 96 96" fill="none" stroke="#7A5C4A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:72px; height:72px"><path d="M24 58 Q10 58 10 45 Q10 32 24 32 Q28 16 46 16 Q62 16 68 30 Q86 30 86 45 Q86 58 72 58 Z"/><path d="M50 52 L40 70 H52 L44 88"/></svg></div><div><h3 style="font-size:56px; font-weight:800; letter-spacing:-1.5px; color:#1A1918">Resentimiento</h3><p style="margin-top:8px; font-size:34px; font-weight:600; color:#5E554D">“No es justo.”</p></div></div><div class="claro" style="position:absolute; left:1120px; top:400px; width:690px; height:290px; padding:0 48px; display:flex; align-items:center; gap:40px"><div style="width:120px; height:120px; flex:none; border-radius:28px; display:flex; align-items:center; justify-content:center; background:rgba(122,92,74,.10); border:1px solid rgba(122,92,74,.18)"><svg width="72" height="72" viewBox="0 0 96 96" fill="none" stroke="#7A5C4A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:72px; height:72px"><path d="M10 40 Q22 32 34 40 T58 40 T82 40"/><path d="M10 60 Q22 52 34 60 T58 60 T82 60"/></svg></div><div><h3 style="font-size:56px; font-weight:800; letter-spacing:-1.5px; color:#1A1918">Aceptación</h3><p style="margin-top:8px; font-size:34px; font-weight:600; color:#5E554D">“Esto es lo que hay.”</p></div></div><div class="claro" style="position:absolute; left:410px; top:708px; width:690px; height:290px; padding:0 48px; display:flex; align-items:center; gap:40px"><div style="width:120px; height:120px; flex:none; border-radius:28px; display:flex; align-items:center; justify-content:center; background:rgba(122,92,74,.10); border:1px solid rgba(122,92,74,.18)"><svg width="72" height="72" viewBox="0 0 96 96" fill="none" stroke="#7A5C4A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:72px; height:72px"><path d="M10 22 Q40 22 54 50 Q66 76 86 78"/><path d="M74 66 L88 78 L72 88"/></svg></div><div><h3 style="font-size:56px; font-weight:800; letter-spacing:-1.5px; color:#1A1918">Resignación</h3><p style="margin-top:8px; font-size:34px; font-weight:600; color:#5E554D">“Para qué, si nada cambia.”</p></div></div><div class="brasa" style="position:absolute; left:1120px; top:708px; width:690px; height:290px; padding:0 48px; display:flex; align-items:center; gap:40px"><div style="width:120px; height:120px; flex:none; border-radius:28px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.28); border:1px solid rgba(255,255,255,.4)"><svg width="72" height="72" viewBox="0 0 96 96" fill="none" stroke="#1A1918" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:72px; height:72px"><path d="M8 86 L40 34 L56 58 L66 44 L88 86 Z"/><path d="M40 34 V10 L58 16 L40 22"/></svg></div><div><h3 style="font-size:56px; font-weight:800; letter-spacing:-1.5px; color:#1A1918">Ambición</h3><p style="margin-top:8px; font-size:34px; font-weight:600; color:#1A1918">“¿Y si probamos?”</p></div></div><aside>MODELO CENTRAL 0:15 – 0:16. Dos preguntas frente a lo que pasa: ¿se puede cambiar o no? ¿Me opongo o lo acepto? De ahí salen 4 estados de ánimo. Ambición está resaltada porque es hacia donde queremos mover al equipo. Ojo: aceptar no es resignarse; la aceptación es frente a lo que no se puede cambiar. Fuente: Rafael Echeverría, Ontología del lenguaje (resentimiento, resignación, aceptación o paz, y ambición).</aside></section>
+<section id="compromiso" class="fondo" data-transition="fade" style="font-family:'Manrope', Arial, sans-serif"><div class="halo" style="position:absolute; left:1100px; top:380px; width:700px; height:600px"></div><div class="cristal" style="position:absolute; left:1070px; top:480px; width:740px; height:310px"></div><p style="position:absolute; left:1110px; top:510px; width:660px; font-size:30px; font-weight:800; line-height:1.32; color:#C9AC91">Esta semana</p><div class="cristal" style="position:absolute; left:1110px; top:600px; width:120px; height:150px; border-radius:22px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><p style="font-size:26px; font-weight:800; color:#C9AC91">L</p><p style="font-size:46px; font-weight:800; color:#F7F5F1">3</p></div><div class="cristal" style="position:absolute; left:1250px; top:600px; width:120px; height:150px; border-radius:22px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><p style="font-size:26px; font-weight:800; color:#C9AC91">M</p><p style="font-size:46px; font-weight:800; color:#F7F5F1">4</p></div><div class="brasa" style="position:absolute; left:1390px; top:600px; width:120px; height:150px; border-radius:22px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><p style="font-size:26px; font-weight:800; color:#1A1918">M</p><p style="font-size:46px; font-weight:800; color:#1A1918">5</p></div><div class="cristal" style="position:absolute; left:1530px; top:600px; width:120px; height:150px; border-radius:22px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><p style="font-size:26px; font-weight:800; color:#C9AC91">J</p><p style="font-size:46px; font-weight:800; color:#F7F5F1">6</p></div><div class="cristal" style="position:absolute; left:1670px; top:600px; width:120px; height:150px; border-radius:22px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><p style="font-size:26px; font-weight:800; color:#C9AC91">V</p><p style="font-size:46px; font-weight:800; color:#F7F5F1">7</p></div><h2 style="position:absolute; left:110px; top:300px; width:900px; font-size:92px; font-weight:800; letter-spacing:-2.5px; line-height:1.06">¿Antes de qué reunión, y qué día, te harás las 3 preguntas?</h2><aside>CIERRE 0:45 – 0:48. Compromiso: elige una reunión concreta de esta semana, con día. Antes de entrar, hazte las 3 preguntas (¿qué siento?, ¿qué juicio hay detrás?, ¿qué contexto le creo a mi equipo?) y ten la conversación o el gesto que elegiste en la práctica. CHAT: con quién y qué día. Un compromiso con nombre y fecha es una promesa; sin eso, es solo una buena intención.</aside></section>
+<section id="plataforma" class="fondo" data-transition="fade" style="font-family:'Manrope', Arial, sans-serif"><div class="halo" style="left:-260px; top:120px; width:1200px; height:700px"></div><h2 style="position:absolute; left:110px; top:290px; width:1000px; font-size:112px; font-weight:800; letter-spacing:-4px; line-height:1; color:#FF5A1F; text-shadow:0 0 40px rgba(255,90,31,.45)">app.becoach.pro</h2><div style="position:absolute; left:110px; top:470px; width:860px; display:flex; flex-direction:column; gap:20px"><div class="cristal" style="display:flex; align-items:center; gap:28px; height:104px; padding:0 32px; border-radius:24px"><svg width="52" height="52" viewBox="0 0 96 96" fill="none" stroke="#C9AC91" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:52px; height:52px"><circle cx="48" cy="48" r="36"/><path d="M40 33 L64 48 L40 63 Z"/></svg><p style="font-size:40px; font-weight:800; letter-spacing:-.5px">Todas las clases</p></div><div class="cristal" style="display:flex; align-items:center; gap:28px; height:104px; padding:0 32px; border-radius:24px"><svg width="52" height="52" viewBox="0 0 96 96" fill="none" stroke="#C9AC91" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:52px; height:52px"><path d="M18 20h24a8 8 0 0 1 8 8v52a6 6 0 0 0-6-6H18z"/><path d="M78 20H58a8 8 0 0 0-8 8v52a6 6 0 0 1 6-6h22z"/></svg><p style="font-size:40px; font-weight:800; letter-spacing:-.5px">Guías prácticas</p></div><div class="cristal" style="display:flex; align-items:center; gap:28px; height:104px; padding:0 32px; border-radius:24px"><svg width="52" height="52" viewBox="0 0 96 96" fill="none" stroke="#C9AC91" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:52px; height:52px"><path d="M48 14v46"/><path d="M30 44l18 18 18-18"/><path d="M18 74v8h60v-8"/></svg><p style="font-size:40px; font-weight:800; letter-spacing:-.5px">Descargables</p></div></div><div style="position:absolute; left:110px; top:870px; display:flex; align-items:center; gap:18px; padding:20px 34px; border-radius:22px; background:rgba(63,125,92,.18); border:1px solid rgba(120,190,150,.45)"><svg width="44" height="44" viewBox="0 0 96 96" fill="none" stroke="#9BD3B0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:44px; height:44px"><path d="M22 50l16 16 36-36"/></svg><p style="font-size:40px; font-weight:800; color:#F7F5F1">Acceso gratuito</p></div><div class="cristal" style="position:absolute; left:1080px; top:380px; width:730px; height:600px; padding:0; overflow:hidden"><div style="display:flex; align-items:center; gap:12px; height:72px; padding:0 26px; background:rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.06)"><div style="width:16px; height:16px; border-radius:50%; background:#FF5A1F"></div><div style="width:16px; height:16px; border-radius:50%; background:#C9AC91; opacity:.7"></div><div style="width:16px; height:16px; border-radius:50%; background:#C9AC91; opacity:.4"></div><p style="margin-left:18px; flex:1; padding:6px 20px; border-radius:12px; background:rgba(255,255,255,.06); font-size:24px; font-weight:700; color:rgba(247,245,241,.68)">app.becoach.pro</p></div><div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:28px"><div class="brasa" style="display:flex; flex-direction:column; justify-content:space-between; padding:22px 24px; border-radius:20px; height:230px"><svg width="44" height="44" viewBox="0 0 96 96" fill="none" stroke="#1A1918" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:44px; height:44px"><circle cx="48" cy="48" r="36"/><path d="M40 33 L64 48 L40 63 Z"/></svg><p style="font-size:24px; font-weight:800; line-height:1.2; color:#1A1918">Clase 6 · Más allá de las palabras</p></div><div class="cristal" style="display:flex; flex-direction:column; justify-content:space-between; padding:22px 24px; border-radius:20px; height:230px"><svg width="44" height="44" viewBox="0 0 96 96" fill="none" stroke="#C9AC91" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:44px; height:44px"><circle cx="48" cy="48" r="36"/><path d="M40 33 L64 48 L40 63 Z"/></svg><p style="font-size:24px; font-weight:800; line-height:1.2; color:#F7F5F1">Clase 5 · De la reacción a la respuesta</p></div><div class="cristal" style="display:flex; flex-direction:column; justify-content:space-between; padding:22px 24px; border-radius:20px; height:230px"><svg width="44" height="44" viewBox="0 0 96 96" fill="none" stroke="#C9AC91" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:44px; height:44px"><circle cx="48" cy="48" r="36"/><path d="M40 33 L64 48 L40 63 Z"/></svg><p style="font-size:24px; font-weight:800; line-height:1.2; color:#F7F5F1">Clase 4 · Estados de ánimo en el equipo</p></div><div class="cristal" style="display:flex; flex-direction:column; justify-content:space-between; padding:22px 24px; border-radius:20px; height:230px"><svg width="44" height="44" viewBox="0 0 96 96" fill="none" stroke="#C9AC91" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none; width:44px; height:44px"><circle cx="48" cy="48" r="36"/><path d="M40 33 L64 48 L40 63 Z"/></svg><p style="font-size:24px; font-weight:800; line-height:1.2; color:#F7F5F1">Clase 3 · El poder creador del lenguaje</p></div></div></div><aside>PLATAFORMA. Cuenta que todas las clases quedan grabadas y ordenadas por partes en app.becoach.pro, con guías prácticas y descargables, y que el acceso es gratuito. Pide que entren hoy y vean la parte de esta clase que más les sirvió. Deja el enlace en el chat.</aside></section>
+<section id="ancla" class="fondo-claro" data-transition="fade" style="font-family:'Manrope', Arial, sans-serif"><h2 style="position:absolute; left:210px; top:370px; width:1500px; text-align:center; font-size:112px; font-weight:800; letter-spacing:-3.5px; line-height:1.08; text-wrap:balance; color:#1A1918">Tu equipo no escucha lo que dices, escucha desde dónde lo dices.</h2><p style="position:absolute; left:0px; top:950px; width:1920px; text-align:center; font-size:32px; font-weight:800; color:#5E554D">BeCoach</p><aside>CIERRE 0:49 – 0:50. Frase ancla. Repítela despacio. Agradece y despide la sesión.</aside></section>
+</main>
+<script>
+/* Motor de presentación BeCoach.
+   Teclas: → / Espacio / Re Pág = siguiente · ← / Av Pág = anterior · Inicio / Fin
+           F = pantalla completa · P = vista de presentador (notas, siguiente diapositiva, reloj) */
+(function () {
+  'use strict';
+  var ICONOS = {
+    Search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+    Users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    CheckCircle: '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+    Key: '<circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/>',
+    Chat: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+    Warning: '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+    Trust: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>',
+    Anchor: '<path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><circle cx="12" cy="5" r="3"/>',
+    Heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+    Cycle: '<path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>',
+    Lightbulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
+    Target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+    Eye: '<path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/>',
+    Calendar: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
+    Compass: '<circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/>',
+    Mirror: '<ellipse cx="12" cy="10" rx="6" ry="8"/><path d="M12 18v4"/><path d="M8 22h8"/>'
+  };
+
+  function pintarIconos(raiz) {
+    raiz.querySelectorAll('x-icon').forEach(function (el) {
+      if (el.getAttribute('data-listo')) return;
+      var trazo = ICONOS[el.getAttribute('name')] || ICONOS.Target;
+      el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + trazo + '</svg>';
+      el.setAttribute('data-listo', '1');
+    });
+  }
+
+  var deck = document.getElementById('deck');
+  Array.prototype.slice.call(deck.children).forEach(function (s) { if (s.hasAttribute('hidden')) s.remove(); });
+  var slides = Array.prototype.slice.call(deck.querySelectorAll(':scope > section'));
+  pintarIconos(deck);
+
+  var total = slides.length;
+  var actual = 0;
+  var esPresentador = new URLSearchParams(location.search).get('presentador') === '1';
+  var otraVentana = null;
+
+  function limitar(i) { return Math.max(0, Math.min(total - 1, i)); }
+  function leerHash() {
+    var m = location.hash.match(/^#\/?(\d+)/);
+    return m ? limitar(parseInt(m[1], 10) - 1) : 0;
+  }
+  function destino() { return esPresentador ? window.opener : otraVentana; }
+  function avisar(i) {
+    var w = destino();
+    if (w && !w.closed) { try { w.postMessage({ becoach: true, ir: i }, '*'); } catch (e) {} }
+  }
+
+  /* ---------- Vista de audiencia ---------- */
+  function ajustarEscala() {
+    var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    var x = (window.innerWidth - 1920 * s) / 2, y = (window.innerHeight - 1080 * s) / 2;
+    deck.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + s + ')';
+  }
+  function mostrar(i) {
+    slides.forEach(function (s, k) {
+      s.classList.toggle('activa', k === i);
+      // Un video no sigue sonando cuando se sale de su diapositiva.
+      if (k !== i) s.querySelectorAll('video').forEach(function (v) { v.pause(); });
+    });
+  }
+
+  /* ---------- Vista de presentador ---------- */
+  var pr = {};
+  function construirPresentador() {
+    document.body.classList.add('presentador');
+    deck.style.display = 'none';
+    var raiz = document.createElement('div');
+    raiz.className = 'pr';
+    raiz.innerHTML =
+      '<div><div class="pr-marco" id="prActual"></div></div>' +
+      '<div class="pr-lado">' +
+      '  <div class="pr-fila"><span id="prContador"></span><span class="pr-reloj" id="prReloj">00:00</span></div>' +
+      '  <div class="pr-titulo-sig">Siguiente</div>' +
+      '  <div class="pr-marco" id="prSiguiente"></div>' +
+      '  <div class="pr-notas" id="prNotas"></div>' +
+      '  <div class="pr-botones"><button id="prAnt">Anterior</button><button id="prSig">Siguiente</button><button id="prReloj0">Reiniciar reloj</button></div>' +
+      '</div>';
+    document.body.appendChild(raiz);
+    pr.actual = document.getElementById('prActual');
+    pr.siguiente = document.getElementById('prSiguiente');
+    pr.notas = document.getElementById('prNotas');
+    pr.contador = document.getElementById('prContador');
+    pr.reloj = document.getElementById('prReloj');
+    document.getElementById('prAnt').onclick = function () { ir(actual - 1); };
+    document.getElementById('prSig').onclick = function () { ir(actual + 1); };
+    var inicio = Date.now();
+    document.getElementById('prReloj0').onclick = function () { inicio = Date.now(); };
+    setInterval(function () {
+      var t = Math.floor((Date.now() - inicio) / 1000);
+      pr.reloj.textContent = String(Math.floor(t / 60)).padStart(2, '0') + ':' + String(t % 60).padStart(2, '0');
+    }, 500);
+    document.title = 'Presentador · ' + document.title;
+  }
+  function pintarEn(marco, i) {
+    marco.innerHTML = '';
+    if (i >= total) { marco.innerHTML = '<div class="pr-fin">Fin de la presentación</div>'; return; }
+    var escena = document.createElement('div');
+    escena.className = 'escena';
+    var copia = slides[i].cloneNode(true);
+    copia.classList.add('activa');
+    copia.style.transition = 'none';
+    escena.appendChild(copia);
+    marco.appendChild(escena);
+    escena.style.transform = 'scale(' + (marco.clientWidth / 1920) + ')';
+  }
+  function pintarPresentador() {
+    pintarEn(pr.actual, actual);
+    pintarEn(pr.siguiente, actual + 1);
+    var nota = slides[actual].querySelector('aside');
+    pr.notas.innerHTML = nota ? nota.innerHTML : '<em>Sin notas para esta diapositiva.</em>';
+    pr.contador.textContent = 'Diapositiva ' + (actual + 1) + ' de ' + total;
+  }
+
+  /* ---------- Navegación ---------- */
+  function ir(i, desdeOtra) {
+    i = limitar(i);
+    actual = i;
+    if (esPresentador) pintarPresentador(); else mostrar(i);
+    try { history.replaceState(null, '', location.pathname + location.search + '#' + (i + 1)); } catch (e) {}
+    if (!desdeOtra) avisar(i);
+  }
+
+  function abrirPresentador() {
+    if (otraVentana && !otraVentana.closed) { otraVentana.focus(); return; }
+    var url = location.href.split('#')[0].split('?')[0] + '?presentador=1#' + (actual + 1);
+    otraVentana = window.open(url, 'becoach-presentador', 'width=1280,height=820');
+  }
+  function pantallaCompleta() {
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target && /INPUT|TEXTAREA|BUTTON|VIDEO/.test(e.target.tagName) && e.key === ' ') return;
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ' || k === 'Enter') { e.preventDefault(); ir(actual + 1); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); ir(actual - 1); }
+    else if (k === 'Home') { ir(0); }
+    else if (k === 'End') { ir(total - 1); }
+    else if ((k === 'f' || k === 'F') && !esPresentador) { pantallaCompleta(); }
+    else if ((k === 'p' || k === 'P') && !esPresentador) { abrirPresentador(); }
+  });
+
+  window.addEventListener('hashchange', function () { var i = leerHash(); if (i !== actual) ir(i); });
+
+  window.addEventListener('message', function (e) {
+    var d = e.data;
+    if (!d || !d.becoach) return;
+    if (typeof d.ir === 'number' && d.ir !== actual) ir(d.ir, true);
+    if (d.pedir && otraVentana) avisar(actual);
+  });
+
+  if (esPresentador) {
+    construirPresentador();
+    window.addEventListener('resize', pintarPresentador);
+    ir(leerHash(), true);
+    if (window.opener) { try { window.opener.postMessage({ becoach: true, pedir: true }, '*'); } catch (e) {} }
+  } else {
+    ajustarEscala();
+    window.addEventListener('resize', ajustarEscala);
+    ir(leerHash(), true);
+    deck.addEventListener('click', function (e) { if (!e.target.closest('a, video')) ir(actual + 1); });
+    var toque = null;
+    deck.addEventListener('touchstart', function (e) { toque = e.touches[0].clientX; }, { passive: true });
+    deck.addEventListener('touchend', function (e) {
+      if (toque === null) return;
+      var dx = e.changedTouches[0].clientX - toque;
+      if (Math.abs(dx) > 50) ir(actual + (dx < 0 ? 1 : -1));
+      toque = null;
+    });
+    var ayuda = document.createElement('div');
+    ayuda.className = 'ayuda';
+    ayuda.textContent = 'F: pantalla completa · P: vista de presentador · ← →: navegar';
+    document.body.appendChild(ayuda);
+    var temporizador = null;
+    function mostrarAyuda() {
+      ayuda.classList.add('visible');
+      document.body.classList.remove('sin-cursor');
+      clearTimeout(temporizador);
+      temporizador = setTimeout(function () { ayuda.classList.remove('visible'); document.body.classList.add('sin-cursor'); }, 2500);
+    }
+    document.addEventListener('mousemove', mostrarAyuda);
+    mostrarAyuda();
+  }
+})();
+
+</script>
+</body>
+</html>
+
