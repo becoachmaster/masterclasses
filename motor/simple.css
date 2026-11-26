@@ -1,0 +1,128 @@
+/* ===== Sistema BeCoach v2 · estilo simple (2026-11-26) =====
+   Se usa cuando deck.json trae "estilo": "simple". Va después de motor/deck.css completo: los colores,
+   las superficies y las clases del manual salen de su bloque de marca (lo escribe distribuir.py desde
+   becoach-marca). Aquí solo va lo propio del estilo simple: espaciado, paleta de datos, tarjetas Mac,
+   vidrio desenfocado y gráficos. No repitas aquí tokens del bloque de marca. */
+:root {
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 36px;
+  --space-5: 48px;
+  --space-margen: 110px;
+  /* Paleta de datos (máximo 3 series). Cada color tiene su degradado: tono → tono oscuro. */
+  --dato-azul: #3366CC; --dato-azul-alto: #4A80E4; --dato-azul-bajo: #2852B0;
+  --dato-brasa: #FF5A1F; --dato-brasa-alto: #FF7A45; --dato-brasa-bajo: #F04E14;
+  --dato-turquesa: #1D9A8A; --dato-turquesa-alto: #1FA38F; --dato-turquesa-bajo: #167E70;
+}
+
+/* ===== Estilo simple BeCoach (2026-11-26) =====
+   Composición centrada, tarjetas blancas, píldoras, círculos numerados y tablas
+   con encabezado azul. Adaptado del estilo del taller de marketing con IA.
+   La zona de la cámara (x > 1360, y < 340) se respeta: los títulos centrados
+   miden como máximo 800 px de ancho. */
+.escena > section.s { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 44px; padding: 120px 128px 96px; color: var(--tinta);
+  background: radial-gradient(900px 700px at 100% 0%, rgba(58,90,154,.16), rgba(58,90,154,0) 70%), radial-gradient(1000px 800px at 10% 100%, rgba(255,255,255,1), rgba(255,255,255,0) 70%), linear-gradient(160deg, #F7F9FC 0%, var(--nube-baja) 100%); }
+.escena > section.s.az { color: #FFFFFF; background: radial-gradient(1100px 800px at 10% 0%, rgba(58,90,154,.65), rgba(58,90,154,0) 65%), linear-gradient(150deg, var(--azul) 0%, var(--azul-noche) 100%); }
+/* Títulos alineados a la izquierda: section class="s izq". Úsalo en tablas, gráficos de lectura
+   horizontal y diapositivas con mucho contenido. Un título a la izquierda no llega a la zona de la
+   cámara, así que puede medir hasta 1200 px. El bloque se apoya abajo (flex-end) para que el
+   contenido ancho quede siempre por debajo de y = 340. Centrado (por defecto) para portada, pilares,
+   declaraciones, compromiso, divisores, citas y la frase ancla. */
+.escena > section.s.izq { align-items: flex-start; text-align: left; justify-content: flex-end; padding-bottom: 110px; }
+.s.izq h2 { max-width: 1200px; }
+.s.izq .puntos { left: auto; right: 96px; }
+
+.s .puntos { position: absolute; left: 96px; bottom: 80px; width: 174px; height: 140px; background-image: radial-gradient(circle, rgba(61,90,140,.32) 3.5px, transparent 4px); background-size: 34px 34px; pointer-events: none; }
+.s.az .puntos { background-image: radial-gradient(circle, rgba(169,190,224,.35) 3.5px, transparent 4px); }
+.s h1 { font-size: 132px; font-weight: 800; line-height: 1; letter-spacing: -4px; }
+.s h2 { font-size: 72px; font-weight: 800; line-height: 1.08; letter-spacing: -1.8px; max-width: 800px; text-wrap: balance; }
+.s h2.ancho { max-width: 1500px; }
+.s h3 { font-size: 40px; font-weight: 800; line-height: 1.15; letter-spacing: -.5px; }
+.s p { font-size: 32px; line-height: 1.4; }
+.s .lead { font-size: 40px; font-weight: 600; line-height: 1.3; max-width: 1300px; color: var(--tinta-suave); }
+.s.az .lead { color: var(--gris-hielo); }
+.s .small { font-size: 26px; line-height: 1.35; color: var(--tinta-suave); }
+.s.az .small { color: var(--gris-hielo); }
+.s.az .card .small { color: var(--tinta-suave); }
+.s.az .card.brasac .small { color: var(--tinta); }
+.s .foco-t { color: var(--brasa-profunda); }
+.s.az .foco-t { color: var(--brasa); }
+.s .row { display: flex; gap: 32px; justify-content: center; align-items: center; }
+.s .col { display: flex; flex-direction: column; gap: 24px; }
+.s .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; width: 1500px; }
+.s .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; width: 1560px; }
+.s .card { background: linear-gradient(180deg, #FFFFFF 0%, #F7F9FC 100%); color: var(--tinta); border: 1px solid #E1E7F0; border-radius: 28px; box-shadow: 0 1px 2px rgba(10,15,31,.05), 0 24px 60px rgba(30,42,78,.12); padding: 44px; display: flex; flex-direction: column; gap: 16px; text-align: left; }
+.s .card.center { text-align: center; align-items: center; }
+.s .card.tabla { padding: 18px 24px; }
+.s .card.foco { border: 2px solid var(--brasa); box-shadow: 0 0 0 6px rgba(255,90,31,.12), 0 24px 60px rgba(196,58,8,.18); }
+.s .card.azulc { background: linear-gradient(150deg, var(--azul) 0%, var(--azul-bajo) 100%); color: #FFFFFF; border-color: var(--azul); }
+.s .card.brasac { background: linear-gradient(150deg, var(--brasa-alta) 0%, var(--brasa) 100%); color: var(--tinta); border-color: rgba(255,255,255,.4); box-shadow: 0 24px 60px rgba(196,58,8,.28); }
+.s .card .muted { color: var(--tinta-suave); }
+.s .card.azulc .muted { color: var(--gris-hielo); }
+.s .card.brasac .muted { color: var(--tinta); }
+.s.az .card { box-shadow: 0 24px 60px rgba(5,8,18,.45); }
+.s .pill { display: inline-block; font-size: 28px; font-weight: 700; padding: 14px 30px; border-radius: 44px; white-space: nowrap; background: linear-gradient(135deg, var(--azul) 0%, var(--azul-bajo) 100%); color: #FFFFFF; box-shadow: 0 12px 30px rgba(30,42,78,.25); }
+.s .pill.brasa-p { background: linear-gradient(135deg, var(--brasa-alta) 0%, var(--brasa) 100%); color: var(--tinta); box-shadow: 0 12px 30px rgba(196,58,8,.28); }
+.s .pill.soft { background: var(--azul-bruma); color: var(--tinta); box-shadow: none; }
+.s .pill.white { background: #FFFFFF; color: var(--azul); box-shadow: 0 12px 30px rgba(5,8,18,.35); }
+.s .pill.linea { background: transparent; color: var(--azul-acero); border: 2px dashed var(--azul-acero); box-shadow: none; }
+.s .badge { width: 88px; height: 88px; flex: none; border-radius: 44px; display: flex; align-items: center; justify-content: center; font-size: 44px; font-weight: 800; color: #FFFFFF; background: linear-gradient(135deg, var(--azul) 0%, var(--azul-bajo) 100%); box-shadow: 0 14px 34px rgba(30,42,78,.30); }
+.s .badge.brasa-b { background: linear-gradient(135deg, var(--brasa-alta) 0%, var(--brasa) 100%); color: var(--tinta); box-shadow: 0 14px 34px rgba(196,58,8,.32); }
+.s .badge.hielo { background: rgba(255,255,255,.14); color: var(--azul-hielo); box-shadow: none; border: 1px solid rgba(255,255,255,.2); }
+.s .icon { width: 56px; height: 56px; color: var(--azul-acero); }
+.escena section.s table { width: 100%; font-size: 28px; color: var(--tinta); border-collapse: separate; border-spacing: 0; }
+.escena section.s tr.th th { background: var(--azul); }
+.escena section.s th { color: #FFFFFF; font-weight: 700; text-align: left; padding: 16px 20px; border: 0; }
+.escena section.s tr.th th:first-child { border-radius: 14px 0 0 14px; } .escena section.s tr.th th:last-child { border-radius: 0 14px 14px 0; }
+.escena section.s td { text-align: left; padding: 18px 20px; border: 0; border-bottom: 1px solid var(--linea); }
+.escena section.s tr:last-child td { border-bottom: 0; }
+.escena section.s td.n { color: var(--azul-acero); font-weight: 800; }
+.s .phone { width: 470px; height: 640px; flex: none; border-radius: 64px; padding: 20px; background: linear-gradient(160deg, var(--azul) 0%, var(--azul-noche) 100%); box-shadow: 0 40px 90px rgba(30,42,78,.35); display: flex; }
+.s .screen { flex: 1; border-radius: 46px; background: linear-gradient(180deg, #FFFFFF 0%, #EEF2F8 100%); padding: 40px 24px; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; text-align: left; }
+.s .bubble { font-size: 24px; line-height: 1.3; padding: 14px 20px; border-radius: 24px; background: linear-gradient(135deg, var(--azul) 0%, var(--azul-bajo) 100%); color: #FFFFFF; align-self: flex-end; max-width: 360px; }
+.s .bubble.ult { background: linear-gradient(135deg, var(--brasa-alta) 0%, var(--brasa) 100%); color: var(--tinta); font-weight: 800; }
+.s .hora { font-size: 20px; color: var(--tinta-suave); align-self: flex-end; margin-top: -8px; }
+.s .barra { flex: 1; height: 64px; border-radius: 32px; background: var(--azul-bruma); overflow: hidden; }
+.s .barra > div { height: 100%; border-radius: 32px; }
+@keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+.escena > section.activa .rise { animation: rise 600ms cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 110ms); }
+@media (prefers-reduced-motion: reduce) { .escena > section.activa .rise { animation: none; } }
+
+:root { --dato-azul: #3366CC; --dato-azul-alto: #4A80E4; --dato-azul-bajo: #2852B0; --dato-brasa: #FF5A1F; --dato-brasa-alto: #FF7A45; --dato-brasa-bajo: #F04E14; --dato-turquesa: #1D9A8A; --dato-turquesa-alto: #1FA38F; --dato-turquesa-bajo: #167E70; }
+
+/* ===== Cristal desenfocado (vidrio) =====
+   Deja ver, desenfocado, lo que hay detrás: fotos, patrones o ilustraciones.
+   Úsalo en tarjetas que van sobre una foto, un patrón o una ilustración. Sobre un
+   fondo liso se ve como una tarjeta normal: no agregues formas de fondo solo para lucirlo. */
+.s .card.vidrio, .s .vidrio-c { background: linear-gradient(180deg, rgba(255,255,255,.72) 0%, rgba(255,255,255,.52) 100%); -webkit-backdrop-filter: blur(28px) saturate(1.5); backdrop-filter: blur(28px) saturate(1.5); border: 1px solid rgba(255,255,255,.85); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(10,15,31,.05), 0 24px 60px rgba(30,42,78,.14); }
+.s.az .card.vidrio, .s.az .vidrio-c { background: linear-gradient(180deg, rgba(58,90,154,.34) 0%, rgba(18,26,51,.30) 100%); border: 1px solid rgba(255,255,255,.18); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 28px 70px rgba(5,8,18,.45); color: #FFFFFF; }
+.s.az .card.vidrio .small, .s.az .card.vidrio .muted { color: var(--gris-hielo); }
+
+/* ===== Gráficos ===== 
+   Barras, segmentos, áreas y celdas llevan degradado (tono → tono oscuro).
+   El color plano queda para los detalles que deben romper el patrón:
+   la línea de tendencia, el punto foco, una marca de meta. */
+.s .chip { width: 24px; height: 24px; border-radius: 7px; display: inline-block; flex: none; }
+.s .chip.azul { background: linear-gradient(160deg, var(--dato-azul-alto), var(--dato-azul-bajo)); }
+.s .chip.brasa { background: linear-gradient(160deg, var(--dato-brasa-alto), var(--dato-brasa-bajo)); }
+.s .chip.turquesa { background: linear-gradient(160deg, var(--dato-turquesa-alto), var(--dato-turquesa-bajo)); }
+.s .chip.plano { background: var(--brasa); height: 6px; border-radius: 3px; width: 30px; }
+
+/* Gráficos en fondo claro u oscuro: el mismo SVG cambia de colores según la sección (.s o .s.az). */
+.s { --g-az-a: #4A80E4; --g-az-b: #2852B0; --g-br-a: #FF7A45; --g-br-b: #F04E14; --g-tq-a: #1FA38F; --g-tq-b: #167E70; --g-pt: #6E9BEE;
+  --d-az: #3366CC; --d-br: #FF5A1F; --d-tq: #1D9A8A; --c-tx: #141B2D; --c-ts: #4E5A70; --c-gr: #E3E8F0; --c-ax: #C9D2E0; --c-pista: #EEF2F7; --c-sup: #FFFFFF; --c-tf: #C43A08; }
+.s.az { --g-az-a: #7BA4F2; --g-az-b: #4A7BE0; --g-tq-a: #3CC6B1; --g-tq-b: #21A28F; --g-pt: #9BBBF5;
+  --d-az: #7BA4F2; --d-tq: #3CC6B1; --c-tx: #FFFFFF; --c-ts: #A9B4C8; --c-gr: rgba(255,255,255,.10); --c-ax: rgba(255,255,255,.28); --c-pista: rgba(255,255,255,.08); --c-sup: #1A2442; --c-tf: #FF7A45; }
+.s svg .tx { fill: var(--c-tx); } .s svg .ts { fill: var(--c-ts); } .s svg .tf { fill: var(--c-tf); }
+.s svg .gr { stroke: var(--c-gr); } .s svg .ax { stroke: var(--c-ax); } .s svg .pista { fill: var(--c-pista); } .s svg .anillo { stroke: var(--c-sup); }
+.s.az .chip.azul { background: linear-gradient(160deg, var(--g-az-a), var(--g-az-b)); } .s.az .chip.turquesa { background: linear-gradient(160deg, var(--g-tq-a), var(--g-tq-b)); }
+.s.az .card.vidrio .small { color: var(--gris-hielo); }
+.s.az .card.vidrio table, .s.az .card.vidrio td { color: #FFFFFF; }
+
+/* Mapa de calor: escala secuencial de azules. En claro va de claro a oscuro; en azul, de oscuro a claro. */
+.s { --h0: #E8EDF4; --h1: #C3D0E6; --h2: #8EA8D6; --h3: #5B82C8; --h4: #3366CC; --h5: #1E2A4E; --hx0: #141B2D; --hx1: #141B2D; --hx2: #141B2D; --hx3: #141B2D; --hx4: #FFFFFF; --hx5: #FFFFFF; }
+.s.az { --h0: #24345E; --h1: #2E4A86; --h2: #3A62B0; --h3: #4A7BE0; --h4: #7BA4F2; --h5: #C2D4F8; --hx0: #FFFFFF; --hx1: #FFFFFF; --hx2: #FFFFFF; --hx3: #FFFFFF; --hx4: #141B2D; --hx5: #141B2D; }
+.s svg .h0 { fill: var(--h0); } .s svg .h1 { fill: var(--h1); } .s svg .h2 { fill: var(--h2); } .s svg .h3 { fill: var(--h3); } .s svg .h4 { fill: var(--h4); } .s svg .h5 { fill: var(--h5); }
+.s svg .hx0 { fill: var(--hx0); } .s svg .hx1 { fill: var(--hx1); } .s svg .hx2 { fill: var(--hx2); } .s svg .hx3 { fill: var(--hx3); } .s svg .hx4 { fill: var(--hx4); } .s svg .hx5 { fill: var(--hx5); }
+.s .hc0 { background: var(--h0); } .s .hc1 { background: var(--h1); } .s .hc2 { background: var(--h2); } .s .hc3 { background: var(--h3); } .s .hc4 { background: var(--h4); } .s .hc5 { background: var(--h5); }

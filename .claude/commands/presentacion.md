@@ -7,14 +7,14 @@ Clase: $ARGUMENTS (si está vacío, la clase en curso).
 ## Antes de construir
 1. Confirma que la escaleta está aprobada. Si no, termina primero la Fase 3.
 2. Lee `conocimiento/guia-diseno.md` y `conocimiento/reglas-aprendidas.md`. Si la clase tiene `fuente/inventario.md`, léelo: todo lo marcado "pantalla" debe aparecer en alguna diapositiva, y todo lo marcado "notas" en algún `<aside>`.
-3. Elige la plantilla por lo que la idea necesita, no por costumbre. Mira el catálogo de `guia-diseno.md` y abre solo las 2 o 3 plantillas de `plantillas/slides/` que vas a usar. La muestra completa está en `plantillas/muestra/presentacion.html?zona`.
+3. Elige la plantilla por lo que la idea necesita, no por costumbre. Mira el catálogo de `guia-diseno.md` y abre solo las 2 o 3 plantillas de `plantillas/slides-simple/` que vas a usar. Todas juntas están en `plantillas/catalogo-simple.html?zona`.
 
 ## Construir
-4. Una diapositiva por archivo en `slides/<id>.html`; el orden en `slides/deck.json` con `"estilo": "cristal"`. Empieza con `portada`, `@pilares`, `@repaso`, `@seguimiento`; termina con compromiso, próxima clase, invitación, `@plataforma` (o `@plataforma:claro`) y `ancla`.
-5. Deja libre la esquina de la cámara (x > 1360, y < 340): ahí va Gio en el video.
+4. Una diapositiva por archivo en `slides/<id>.html`; el orden en `slides/deck.json` con `"estilo": "simple"` (las clases 005-006 siguen en `"cristal"`). Empieza con `portada`, `@pilares`, `@repaso`, `@seguimiento`; termina con compromiso, próxima clase, invitación, `@plataforma` (o `@plataforma:claro`) y `ancla`.
+5. Deja libre la esquina de la cámara (x > 1360, y < 340): ahí va Gio en el video. En el estilo simple los títulos centrados miden máximo 800 px; revisa con `?zona`.
 6. Notas del orador en `<aside>`: tiempo, interacción, guion y fuentes. En pantalla solo lo que la audiencia necesita ver.
 7. Ilustraciones SVG propias de la clase (al menos cinco). Representan la idea, no decoran.
-8. **Datos:** cuando el material trae cifras, muéstralas. Elige el gráfico con la tabla "Lo que quieres mostrar" de `guia-diseno.md` (cifra, medidor, barras, columnas, dona, apilado, tabla, pendiente, líneas, área, dispersión, cuadrante). Para verlas todas abre `plantillas/catalogo.html`. Siempre con la fuente en pantalla, solo datos verificables, y como máximo una diapositiva de datos de cada cuatro.
+8. **Datos:** cuando el material trae cifras, muéstralas. Elige el gráfico con la tabla "Lo que quieres mostrar" de `guia-diseno.md` y copia la plantilla `grafico-*` que corresponda. Paleta de datos con degradado, máximo tres series, tarjeta de vidrio. Siempre con la fuente en pantalla, solo datos verificables, y como máximo una diapositiva de datos de cada cuatro.
 9. **Variedad:** revisa que ningún título repita uno de las dos clases anteriores y que ninguna plantilla aparezca más de tres veces (salvo una serie).
 
 ## Después

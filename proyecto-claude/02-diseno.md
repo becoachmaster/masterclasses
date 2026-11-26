@@ -7,167 +7,89 @@
 
 <!-- Fuente: conocimiento/guia-diseno.md -->
 
-# Guía de diseño de las diapositivas · sistema de cristal azul
+# Guía de diseño de las diapositivas · estilo simple (sistema v2)
 
-**Marca vigente: manual de marca BeCoach v2.1 (2026-11-26), https://marca.becoach.pro** (repositorio `C:/Dev/becoach-marca`). La marca pasó de tierra y café al azul y mantiene la Brasa como foco. Si algo de esta guía choca con el manual, manda el manual. Los colores y las clases de superficie del motor (`motor/deck.css`) los escribe el bloque de marca desde el manual.
+Vigente desde el 2026-11-26. Marca: **azul** (`#1E2A4E`, el color del logo) como base y **Brasa** (`#FF5A1F`) como foco, con estilo Mac limpio. El manual de marca completo (logo, paleta, tipografía, aplicaciones, impresión) es el sistema de diseño «BeCoach» en claude.ai: https://claude.ai/artifact/JR6WZ7PAx5Fm2hGApZk4Jt. Esta guía solo cubre las diapositivas.
 
-Historia: el sistema de cristal se aprobó el 2026-11-02 en la hoja de estilo de Claude Design (https://claude.ai/artifact/ALjaZrUvvRGoYaHRoWnbsw); el 2026-11-26 pasó a la paleta azul. Es el mismo sistema de los gráficos de video y de los reels: lo que se ve en la clase en vivo, en el video editado y en redes es una sola marca.
+En `deck.json` va `"estilo": "simple"`. Motor: `motor/simple.css`. Plantillas: `plantillas/slides-simple/`; todas juntas en `plantillas/catalogo-simple.html?zona`. Las clases 005 y 006 siguen en el sistema de cristal (`guia-diseno-cristal.md`); las 001 a 004, en su estilo original.
 
-**La referencia viva es `plantillas/muestra/`**: la clase 4 rehecha en este sistema (`presentacion.html` y una diapositiva por archivo en `slides/`). Antes de construir una presentación, abre la muestra en Chrome (`plantillas/muestra/presentacion.html?zona`) y copia de `plantillas/slides/` el tipo que necesitas. **Las clases 001 a 006 ya se dictaron y conservan la marca v1 (tierra y café)**: su `deck.json` lleva `"marca": "v1"` y se construyen con `motor/deck-v1.css`. Las plantillas más viejas están en `plantillas/slides-v1/`.
-
-## Lienzo
-- Cada diapositiva es un `<section>` de 1920 × 1080 px. El fondo va como **clase** del `<section>` (`class="fondo"`); el resto, con estilos en línea.
-- `deck.json` lleva `"estilo": "cristal"`: así `@pilares`, `@repaso` y `@seguimiento` salen en el mismo sistema. No lleva `"marca"` (eso es solo para las clases v1).
-- Composición con `position:absolute` desde el borde: margen izquierdo 110 px, borde derecho 1810 px, título arriba en `top:96px`.
-- Notas del orador dentro de `<aside>…</aside>` al final de cada `<section>`.
+## Lienzo y composición
+- Cada diapositiva es un `<section>` de 1920 × 1080 con `class="s"` (fondo claro) o `class="s az"` (fondo azul). El contenido va en columna, con `gap` entre bloques; no se posiciona con `position:absolute` salvo casos puntuales.
+- **Títulos centrados o a la izquierda, según la diapositiva.** Centrado (por defecto) para portada, pilares, declaraciones, citas, compromiso, divisores, comparaciones y la frase ancla. A la izquierda (`class="s izq"`) para tablas, gráficos de lectura horizontal y diapositivas con mucho contenido; ahí el bloque se apoya abajo y el título puede medir hasta 1200 px.
+- Estructura típica: título (`h2`) → contenido (tarjetas, tabla o gráfico) → una línea de apoyo o una píldora.
+- Alterna fondos claros y azules para dar ritmo. Portada, datos destacados, compromiso, divisores y declaraciones van bien en azul.
+- Los elementos entran uno tras otro al llegar a la diapositiva: agrega `class="rise"` y `style="--i:N"` (N = orden).
 
 ## La esquina de la cámara (regla firme)
-En el video editado, la cámara de Gio va arriba a la derecha. **La zona x > 1360 px, y < 340 px queda vacía en todas las diapositivas.** Los títulos de arriba miden como mucho 1200 px de ancho; las tarjetas que llegan al borde derecho empiezan en `top:345px` o más abajo. Para comprobarlo, abre `presentacion.html?zona`: la zona se marca en naranja.
+La zona **x > 1360 px, y < 340 px queda vacía**. Por eso los títulos centrados miden como máximo **800 px** (`h2` ya lo trae); los títulos a la izquierda no llegan a la zona y miden hasta 1200 px. Si el contenido es alto, el título sube; mantén el bloque principal por debajo de y = 340 cuando sea más ancho que 800 px. Compruébalo siempre con `presentacion.html?zona`.
 
-## Fondos (siempre con degradado de dos tonos de la misma familia, nunca planos)
-| Clase | Uso |
-|---|---|
-| `fondo` | Oscuro principal: azul → azul noche, con brillo de azul luz arriba a la izquierda. Sin Brasa en el fondo |
-| `fondo-profundo` | Oscuro alterno: azul bajo → azul noche. Divisores, repaso, estilos bajo presión, cierre (`fondo-mineral` sigue funcionando como alias) |
-| `fondo-claro` | Claro Mac: nube → nube baja, con brillo blanco. Modelo central, comparaciones, práctica y frase ancla |
-| `fondo-niebla` | Claro azulado: preguntas de apertura |
-
-Alterna oscuros y claros para dar ritmo. La Brasa nunca va dentro de un fondo: solo como `halo` detrás del foco.
-
-## Tarjetas
-| Clase | Qué es |
-|---|---|
-| `cristal` | Tarjeta de cristal sobre oscuro: translúcida, borde fino, luz arriba y sombra profunda |
-| `cristal cristal-opaco` | Cristal que tapa lo de atrás (nodos de un diagrama encima de líneas) |
-| `claro` | Tarjeta blanca Mac sobre fondos claros, borde de 1 px y sombra suave |
-| `azul` | Tarjeta azul sólida (azul → azul bajo): destaca sobre claro sin gastar el foco |
-| `vidrio` | Cristal con desenfoque real del fondo; solo sobre fotos o video |
-| `panel` | Panel interior oscuro dentro de una tarjeta de cristal |
-| `baldosa` | Fondo de ícono (88 a 120 px): blanco → azul bruma sobre claro, cristal sobre oscuro |
-| `foco` | Se suma a `cristal` o `claro`: borde y halo Brasa. Es el foco |
-| `brasa` | Tarjeta rellena de Brasa (brasa alta → brasa); el texto encima va en tinta `#141B2D`, nunca en blanco |
-| `brillo` | Texto Brasa con resplandor (la palabra clave sobre oscuro); `brillo-claro` sobre claro (Brasa profunda) |
-| `halo` | Luz Brasa difusa detrás del foco (`<div class="halo" style="left…; top…; width…; height…">`) |
-| `serif` | Fraunces itálica, **solo** para citas (la voz de otra persona o de la clase anterior) |
-
-Radio 28 px como máximo (Gio no quiere bordes más redondeados). Íconos dentro de una baldosa de 88 a 120 px con radio 24 a 28.
-
-## Uso de Brasa
-- **Un solo foco por diapositiva**: la tarjeta `foco`, la tarjeta `brasa`, la palabra `brillo` o el elemento central de la ilustración. Un grupo con el mismo rol (los números 1, 2, 3 de una lista de pasos) cuenta como uno. La Brasa no pasa del 10 % de la diapositiva.
-- Sobre oscuro: `#FF5A1F` en texto (sobre azul bajo o azul noche; sobre azul solo desde 24 px), íconos y rellenos. Sobre claro: Brasa solo como relleno (`brasa`); en texto usa Brasa profunda `#C43A08`.
-- Los íconos y números repetidos van en azul hielo `#A9BEE0` sobre oscuro y en azul acero `#3D5A8C` sobre claro.
-- La frase ancla de cierre no lleva Brasa.
-
-## Paleta (del manual; detalle y contrastes en https://marca.becoach.pro)
+## Paleta
 | Nombre | Hex | Uso |
 |---|---|---|
-| Azul | `#1E2A4E` | La marca y el logo; inicio de los fondos oscuros y tarjetas azules |
-| Azul bajo / azul noche | `#121A33` / `#0A0F1F` | Final de los degradados y fondos oscuros |
-| Azul luz | `#3A5A9A` | Solo como brillo radial de los fondos oscuros |
-| Brasa | `#FF5A1F` | El foco |
-| Brasa profunda | `#C43A08` | Brasa para texto sobre claro |
-| Azul hielo | `#A9BEE0` | Acento secundario sobre oscuro: íconos, números, flechas, etiquetas de ejes |
-| Azul acero | `#3D5A8C` | Íconos, números y detalles sobre claro |
-| Azul bruma | `#DCE4F0` | Tinte de alivio sobre claro (baldosas, celdas resaltadas) |
-| Texto sobre oscuro | nube `#F5F7FA` y gris hielo `#A9B4C8` | Principal y secundario |
-| Texto sobre claro | tinta `#141B2D` y tinta suave `#4E5A70` | Principal y secundario |
-| Línea | `#D7DEE8` | Bordes de 1 px y tablas sobre claro |
+| Azul | `#1E2A4E` | Fondos azules, encabezados de tabla, círculos, píldoras, tarjeta azul |
+| Azul bajo / noche | `#121A33` / `#0A0F1F` | Final de los degradados azules |
+| Azul acero | `#3D5A8C` | Íconos y etiquetas sobre claro |
+| Azul hielo | `#A9BEE0` | Íconos y etiquetas sobre azul |
+| Azul bruma | `#DCE4F0` | Píldora suave, fondo de barras |
+| Brasa / Brasa alta | `#FF5A1F` / `#FF7A45` | El foco (una vez por diapositiva) |
+| Brasa profunda | `#C43A08` | Brasa como texto sobre claro |
+| Tinta / Tinta suave | `#141B2D` / `#4E5A70` | Texto sobre claro |
+| Nube / Gris hielo | `#F5F7FA` / `#A9B4C8` | Texto sobre azul |
 
-## Logo
-Logotipo azul sobre claro y blanco sobre oscuro, arriba o abajo a la izquierda, **nunca en la zona de la cámara** y nunca en Brasa. Archivos: `https://marca.becoach.pro/assets/logos/`.
+- **Un solo foco Brasa por diapositiva**: la tarjeta `foco` o `brasac`, el círculo `brasa-b`, la píldora `brasa-p` o la palabra `foco-t`.
+- Texto sobre Brasa en **tinta**, nunca en blanco. Brasa como texto sobre claro, en Brasa profunda (`foco-t` lo hace solo).
+- **Degradados de dos tonos de la misma familia**, del tono a su paso más oscuro. Nunca se mezclan azul y Brasa en un degradado.
+- La frase ancla no lleva Brasa.
+
+## Piezas (clases de `motor/simple.css`)
+| Clase | Qué es |
+|---|---|
+| `card` | Tarjeta blanca Mac (radio 28, borde fino, sombra suave) |
+| `card vidrio` | **Vidrio desenfocado**: deja ver, borroso, lo que hay detrás. Úsalo sobre fotos, patrones o ilustraciones, y en las tarjetas que contienen gráficos y tablas |
+| `card foco` | Tarjeta con borde y halo Brasa |
+| `card brasac` / `card azulc` | Tarjeta rellena en Brasa (foco) o en azul (destaca sin gastar el foco) |
+| `card tabla` | Contenedor de tabla; la fila `tr.th` es el encabezado azul |
+| `pill`, `pill soft`, `pill white`, `pill brasa-p`, `pill linea` | Píldoras: azul, suave, blanca (sobre azul), Brasa y punteada |
+| `badge`, `badge brasa-b`, `badge hielo` | Círculo numerado o con ícono |
+| `phone`, `screen`, `bubble`, `bubble ult` | Teléfono con mensajes (la última burbuja en Brasa) |
+| `grid2`, `grid3`, `row`, `col` | Distribución |
+| `lead`, `small`, `foco-t`, `serif` | Texto de apoyo, nota, palabra foco, cita |
+| `puntos` | Patrón de puntos pequeño, abajo a la izquierda |
+
+**No se agregan formas decorativas de fondo** (círculos, manchas, anillos) solo para lucir el vidrio: Gio las probó y se ven mal.
 
 ## Tipografía
-- Manrope en todo (`font-family:'Manrope', Arial, sans-serif`), pesos 500 a 800. El motor la incrusta: funciona sin internet.
-- Títulos: 76 a 100 px, peso 800, `letter-spacing:-2.5px`, `line-height:1.04`.
-- Declaraciones y portada: 112 a 136 px.
-- Texto de tarjetas: 32 a 56 px. Apoyo: 28 a 44 px. **Nunca menos de 24 px.**
+Manrope en todo, pesos 500 a 800; Fraunces itálica solo en citas. `h1` 132 px, `h2` 72 px (portada y ancla hasta 112 px), `h3` 40 px, texto 32 px, `lead` 40 px, `small` 26 px. **Nunca menos de 24 px.**
 
-## Tipos de diapositiva (`plantillas/slides/`)
-| Plantilla | Para qué | En la muestra |
-|---|---|---|
-| `portada` | Título abajo a la izquierda, marca arriba, ilustración orbital | `portada` |
-| `divisor` | Folio gigante con contorno, título del bloque y avance de los 4 bloques | `p01`–`p04` |
-| `pregunta` | Pregunta de apertura en claro con ilustración | `quiebre-nace`, `quiebre-reunion` |
-| `declaracion` | Una frase central con la palabra clave en `brillo` | `respuesta`, `gran-idea` |
-| `comparacion` | Dos tarjetas de cristal con panel, la segunda `foco` | `emocion-estado` |
-| `comparacion-clara` | Dos tarjetas en claro, la segunda `brasa` | `se-entrena` |
-| `plano-dos-ejes` | Cuatro tarjetas en un plano con ejes etiquetados | `estilos-caracteristicas`, `estilos-sombras` |
-| `modelo` | El modelo central 2 × 2 en claro | `modelo` |
-| `detalle-estado` | Un elemento del modelo: definición, frase típica, señales y su lugar en la matriz | `resentimiento` … `ambicion` |
-| `diagrama-flujo` | Causa → señales → efectos, con retorno | `contagio` |
-| `opciones` | Opciones A-D de una pregunta para votar | `autodiagnostico` |
-| `frases` | Frases típicas en burbujas de chat y lo que provocan | `errores` |
-| `tres-columnas` | Tres caminos o salidas, la última `foco` | `salir` |
-| `pasos` | Lista numerada con diagrama a la derecha | `tres-preguntas` |
-| `convergencia` | Varios elementos que apuntan a una meta | `alinear` |
-| `practica` | Pregunta del ejercicio con número fantasma | `fase1`–`fase3` |
-| `compromiso` | Pregunta de compromiso con calendario de cristal | `compromiso` |
-| `invitacion` | Invitación con el puesto libre | `invitacion` |
-| `cifra` | Un dato grande con su fuente en pantalla (solo datos verificables) | — |
-| `barras` | Comparar magnitudes: hasta 6 barras horizontales, una en Brasa | — |
-| `dona` | Cómo se reparte un total: hasta 3 partes, la parte foco en Brasa y su cifra en el centro | — |
-| `tabla` | Cifras que no ganan nada dibujadas o que comparan columnas: hasta 4 × 5 | — |
-| `pendiente` | Antes → después: qué subió y qué bajó, una recta por categoría | — |
-| `cuadrante` | Un marco de 4 áreas en dos ejes (por ejemplo, los dominios de la inteligencia emocional) | — |
-| `columnas` | Categorías con orden propio (años, opciones de una encuesta): hasta 6 | — |
-| `lineas` | Evolución en el tiempo de hasta 4 series | — |
-| `area` | Evolución de una sola serie (un registro de 7 días, un hábito) | — |
-| `apilado` | Cómo se reparte un total, comparado entre momentos o grupos | — |
-| `medidor` | Un valor contra su techo o su meta (22 de 100) | — |
-| `dispersion` | La relación entre dos variables, un punto por caso. Úsala poco | — |
-| `cita` | Una cita textual sola, en serif, con autor y obra | — |
-| `lista` | Puntos sin orden, hasta 6, con la entrada en negrita | — |
-| `checklist` | Verificaciones que se marcan, hasta 6, la última en Brasa | — |
-| `@plataforma` | Automática: invitación a app.becoach.pro con la ventana de la plataforma. `@plataforma:claro` para la versión clara | `@plataforma` |
-| `ancla` | Solo la frase ancla, en claro, sin Brasa | `ancla` |
-
-Ritmo: no repitas la misma plantilla tres veces seguidas salvo una serie (los cuatro estados, las tres fases). Mezcla oscuro y claro.
-
-## Datos, gráficos y tablas
-Vienen del sistema original de slides (`Programacion/slides/_formato-tabla.md`), adaptados al cristal. Elige la forma por lo que el dato tiene que decir:
+## Gráficos
+- **Paleta de datos**, máximo **tres series**: azul de datos `#3366CC` (degradado `#4A80E4 → #2852B0`), Brasa (`#FF7A45 → #F04E14`) para la serie o el dato foco, y turquesa `#1D9A8A` (`#1FA38F → #167E70`). Más de tres: agrupa en «Otros» o divide en gráficos pequeños.
+- Barras, segmentos, áreas y celdas llevan **degradado**. El **color plano** queda para los detalles que deben romper el patrón: línea de tendencia, punto foco, una meta.
+- Las líneas van en trazo plano de 5 px; el área en degradado va solo bajo la serie foco.
+- Escala secuencial (mapa de calor): un solo tono, de `#E8EDF4` a `#1E2A4E`.
+- Leyenda siempre que haya dos series o más, con rótulos directos selectivos (primer y último valor, el foco). El texto va en tinta, nunca del color de la serie.
+- El gráfico va dentro de una `card vidrio`, con la **fuente en pantalla** y solo datos verificables. Como máximo una diapositiva de datos de cada cuatro.
+- **Los gráficos funcionan en claro y en azul.** El mismo SVG cambia de colores según la sección: textos y ejes en blanco y gris hielo, azul y turquesa de datos más luminosos (`#7BA4F2`, `#3CC6B1`) y la escala del mapa de calor invertida (de oscuro a claro). Para que funcione, el SVG usa clases (`tx`, `ts`, `tf`, `gr`, `ax`, `pista`, `anillo`, `h0`–`h5`) y los degradados `var(--g-…)`: copia la estructura de una plantilla `grafico-*` en vez de poner colores fijos.
 
 | Lo que quieres mostrar | Plantilla |
 |---|---|
-| Un número que sacude | `cifra` |
-| Un valor contra su meta o su techo | `medidor` |
-| Comparar varias magnitudes (nombres largos) | `barras` |
-| Comparar categorías con orden propio (años, opciones) | `columnas` |
-| Cómo se reparte un total | `dona` (un total) · `apilado` (varios totales comparados) |
-| Varias cifras en columnas | `tabla` |
-| Un cambio entre dos momentos | `pendiente` |
-| Evolución en el tiempo | `lineas` (varias series) · `area` (una sola) |
-| Relación entre dos variables | `dispersion` |
-| Un marco de cuatro partes | `cuadrante` |
+| Un dato real con su fuente | `cifra-barras` |
+| Cambio en el tiempo, una serie | `grafico-barras` |
+| Comparar dos grupos por categoría | `grafico-agrupadas` |
+| Ordenar motivos o causas | `grafico-ranking` |
+| Tendencia de dos series | `grafico-lineas` |
+| Relación entre dos variables | `grafico-dispersion` |
+| Partes de un total (máximo 3) | `grafico-dona` |
+| Partes de un total por grupo | `grafico-apiladas` |
+| Intensidad en una cuadrícula | `grafico-calor` |
+| Tres indicadores con tendencia | `grafico-indicadores` |
+| Comparar en filas | `tabla` |
+| Seguimiento de compromisos | `tablero` |
 
-Todas están en `plantillas/catalogo.html` (se construye con `python scripts/construir_presentacion.py --catalogo`). Las plantillas cuyo pie dice "Datos de ejemplo" traen números inventados para mostrar la forma: nunca llegan así a una clase.
+## Plantillas (`plantillas/slides-simple/`)
+`portada`, `pregunta` (teléfono), `comparacion`, `declaracion`, `tres-columnas`, `pasos`, `modelo`, `tabla`, `tablero`, `checklist`, `cita`, `divisor`, `compromiso`, `invitacion`, `ancla`, `cifra-barras` y los `grafico-*`. Las automáticas (`@pilares`, `@repaso`, `@seguimiento`, `@plataforma`) las genera `construir_presentacion.py` en este mismo estilo.
 
-- **Solo datos verificables, con la fuente en pantalla** (autor o institución y año), en 26 px y gris al pie.
-- **Escala honesta:** con porcentajes, la barra mide el porcentaje real (0 a 100). Nunca se recorta el eje para exagerar.
-- **Un solo foco:** una barra, una parte o una cifra en Brasa; las demás en azul hielo (oscuro) o azul acero (claro).
-- **Topes:** 6 barras, 3 partes de dona, 4 series de pendiente, tabla de 4 columnas × 5 filas. Si sobran categorías, agrupa en "Otros".
-- **Ritmo:** como máximo una diapositiva de datos de cada cuatro; un gráfico detrás de otro no se lee.
-- **El título dice la conclusión**, no el tema ("4 de cada 10 personas pasan el día con estrés", no "Estrés laboral").
-- Si el material de Gio trae un gráfico como imagen, guárdalo en `recursos/` y redibújalo con estas plantillas; si no se puede, muéstralo dentro de una tarjeta `claro` con su fuente.
-
-## Redacción en pantalla
-Traídas del sistema original de slides:
-- **Una idea por diapositiva.** Si tiene dos, pártela en dos.
-- **El título afirma, no etiqueta.** En comparaciones, modelos y datos, el título es una afirmación que se pueda discutir ("La disciplina no desactiva el miedo"), no el nombre del tema ("Disciplina").
-- **El texto de apoyo suma, no repite.** Si el título dice "Tu cerebro te protege del cambio", el apoyo no dice "Por eso te cuesta avanzar": agrega el dato, el mecanismo o la fuente ("La amígdala trata una amenaza al estatus como un peligro físico").
-- **En pantalla nunca se describe la imagen.** Lo que se ve lo muestra el dibujo y lo que se dice va en las notas.
-- **Las notas añaden, no leen.** No repiten lo que está en pantalla: llevan el ejemplo largo, la transición, la acción ("abre la encuesta") y la respuesta a la objeción que siempre sale.
-- **Claro y oscuro cuentan la historia:** oscuro para el problema y la tensión, claro para el método y la salida. El paso de uno a otro coincide con el giro del argumento.
-
-## Ilustraciones
-- SVG en línea con trazo redondeado (`stroke-linecap:round`) en azul hielo (oscuro), azul acero (claro) o Brasa (solo el foco), dentro de baldosas o tarjetas de cristal. Se hacen con divs de cristal y formas simples (órbitas, mesas, calendarios, matrices), no con dibujos planos sueltos.
-- Deben representar la idea (la mesa de la reunión, el puesto libre, la mini matriz que ubica cada estado), no decorar.
-- Siguen disponibles `<x-icon name="…">` (Search, Users, CheckCircle, Key, Chat, Warning, Trust, Anchor, Heart, Cycle, Lightbulb, Target, Eye, Calendar, Compass, Mirror).
-
-## Fotos y video
-- Fotos y videos de Gio en `clases/NNN-slug/recursos/`, referenciados como `recursos/<archivo>`. Encima de una foto, la tarjeta es `vidrio`.
-- Si falta una foto: recuadro punteado con "Imagen sugerida: …".
-- Video: `<video src="recursos/x.mp4" controls preload="metadata" playsinline>`, sin autoplay.
-
-## Lo que nunca va en pantalla
-Ver `reglas-aprendidas.md`. En resumen: pretítulos (etiquetas pequeñas encima del título), tiempos, indicaciones de chat o encuestas, fases del ejercicio con minutos y cualquier texto para el orador.
+## Ilustraciones e imágenes
+- SVG propios con la paleta, como mínimo cinco por clase, que representen la idea (teléfono con mensajes, calendario, círculos que se cruzan, ciclo).
+- Íconos de trazo redondeado: azul acero sobre claro, azul hielo sobre azul; solo el del foco en Brasa.
+- Fotos solo las de Gio. Si una tarjeta va encima de una foto, usa `card vidrio`.
 

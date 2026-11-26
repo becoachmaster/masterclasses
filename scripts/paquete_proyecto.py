@@ -34,29 +34,31 @@ def unir(titulo, partes):
 
 
 def css_artefacto():
-    css = (MOTOR / "deck.css").read_text(encoding="utf-8")
+    css = cp.css_estilo("simple")
     return re.sub(r"@font-face\s*\{[^}]*\}\s*", "", css)
 
 
 def kit(clases):
     carpeta, datos = clases[-1]
     previa = clase_anterior(datos.get("numero", 0))
-    slides = [leer(PLANTILLAS / "slides" / "portada.html"), cp.slide_pilares_cristal(datos)]
+    simples = PLANTILLAS / "slides-simple"
+    slides = [leer(simples / "portada.html"), cp.slide_pilares_simple(datos)]
     if previa:
-        slides += [cp.slide_repaso_cristal(previa), cp.slide_seguimiento_cristal(previa)]
+        slides += [cp.slide_repaso_simple(previa), cp.slide_seguimiento_simple(previa)]
     for nombre in ("pregunta", "modelo", "compromiso"):
-        slides.append(leer(PLANTILLAS / "slides" / f"{nombre}.html"))
-    slides += [cp.slide_plataforma(datos), leer(PLANTILLAS / "slides" / "ancla.html")]
+        slides.append(leer(simples / f"{nombre}.html"))
+    slides += [cp.slide_plataforma_simple(datos), leer(simples / "ancla.html")]
     plantilla = (MOTOR / "plantilla.html").read_text(encoding="utf-8")
     html = (plantilla.replace("{{TITULO}}", "Kit de presentación BeCoach")
             .replace("<style>", FUENTES_GOOGLE + "\n<style>", 1)
             .replace("{{CSS}}", css_artefacto())
             .replace("{{JS}}", (MOTOR / "deck.js").read_text(encoding="utf-8"))
             .replace("{{SLIDES}}", cp.diapositivas(slides)))
-    aviso = ("<!--\nKIT DE PRESENTACIÓN BECOACH (sistema de cristal azul, manual de marca v2: https://marca.becoach.pro)\n"
+    aviso = ("<!--\nKIT DE PRESENTACIÓN BECOACH (manual de marca v2 · estilo simple: https://marca.becoach.pro)\n"
              "Para crear la presentación de una clase como artefacto: copia este archivo COMPLETO (head, <style> y <script>) "
              "y reemplaza solo las <section> dentro de <main id=\"deck\">.\n"
-             "- Cada <section> es una diapositiva de 1920x1080; el fondo va como clase (fondo, fondo-profundo, fondo-claro, fondo-niebla).\n"
+             "- Cada <section> es una diapositiva de 1920x1080 con class=\"s\" (claro) o class=\"s az\" (azul); el contenido va centrado en columna.\n"
+             "- Copia la estructura de cada tipo desde plantillas-diapositivas.html. Los títulos centrados miden máximo 800 px (zona de la cámara).\n"
              "- Las diapositivas @pilares, @repaso, @seguimiento y @plataforma de este kit son ejemplos: "
              "cópialas y cambia los textos con los datos de la clase anterior y el pilar de la clase.\n"
              "- Notas del orador en <aside> al final de cada <section>: no se ven en pantalla (tecla P = vista de presentador).\n"
@@ -93,7 +95,7 @@ def main():
     ])
     archivos["kit-presentacion.html"] = kit(clases)
     archivos["plantillas-diapositivas.html"] = "\n\n".join(
-        f"<!-- Plantilla: {p.stem} -->\n{leer(p)}" for p in sorted((PLANTILLAS / "slides").glob("*.html")))
+        f"<!-- Plantilla: {p.stem} -->\n{leer(p)}" for p in sorted((PLANTILLAS / "slides-simple").glob("*.html")))
     for nombre, texto in archivos.items():
         (SALIDA / nombre).write_text(texto + "\n", encoding="utf-8")
         print(f"{nombre}: {len(texto.encode('utf-8')) // 1024} KB")

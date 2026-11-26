@@ -53,7 +53,7 @@ def main():
     if clases:
         orden += ["@repaso", "@seguimiento"]
     orden += ["@plataforma"]  # las diapositivas de la clase van antes; la frase ancla, después
-    escribir_json(carpeta / "slides" / "deck.json", {"titulo": a.titulo, "estilo": "cristal", "orden": orden})
+    escribir_json(carpeta / "slides" / "deck.json", {"titulo": a.titulo, "estilo": "simple", "orden": orden})
 
     aqui = Path(__file__).resolve().parent
     subprocess.run([sys.executable, str(aqui / "actualizar_indices.py")], check=False)
