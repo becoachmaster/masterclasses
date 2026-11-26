@@ -1,0 +1,29 @@
+{
+  "numero": 0,
+  "slug": "",
+  "titulo": "",
+  "fecha": null,
+  "estado": "idea",
+  "pilar": null,
+  "idea_central": "",
+  "tesis": "",
+  "transformacion": {
+    "de": "",
+    "a": ""
+  },
+  "quiebre": "",
+  "conexion_anterior": null,
+  "bucle_abierto": "",
+  "temas": [],
+  "herramientas": [],
+  "ejercicio": "",
+  "terminos": [],
+  "aprendizajes": [],
+  "repaso": [],
+  "frase_ancla": "",
+  "compromiso": "",
+  "fuentes": [],
+  "observaciones_post_clase": "",
+  "artefacto": null,
+  "historial": []
+}

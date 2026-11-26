@@ -1,0 +1,106 @@
+{
+  "numero": 1,
+  "slug": "de-la-victima-a-la-responsabilidad",
+  "titulo": "De la víctima a la responsabilidad",
+  "fecha": "2026-09-24",
+  "estado": "cerrada",
+  "pilar": "responsabilidad",
+  "idea_central": "Cómo acompañar a las personas del equipo a pasar del modo víctima al modo responsabilidad.",
+  "tesis": "No puedes acompañar a otro a salir de la víctima si tú también estás ahí: el cambio del equipo empieza en el observador del líder.",
+  "transformacion": {
+    "de": "un líder que se queja de que su equipo no se hace cargo",
+    "a": "un líder que se observa primero y acompaña con conversaciones que abren responsabilidad"
+  },
+  "quiebre": "Piensa en el último problema de tu equipo. ¿Qué explicación te diste?",
+  "conexion_anterior": null,
+  "bucle_abierto": "Si ya sé desde dónde miro, ¿cómo construyo una conexión real con mi equipo para que la responsabilidad no dependa solo de mí?",
+  "temas": [
+    "Modo víctima y modo responsabilidad",
+    "Respons-habilidad: responsabilidad no es culpa",
+    "Modelo O·A·R (observador, acción, resultado)",
+    "Manifestaciones del modo víctima: lenguaje, emoción, cuerpo, conducta y equipo",
+    "Hechos e interpretaciones",
+    "Detectar sin etiquetar",
+    "Triángulo dramático y dinámica de empoderamiento",
+    "Legitimidad del otro y la queja como compromiso no declarado",
+    "Gestión de la conversación en 6 pasos",
+    "Errores comunes del líder"
+  ],
+  "herramientas": [
+    "Modelo O·A·R",
+    "Traductor de víctima",
+    "Secuencia de 6 pasos para gestionar la conversación",
+    "Ejercicio El espejo del líder"
+  ],
+  "ejercicio": "El espejo del líder: recordar una conversación real con alguien en modo víctima, observarse a sí mismo (emoción, juicio, acción, cuerpo, resultado) y rediseñar la conversación en cuatro frases.",
+  "terminos": [
+    {
+      "termino": "Modo víctima",
+      "definicion": "Forma de observar que pone la causa afuera: tengo explicaciones, pero no poder de acción."
+    },
+    {
+      "termino": "Modo responsabilidad",
+      "definicion": "Forma de observar que se pregunta qué depende de mí; capacidad de responder frente a lo que pasa."
+    },
+    {
+      "termino": "Respons-habilidad",
+      "definicion": "La habilidad de responder. No es culpa: la culpa mira al pasado y castiga; la responsabilidad mira lo que sigue y abre acción."
+    },
+    {
+      "termino": "Observador",
+      "definicion": "La forma particular en que cada persona interpreta lo que pasa. Determina las acciones posibles y, con ellas, los resultados."
+    },
+    {
+      "termino": "Afirmación",
+      "definicion": "Acto del lenguaje que describe hechos. Es verdadera o falsa y se puede verificar con evidencia."
+    },
+    {
+      "termino": "Juicio",
+      "definicion": "Interpretación o valoración. No es verdadero ni falso sino fundado o infundado, y dice tanto del observador como de lo observado."
+    },
+    {
+      "termino": "Juicio fundado",
+      "definicion": "Juicio que responde para qué se emite, en qué dominio, con qué estándares y qué hechos lo sostienen o lo contradicen."
+    },
+    {
+      "termino": "Triángulo dramático",
+      "definicion": "Dinámica de roles de Stephen Karpman: víctima, perseguidor y salvador. El perseguidor y el salvador refuerzan la víctima."
+    },
+    {
+      "termino": "Legitimidad del otro",
+      "definicion": "Aceptar al otro como legítimo otro (Maturana): su conducta tiene sentido desde su forma de observar."
+    }
+  ],
+  "aprendizajes": [
+    "La víctima y la responsabilidad son dos formas de observar, no dos tipos de personas.",
+    "Separar hechos de interpretaciones abre posibilidades que el juicio cierra.",
+    "Antes de cambiar la conversación del otro, el líder cambia el lugar desde donde mira."
+  ],
+  "frase_ancla": "Un gran líder acompaña al otro a verse en su absoluta grandeza y posibilidad.",
+  "compromiso": "Tener esta semana la conversación que rediseñaste con una persona de tu equipo, con nombre y día definidos.",
+  "fuentes": [
+    "Rafael Echeverría, Ontología del lenguaje",
+    "Humberto Maturana",
+    "Stephen Karpman, Triángulo dramático",
+    "David Emerald, The Empowerment Dynamic (TED)"
+  ],
+  "observaciones_post_clase": "Participación activa. La frase \"Víctima, hazte cargo\" hizo mucho sentido. Las personas se vieron reflejadas en los errores comunes del líder. Lo más valioso: la sección que amplía el observador del líder al hacer que se observe a sí mismo.",
+  "historial": [
+    {
+      "fecha": "2026-09-24",
+      "evento": "Diseño de la clase y presentación construidos en claude.ai"
+    },
+    {
+      "fecha": "2026-09-30",
+      "evento": "Clase migrada al proyecto de Claude Code. Aprendizajes, compromiso y bucle abierto propuestos por Claude: confirmar con Gio al cerrar la clase."
+    },
+    {
+      "fecha": "2026-09-29",
+      "evento": "Clase cerrada con los datos disponibles antes de crear la 002. Pendiente confirmar con Gio: fecha real, cómo le fue y si ajusta aprendizajes, compromiso y bucle abierto."
+    },
+    {
+      "fecha": "2026-09-29",
+      "evento": "Gio confirma fecha (2026-09-24) y cuenta cómo le fue. Aprendizajes, compromiso y bucle abierto se mantienen."
+    }
+  ]
+}

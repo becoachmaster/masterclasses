@@ -1,0 +1,97 @@
+{
+  "numero": 3,
+  "slug": "el-poder-creador-del-lenguaje",
+  "titulo": "El poder creador del lenguaje",
+  "fecha": "2026-10-14",
+  "estado": "cerrada",
+  "pilar": "conexion",
+  "idea_central": "Coordinación de acciones: declaraciones fundamentales y poder creador del lenguaje. El lenguaje describe una realidad observada, siempre desde la interpretación del observador, y también crea nuevas posibilidades. La forma en que un líder observa a su equipo influye en cómo interactúa, coordina acciones y en cómo las personas se ven a sí mismas, afectando su capacidad de acción, compromiso, aprendizaje continuo y crecimiento individual y grupal.",
+  "tesis": "El lenguaje describe el mundo y también lo crea: lo que decimos influye en las posibilidades que un equipo ve y en las acciones que coordina.",
+  "transformacion": {
+    "de": "hablar del equipo con etiquetas generales que condicionan nuestras expectativas",
+    "a": "describir situaciones con claridad y elegir conversaciones que abran acciones y aprendizaje"
+  },
+  "quiebre": "Piensa en una ocasión reciente en que alguien de tu equipo no cumplió un acuerdo. ¿Qué pensaste de esa persona?",
+  "conexion_anterior": 2,
+  "bucle_abierto": "Si una declaración abre una posibilidad, ¿cómo la convertimos en pedidos, promesas y acciones coordinadas que se cumplan?",
+  "temas": [
+    "El lenguaje describe y también crea posibilidades",
+    "Distinguir lo que ocurrió de lo que concluimos",
+    "Lo que el líder piensa de su equipo condiciona cómo lo trata",
+    "Los juicios del líder sobre sí mismo",
+    "Delegar responsabilidades pequeñas para reconstruir la confianza"
+  ],
+  "herramientas": [
+    "Describe, pregunta y acuerda",
+    "Distinguir lo ocurrido de lo que concluyo",
+    "Antes de hablar, pregúntate: ¿qué ocurrió?, ¿qué estoy suponiendo?, ¿qué puedo preguntar?"
+  ],
+  "ejercicio": "Elegir una frase que siempre repites sobre alguien de tu equipo (por ejemplo, «yo lo conozco» o «siempre con lo mismo»); preguntarte qué ocurrió realmente, qué estás suponiendo y qué podrías preguntar; y definir con quién y cuándo tendrás esa conversación. No compartir nombres ni datos identificables.",
+  "terminos": [
+    {
+      "termino": "Observador",
+      "definicion": "La perspectiva y experiencia desde la que una persona entiende una situación."
+    },
+    {
+      "termino": "Afirmación",
+      "definicion": "Descripción concreta de algo que ocurrió y que se puede contrastar con datos."
+    },
+    {
+      "termino": "Juicio",
+      "definicion": "Conclusión o evaluación que hacemos sobre una situación o persona; conviene distinguirla de los datos que la sustentan."
+    },
+    {
+      "termino": "Declaración",
+      "definicion": "Palabra que establece una posibilidad o acuerdo cuando quien la dice puede hacerlo y se compromete con sus consecuencias."
+    }
+  ],
+  "aprendizajes": [
+    "Lo que pienso de una persona de mi equipo también lo estoy construyendo.",
+    "Separar lo que ocurrió de lo que concluyo abre otras posibilidades de acción.",
+    "Antes del juicio automático: describe, pregunta y acuerda."
+  ],
+  "frase_ancla": "El lenguaje describe el mundo y también lo crea.",
+  "compromiso": "Elegir una conversación esta semana, con una persona del equipo y un día definido: describir lo que ocurrió sin el juicio, preguntar con curiosidad y acordar un paso nuevo.",
+  "fuentes": [
+    "Rafael Echeverría, Ontología del lenguaje"
+  ],
+  "observaciones_post_clase": "Registradas a partir de la grabación (Gio no dio observaciones). Se dictó un miércoles, excepción al jueves habitual, y duró cerca de 88 minutos, más que los 50 previstos. Participación activa en el chat: el ejercicio de la frase que siempre repites funcionó muy bien («yo lo conozco», «siempre se queja y no da soluciones») y hubo aprendizajes al cierre. Lo que más conectó: el caso de la líder que creía que le mentían y la historia de Gio sobre los juicios que le impidieron empezar estas clases. Hubo fricciones técnicas al compartir pantalla (rayas en la pantalla, ventanas que tapaban la presentación, dificultad para dejar de presentar). Las declaraciones fundamentales (No, Sí, No sé, Gracias, Perdón) quedaron fuera: no se trabajaron en vivo. Al cierre Gio mostró la plataforma app.becoach.pro. La cámara se grabó aparte con OBS y el video publicado es un montaje de diapositivas y cámara.",
+  "historial": [
+    {
+      "fecha": "2026-10-14",
+      "evento": "Clase creada"
+    },
+    {
+      "fecha": "2026-10-14",
+      "evento": "Enfoque aprobado: el poder descriptivo y creador del lenguaje, las declaraciones fundamentales y su influencia en la coordinación del equipo. Pilar Conexión."
+    },
+    {
+      "fecha": "2026-10-14",
+      "evento": "Temario aprobado: distinciones entre afirmaciones y juicios, el observador, las declaraciones fundamentales y práctica para transformar una etiqueta en una posibilidad de acción."
+    },
+    {
+      "fecha": "2026-10-14",
+      "evento": "Escaleta aprobada: 50 minutos, con práctica individual para convertir una etiqueta en una conversación y acción posible. Frase ancla: “El lenguaje que eliges abre o cierra posibilidades para tu equipo”."
+    },
+    {
+      "fecha": "2026-10-14",
+      "evento": "Clase programada para el 14 de octubre. La fecha se registra en la ficha, no en las diapositivas."
+    },
+    {
+      "fecha": "2026-10-14",
+      "evento": "Secuencia revisada a partir de la retroalimentación de Gio: pregunta inicial literal, mensaje central explícito al comienzo, menos tecnicismos y conceptos, y presentación condensada para líderes."
+    },
+    {
+      "fecha": "2026-10-14",
+      "evento": "Revisada la escaleta para una hora de taller: lenguaje cotidiano, distinciones en ejemplos de trabajo y herramienta Describe · Pregunta · Acuerda."
+    },
+    {
+      "fecha": "2026-10-14",
+      "evento": "Pregunta de apertura ajustada para incluir una situación concreta que ayude a la audiencia a responder."
+    },
+    {
+      "fecha": "2026-10-27",
+      "evento": "Clase cerrada con Gio: se dictó el miércoles 14 de octubre de 2026. Aprendizajes, ejercicio y temas registrados según lo que se trabajó en vivo; las declaraciones fundamentales salen de temas y términos porque no se alcanzaron a ver. Video publicado como montaje de diapositivas y cámara."
+    }
+  ]
+}

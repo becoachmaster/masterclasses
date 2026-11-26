@@ -1,0 +1,142 @@
+{
+  "numero": 2,
+  "slug": "quienes-somos-la-identidad-que-convierte-un-grupo-en-equipo",
+  "titulo": "De grupo a equipo",
+  "fecha": "2026-10-01",
+  "estado": "cerrada",
+  "pilar": "conexion",
+  "idea_central": "Qué necesitan las personas de un equipo para llevar la responsabilidad personal al equipo y contribuir al máximo con su propósito y visión: propósito, identidad (valores, principios, símbolos), visión, metas, confianza, roles y coordinación de acciones, para construir un quiénes somos que guíe cómo piensan, sienten y actúan.",
+  "tesis": "Un equipo de verdad está conectado por una brújula que declaró junto: propósito, identidad, visión y metas.",
+  "transformacion": {
+    "de": "un grupo de personas responsables cada una por su lado",
+    "a": "un equipo conectado por una brújula que declaró junto: propósito, identidad, visión y metas"
+  },
+  "quiebre": "Si le preguntara hoy a cada persona de tu equipo para qué existe el equipo, ¿darían la misma respuesta?",
+  "conexion_anterior": 1,
+  "bucle_abierto": "Declarar quiénes somos toma una tarde. Vivirlo toma todos los días. ¿Cómo se sostiene una identidad cuando llega la presión?",
+  "temas": [
+    "Grupo y equipo",
+    "Responsabilidad mutua",
+    "La brújula del equipo: propósito, identidad, visión y metas",
+    "Propósito",
+    "Identidad: valores, principios, símbolos y frase que nos define",
+    "Visión y metas",
+    "Errores comunes del líder en cada elemento",
+    "Declarar con el equipo en lugar de imponer",
+    "Las 4 preguntas para tu equipo",
+    "El líder como facilitador"
+  ],
+  "herramientas": [
+    "Brújula del equipo",
+    "Las 4 preguntas para tu equipo",
+    "Los 3 pasos del líder facilitador",
+    "Ejercicio El equipo que declaramos"
+  ],
+  "ejercicio": "El equipo que declaramos: en dos columnas, tres palabras sobre lo que un observador vería hoy en el equipo y tres sobre lo que vería dentro de un año si fuera el equipo que el líder quiere; comparar la distancia y reconocer qué parte depende del líder. El borrador completo de la brújula se construye después con el equipo, usando las 4 preguntas.",
+  "terminos": [
+    {
+      "termino": "Equipo",
+      "definicion": "Grupo de personas comprometidas con un propósito común y metas compartidas, de las que se hacen mutuamente responsables."
+    },
+    {
+      "termino": "Responsabilidad mutua",
+      "definicion": "Hacerse cargo no solo de mis promesas sino del resultado que prometimos juntos."
+    },
+    {
+      "termino": "Declaración",
+      "definicion": "Acto del lenguaje que crea una realidad nueva. Requiere autoridad y compromiso."
+    },
+    {
+      "termino": "Propósito",
+      "definicion": "Declaración de para qué existe el equipo y a quién sirve."
+    },
+    {
+      "termino": "Identidad",
+      "definicion": "Quiénes somos y cómo somos: valores, principios, símbolos y una frase que nos define."
+    },
+    {
+      "termino": "Valores",
+      "definicion": "Lo que el equipo declara que le importa."
+    },
+    {
+      "termino": "Principios",
+      "definicion": "Conductas no negociables que hacen visible un valor."
+    },
+    {
+      "termino": "Símbolos",
+      "definicion": "Lo que hace visible la identidad y crea pertenencia: un nombre, un lema, un ritual."
+    },
+    {
+      "termino": "Visión",
+      "definicion": "Declaración del futuro que el equipo quiere crear."
+    },
+    {
+      "termino": "Metas",
+      "definicion": "Promesas medibles que indican si el equipo avanza hacia su visión."
+    },
+    {
+      "termino": "Identidad pública",
+      "definicion": "Los juicios que otros hacen de nosotros a partir de lo que hacemos."
+    },
+    {
+      "termino": "Brújula del equipo",
+      "definicion": "Los 4 elementos que un equipo declara junto y que lo conectan: propósito, identidad, visión y metas."
+    }
+  ],
+  "aprendizajes": [
+    "Un equipo se conecta alrededor de un propósito compartido.",
+    "La brújula del equipo reúne propósito, identidad, visión y metas.",
+    "El líder facilita; el equipo declara quién es y hacia dónde va."
+  ],
+  "frase_ancla": "Solos corremos más rápido, pero juntos llegamos más lejos.",
+  "compromiso": "Hacerle al equipo una de las cuatro preguntas, en un día definido.",
+  "fuentes": [
+    "Rafael Echeverría, Ontología del lenguaje",
+    "Jon Katzenbach y Douglas Smith, The Wisdom of Teams (1993)",
+    "José Pékerman, frase en video (recursos/pekerman.mp4)",
+    "Selección Colombia, Mundial 2014 (ejemplo)"
+  ],
+  "observaciones_post_clase": "Gio registra que la clase abrió nuevas posibilidades sobre la conexión del equipo alrededor del propósito.",
+  "historial": [
+    {
+      "fecha": "2026-09-29",
+      "evento": "Clase creada"
+    },
+    {
+      "fecha": "2026-09-29",
+      "evento": "Enfoque aprobado. Título en pantalla \"De grupo a equipo\", subtítulo \"La identidad que convierte un grupo en equipo\". Emerger recortado: promesas y ciclo como núcleo; confianza como mapa; solo No, Sí y No sé de las declaraciones fundamentales. Ejemplos variados con frases típicas, sin historias en pantalla."
+    },
+    {
+      "fecha": "2026-09-29",
+      "evento": "Temario aprobado. Distinciones en Comprender; Construir dedicado al observador del líder (iceberg, encuesta, errores comunes)."
+    },
+    {
+      "fecha": "2026-09-29",
+      "evento": "Escaleta aprobada. Presentación construida: 31 diapositivas, 11 ilustraciones SVG propias, acento Brasa. Revisada en capturas de pantalla."
+    },
+    {
+      "fecha": "2026-09-29",
+      "evento": "Reestructurada tras la revisión de Gio: pregunta guía (¿Cómo hago que mi equipo sea un equipo de verdad?), modelo central de los 4 elementos, ejemplo único de la Selección Colombia 2014. Salen a una futura clase: 5 dinámicas, ciclo de coordinación, anatomía de la promesa, confianza y declaraciones fundamentales. 30 diapositivas."
+    },
+    {
+      "fecha": "2026-09-30",
+      "evento": "Correcciones de Gio: foto de la Selección celebrando antes de \"Talento había de sobra\"; una diapositiva por elemento (propósito, identidad, símbolos con foto del baile, visión y metas juntas); el modelo pasa a llamarse brújula del equipo; frase de Pékerman; se quitan las promesas; práctica alineada con las 4 preguntas. Frase ancla cambiada a \"se vive en la cancha\". Mockup pendiente en propósito. 33 diapositivas."
+    },
+    {
+      "fecha": "2026-09-30",
+      "evento": "Foto de la multitud en Propósito (reemplaza el mockup). Video de Pékerman (1:27) en la diapositiva de la frase. Frase ancla anterior eliminada a pedido de Gio; nueva ancla: la frase de Pékerman. Pregunta de la brecha aclarada. Motor: el video se pausa al cambiar de diapositiva y el clic sobre el video no avanza."
+    },
+    {
+      "fecha": "2026-09-30",
+      "evento": "Práctica simplificada a pedido de Gio: dos columnas simétricas (hoy / en un año, tres palabras cada una) para que la comparación de la brecha sea directa."
+    },
+    {
+      "fecha": "2026-09-30",
+      "evento": "Las 4 preguntas pasan a formato corto y fácil de recordar, con una pregunta de seguimiento; el compromiso las repite."
+    },
+    {
+      "fecha": "2026-10-14",
+      "evento": "Cierre registrado: la clase se dictó el 1 de octubre de 2026. Gio destaca que abrió nuevas posibilidades sobre la conexión del equipo alrededor del propósito."
+    }
+  ]
+}

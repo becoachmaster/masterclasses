@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python scripts/*)",
+      "Bash(python -m json.tool *)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git log*)"
+    ],
+    "deny": [
+      "Read(clases/*/presentacion.html)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "P=$(command -v python3 || command -v python); \"$P\" \"$CLAUDE_PROJECT_DIR/scripts/estado.py\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "P=$(command -v python3 || command -v python); \"$P\" \"$CLAUDE_PROJECT_DIR/scripts/hook_post_edit.py\""
+          }
+        ]
+      }
+    ]
+  }
+}

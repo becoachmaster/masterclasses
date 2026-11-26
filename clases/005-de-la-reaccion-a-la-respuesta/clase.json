@@ -1,0 +1,141 @@
+{
+  "numero": 5,
+  "slug": "de-la-reaccion-a-la-respuesta",
+  "titulo": "De la reacción a la respuesta",
+  "fecha": "2026-11-05",
+  "estado": "cerrada",
+  "pilar": "responsabilidad",
+  "idea_central": "Inteligencia emocional para líderes: pasar de reaccionar a responder. Fuente: material del taller de inteligencia emocional de Gio (se usa como insumo, no como guion).",
+  "tesis": "La emoción no es el problema; el problema es actuar sin leerla. Entre lo que pasa y lo que haces hay una interpretación, y ahí está tu poder de elegir.",
+  "transformacion": {
+    "de": "«me hiciste enojar»: la emoción decide y el otro tiene la culpa",
+    "a": "«me enojé por cómo lo interpreté»: leo la emoción y elijo qué hago con ella"
+  },
+  "quiebre": "Escena en pantalla: jueves, 6 p. m., el informe llega tarde y mañana presentas a gerencia. Cascada en el chat: ¿qué haces en los próximos cinco minutos?",
+  "conexion_anterior": 4,
+  "bucle_abierto": "Ya sabes qué sientes y qué necesitas. ¿Cómo lo pides sin atacar ni callarte?",
+  "temas": [
+    "Quien lidera carga más estrés: datos de Gallup 2026",
+    "Las 4 áreas de la inteligencia emocional: intrapersonal (autoconciencia, autogestión) e interpersonal (conciencia social, gestión de relaciones)",
+    "Las emociones mueven la acción: cada una abre unas acciones y cierra otras",
+    "La cadena de la reacción: hecho, interpretación, emoción y acción",
+    "Cada emoción trae un mensaje",
+    "La brecha de autoconciencia: creemos conocernos más de lo que nos conocemos",
+    "Cómo reacciona el líder cuando su equipo le falla",
+    "Errores comunes del líder con sus emociones",
+    "Lo que no te permites sentir sale por otro lado",
+    "Señales de que tu emoción decidió por ti: cuerpo, velocidad, palabras, cabeza y lo que queda después",
+    "Reacción y respuesta"
+  ],
+  "herramientas": [
+    "Decodifica tu emoción: la cadena al revés en 4 movimientos (nombra, separa, descubre, elige) y 7 preguntas",
+    "Guía práctica «Decodifica tu emoción» (descargable en app.becoach.pro)"
+  ],
+  "ejercicio": "Individual, en papel: tomar la situación del quiebre (alguien del equipo entregó algo tarde o mal hecho) y recorrerla con las 7 preguntas de los 4 movimientos. Cosecha en el chat: ¿en qué pregunta se te movió algo?",
+  "terminos": [
+    {
+      "termino": "Inteligencia emocional",
+      "definicion": "La capacidad de percibir, comprender y regular las emociones propias y ajenas para guiar lo que piensas y haces. Se organiza en 4 áreas: dos intrapersonales (autoconciencia y autogestión) y dos interpersonales (conciencia social y gestión de relaciones)."
+    },
+    {
+      "termino": "Emoción",
+      "definicion": "Una predisposición a la acción: una disposición del cuerpo que abre unas acciones posibles y cierra otras. Cuando cambias de emoción, cambia lo que ves como posible (Maturana, Echeverría)."
+    },
+    {
+      "termino": "Cadena de la reacción",
+      "definicion": "Hecho → Interpretación → Emoción → Acción. Creemos que la emoción viene del hecho, pero viene de lo que nos decimos sobre él."
+    },
+    {
+      "termino": "Interpretación",
+      "definicion": "Lo que te dices sobre lo que pasó. Ahí suelen esconderse los juicios («siempre», «no le importa»)."
+    },
+    {
+      "termino": "Reacción",
+      "definicion": "Lo que haces en automático cuando la emoción decide por ti."
+    },
+    {
+      "termino": "Respuesta",
+      "definicion": "Lo que eliges hacer después de leer tu emoción y lo que estás protegiendo."
+    }
+  ],
+  "aprendizajes": [
+    "La emoción no es el problema: el problema es actuar sin leerla. Entre lo que pasa y lo que hago hay una interpretación, y ahí puedo elegir.",
+    "Cada emoción trae un mensaje, y lo que no me permito sentir sale por otro lado: el miedo como control, la tristeza como rabia, la rabia guardada como resentimiento.",
+    "Para pasar de reaccionar a responder, decodifico mi emoción: la nombro, separo el hecho de la historia, descubro qué estoy protegiendo y elijo qué hacer."
+  ],
+  "frase_ancla": "Tu equipo no ve lo que sientes; ve lo que haces con lo que sientes.",
+  "compromiso": "Esta semana, antes de responderle a alguien de tu equipo en un momento de tensión, recorrer las 4 preguntas (nombra, separa, descubre, elige). Y durante 7 días, decodificar una emoción al día en el registro de la guía.",
+  "fuentes": [
+    "Rafael Echeverría, Ontología del lenguaje",
+    "Peter Salovey y John D. Mayer (1990), Emotional Intelligence, Imagination, Cognition and Personality",
+    "Daniel Goleman (1995), Inteligencia emocional",
+    "Matthew D. Lieberman et al. (2007), Putting feelings into words: affect labeling disrupts amygdala activity in response to affective stimuli, Psychological Science, 18(5), 421-428",
+    "Gloria Willcox (1982), The Feeling Wheel, Transactional Analysis Journal",
+    "Daniel Goleman, Richard Boyatzis y Annie McKee (2002), Primal Leadership (los 4 dominios de la inteligencia emocional)",
+    "Humberto Maturana, Emociones y lenguaje en educación y política (las emociones como disposiciones corporales dinámicas que definen dominios de acción)",
+    "Gallup (2026), State of the Global Workplace: 2026 Report (datos de 2025): estrés diario 45 % jefes, 39 % colaboradores, 40 % mundial, 43 % América Latina y el Caribe",
+    "Tasha Eurich (2017), Insight; y (2018) What Self-Awareness Really Is (and How to Cultivate It), Harvard Business Review",
+    "Daniel Goleman (1995), Inteligencia emocional: el secuestro emocional (reacción intensa, repentina y desproporcionada)",
+    "John Gottman (1994), What Predicts Divorce?: el desborde fisiológico (referencia de unas 100 pulsaciones por minuto)"
+  ],
+  "observaciones_post_clase": "Registradas a partir de la grabación y el chat (Gio no dio observaciones). Duró cerca de 1 h 57 min, más del doble de los 50 previstos: unos 9 minutos de bienvenida antes de compartir pantalla y 23 minutos en «La cadena de la reacción», donde Adriana trajo un caso real (una coordinadora par que lleva 3 años en conflicto con ella y le da órdenes a su equipo sin pasar por ella) y la clase lo trabajó en vivo. Bernardo contó que el martes explotó con su equipo por una tarea que le dijeron hecha y no lo estaba. Chat muy activo (Bernardo, Nelly, Ana Luzmila, Yamit, Silvia, Viviana, Zaid, Adriana); Nelly vino por primera vez. Temas que trajo la audiencia: jefes con abuso de autoridad, el comité de convivencia, minimizar las emociones por no saber gestionarlas, la idea de «el trabajo en el trabajo y la casa en la casa». La práctica se hizo como explicación guiada de los 4 movimientos al final, no como ejercicio individual en silencio; no se mostró el avance de la próxima clase. Cierre con buena respuesta en el chat («me gustó mucho la charla», «para poner en práctica») e invitación a app.becoach.pro.",
+  "historial": [
+    {
+      "fecha": "2026-11-02",
+      "evento": "Clase creada"
+    },
+    {
+      "fecha": "2026-11-02",
+      "evento": "Enfoque aprobado a partir de la propuesta de Gio (taller de inteligencia emocional adaptado a 50 min). Pilar Responsabilidad personal. Título «De la reacción a la respuesta». Ajustes aprobados: la clase anterior se nombra «Estados de ánimo en el equipo»; el seguimiento pregunta por el compromiso real de la 004 (las 3 preguntas antes de una reunión); los 7 pasos se presentan como la versión a fondo de las 3 preguntas de la 004; la conversación de Andrea se presenta como adelanto de reclamos y pedidos, no como algo ya visto. Sin respuesta de Gio a las dudas: se asumen la pregunta 2 propuesta, la historia del samurái y el monje, y la rueda como Feeling Wheel de Gloria Willcox."
+    },
+    {
+      "fecha": "2026-11-02",
+      "evento": "Temario aprobado: 8 bloques con los tiempos de Gio (4-5-3-8-9-8-9-4). Quiebre con 4 preguntas (2 en cascada, 1 encuesta, 1 en silencio). Frase de pantalla de la gran idea: «Las emociones no se controlan: se decodifican»; frase ancla del taller de Gio."
+    },
+    {
+      "fecha": "2026-11-02",
+      "evento": "Gio pide rehacer la clase desde el enfoque: su documento era solo fuente de contenido, no una estructura para replicar. Se descartan el enfoque, el temario y la escaleta anteriores."
+    },
+    {
+      "fecha": "2026-11-02",
+      "evento": "Enfoque aprobado (rediseñado desde cero). Pregunta guía: ¿cómo evito que una emoción decida por mí delante de mi equipo? Modelo central: la cadena de la reacción (Hecho → Interpretación → Emoción → Acción). Herramienta: decodificar la emoción recorriendo la cadena al revés. Ejemplo único: el informe que llega tarde y con errores la víspera de presentar a gerencia. Bucle hacia pedidos y reclamos (pendiente desde la 003). Título: De la reacción a la respuesta."
+    },
+    {
+      "fecha": "2026-11-02",
+      "evento": "Temario aprobado. Bloques nombrados por su contenido, sin las etiquetas Comprender, Construir y Emerger (corrección de Gio, registrada como regla general). Frase ancla: «Tu equipo no ve lo que sientes; ve lo que haces con lo que sientes»."
+    },
+    {
+      "fecha": "2026-11-02",
+      "evento": "Escaleta aprobada. Un solo caso de principio a fin: la situación que cada participante anota en el quiebre es la que trabaja en la práctica. La guía se entrega solo al cierre. La historia del samurái queda en las notas como opción en vivo."
+    },
+    {
+      "fecha": "2026-11-02",
+      "evento": "Presentación construida en el sistema de cristal: 33 diapositivas (29 propias y 4 automáticas). Ilustraciones propias: la cadena en diagonal (portada), el informe con cifras marcadas y el reloj, el temporizador de cinco minutos, la cadena de 4 eslabones con mini cadena en cada eslabón, las máscaras de lo que no te permites sentir, la cadena al revés, el diálogo de la próxima clase y la guía con su registro de 7 días. En el cierre, la guía va justo antes de @plataforma."
+    },
+    {
+      "fecha": "2026-11-05",
+      "evento": "A pedido de Gio se agregan las 4 áreas de la inteligencia emocional (intrapersonal e interpersonal), la emoción como predisposición a la acción (Maturana) y dos diapositivas de datos (estrés de los líderes, Gallup 2026; brecha de autoconciencia, Eurich). La práctica pasa de 10 a 8 minutos y los errores comunes de 4 a 3."
+    },
+    {
+      "fecha": "2026-11-05",
+      "evento": "Ajustes de Gio: repaso con menos texto, se quitan el seguimiento del compromiso, la cosecha de la práctica y la próxima clase; se oculta el compromiso; el quiebre pasa de «La última vez que…» a una escena concreta."
+    },
+    {
+      "fecha": "2026-11-05",
+      "evento": "A pedido de Gio se agrega la diapositiva «Señales de que tu emoción decidió por ti» antes de Decodifica, con base en Goleman (secuestro emocional) y Gottman (desborde). Los errores comunes ceden 30 segundos."
+    },
+    {
+      "fecha": "2026-11-05",
+      "evento": "Gio pide mover «Señales de que tu emoción decidió por ti» al inicio (después de la diapositiva 5) y escribirla como situaciones concretas que la audiencia ha vivido, sin categorías (cuerpo, mente…)."
+    },
+    {
+      "fecha": "2026-11-06",
+      "evento": "Clase dictada el 2026-11-05 y cerrada a partir de la grabación de Zoom y el chat. Montaje de video (Zoom + cámara OBS) en curso para publicarla."
+    }
+  ],
+  "repaso": [
+    "El problema es actuar sin leer la emoción.",
+    "Cada emoción trae un mensaje.",
+    "Nombra, separa, descubre, elige."
+  ]
+}

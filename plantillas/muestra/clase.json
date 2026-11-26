@@ -1,0 +1,99 @@
+{
+  "numero": 4,
+  "slug": "el-lider-se-entrena-el-estado-de-animo-del-equipo-empieza-en",
+  "titulo": "Estados de ánimo en el equipo",
+  "fecha": "2026-10-29",
+  "estado": "presentacion",
+  "pilar": "sostenimiento",
+  "idea_central": "El liderazgo se entrena, y lo primero que entrena un líder es su forma de estar con sus propias emociones, porque el estado de ánimo del líder termina siendo el clima del equipo. Brief: entradas/brief-004-estados-de-animo.md",
+  "tesis": "El liderazgo se entrena, y lo primero que se entrena es la forma de estar con las propias emociones, porque el estado de ánimo del líder termina siendo el clima del equipo.",
+  "transformacion": {
+    "de": "un líder que culpa al ánimo del equipo («están desmotivados»)",
+    "a": "un líder que reconoce el estado de ánimo que aporta y lo gestiona primero en sí mismo"
+  },
+  "quiebre": "Encuesta: ¿un líder nace o se hace? Y en el chat: piensa en tu última reunión de equipo. ¿Con qué ánimo llegaste tú y con qué ánimo salió el equipo?",
+  "conexion_anterior": 3,
+  "bucle_abierto": "Si del resentimiento se sale con una conversación pendiente, ¿cómo pedimos y prometemos para que el resentimiento no se acumule?",
+  "temas": [
+    "¿El líder nace o se hace? El liderazgo como competencias que se entrenan",
+    "Emoción y estado de ánimo",
+    "Los 4 estados de ánimo: resentimiento, resignación, aceptación y ambición",
+    "Los 4 estilos de liderazgo y su sombra bajo presión",
+    "Contagio emocional: el ánimo del líder es el clima del equipo",
+    "Errores comunes del líder frente al ánimo del equipo",
+    "Cómo salir de la resignación y del resentimiento",
+    "Lenguaje, emoción y cuerpo en la autogestión del líder",
+    "Alinear el ánimo del equipo con la visión y las metas"
+  ],
+  "herramientas": [
+    "Matriz de los 4 estados de ánimo",
+    "Las 3 preguntas antes de liderar: ¿qué estoy sintiendo?, ¿qué juicio hay detrás?, ¿qué contexto le estoy creando a mi equipo?",
+    "Ejercicio Mi equipo · Yo · Una acción"
+  ],
+  "ejercicio": "En papel y en tres pasos: (1) Mi equipo: qué frases escuché esta semana y en qué estado de ánimo lo ubico; (2) Yo: desde qué estado de ánimo llegué a la última reunión y qué sombra de mi estilo apareció; (3) Una acción: qué conversación o gesto puede mover al equipo un paso hacia la ambición. Cosecha en el chat sin nombres.",
+  "terminos": [
+    {
+      "termino": "Emoción",
+      "definicion": "Reacción a un hecho concreto; llega y se va."
+    },
+    {
+      "termino": "Estado de ánimo",
+      "definicion": "El fondo desde el cual vemos todo, sin un hecho puntual detrás. No lo tenemos: nos tiene."
+    },
+    {
+      "termino": "Resentimiento",
+      "definicion": "Estado de ánimo de oposición frente a lo que no se puede cambiar, a menudo ligado al juicio de injusticia."
+    },
+    {
+      "termino": "Resignación",
+      "definicion": "Estado de ánimo que cierra posibilidades frente a lo que sí se podría cambiar: «no hay nada que hacer»."
+    },
+    {
+      "termino": "Aceptación",
+      "definicion": "Estado de ánimo de paz frente a lo que no se puede cambiar; la energía va a lo que sí se puede."
+    },
+    {
+      "termino": "Ambición",
+      "definicion": "Estado de ánimo que ve posibilidades en lo que se puede cambiar y se compromete con ellas."
+    },
+    {
+      "termino": "Contagio emocional",
+      "definicion": "El equipo absorbe el estado de ánimo de quien más influye, aunque nadie lo diga."
+    }
+  ],
+  "aprendizajes": [],
+  "frase_ancla": "Tu equipo no escucha lo que dices, escucha desde dónde lo dices.",
+  "compromiso": "Elegir una reunión concreta de esta semana, con día definido; antes de entrar, hacerse las 3 preguntas y tener la conversación o el gesto elegido en la práctica.",
+  "fuentes": [
+    "Rafael Echeverría, Ontología del lenguaje",
+    "David Merrill y Roger Reid, Personal Styles and Effective Performance (1981)",
+    "Richard Arvey et al. (2006), The determinants of leadership role occupancy: Genetic and personality factors, The Leadership Quarterly"
+  ],
+  "observaciones_post_clase": "",
+  "historial": [
+    {
+      "fecha": "2026-10-29",
+      "evento": "Clase creada"
+    },
+    {
+      "fecha": "2026-10-29",
+      "evento": "Enfoque aprobado a partir del brief de Gio (entradas/brief-004-estados-de-animo.md). Pilar Integración (primera clase del pilar). Modelo central: los 4 estados de ánimo (Echeverría). Ajustes aprobados: los 4 estilos solo como sombras bajo presión (5 min); la tríada lenguaje-emoción-cuerpo sostiene las 3 preguntas, no es un modelo aparte; apertura y cierre de 5 min con piezas obligatorias; ejercicio individual sin salas; bloque Construir con autodiagnóstico y errores comunes; ejemplo único de un equipo ante un cambio que no se negocia. El bucle de la 003 (pedidos y promesas) se reconoce en el puente y pasa a la 005."
+    },
+    {
+      "fecha": "2026-10-29",
+      "evento": "Temario aprobado con correcciones de Gio en la apertura: título «Estados de ánimo en el equipo», subtítulo «Cómo gestionarlos y alinearlos con la visión y los objetivos», pilares de liderazgo y sin puente hacia la 003."
+    },
+    {
+      "fecha": "2026-10-29",
+      "evento": "Escaleta aprobada. Presentación construida: 34 diapositivas con ilustraciones propias (líder que irradia, brote, mesa de reunión, comunicado, íconos de los 4 estados, mapa de la matriz, ondas de contagio, semilla y pesa, tríada, flechas alineadas, sombra, escalón, puerta, lugar libre)."
+    },
+    {
+      "fecha": "2026-10-29",
+      "evento": "Ajustes de Gio a la presentación: sin diapositiva de seguimiento del compromiso; los 4 estilos van justo después de «¿Un líder nace o se hace?», divididos en dos tablas (características y sombras), seguidos de «¿Nace o se hace?»; se quitan el ejemplo «Este año no hay contrataciones» y la diapositiva de próxima clase; la matriz de los 4 estados de ánimo queda centrada. Quedan 32 diapositivas. El bucle abierto se mantiene en la ficha, pero no se muestra en pantalla."
+    },
+    {
+      "fecha": "2026-10-29",
+      "evento": "Los estilos de liderazgo pasan a un gráfico de cuatro cuadrantes (asertividad × expresividad), en dos diapositivas: características y sombras. «¿Nace o se hace? Se entrena, y empieza por ti» se mueve justo después de la pregunta inicial y sale del cierre."
+    }
+  ]
+}

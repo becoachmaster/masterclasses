@@ -1,0 +1,106 @@
+{
+  "numero": 6,
+  "slug": "mas-alla-de-las-palabras",
+  "titulo": "Más allá de las palabras",
+  "fecha": null,
+  "estado": "presentacion",
+  "pilar": "conexion",
+  "idea_central": "Comunicación efectiva en el liderazgo: un líder no comunica con lo que dice sino con quien es mientras lo dice, y lo que comunicó se mide en lo que el otro escuchó. Responde el bucle de la 005: ya sé qué siento y qué necesito, ¿cómo lo pido sin atacar ni callarme? Fuente: documento de Gio «Comunicación efectiva en el liderazgo — Más allá de las palabras» (2026-11-10) y la presentación del taller presencial «Comunicación para el trabajo en equipo» de BeCoach Empresas.",
+  "tesis": "Comunicar no es decir: es lo que el otro escucha y lo que hace después. Un líder no comunica con lo que dice, comunica con quien es mientras lo dice, y por eso lo que necesita de su equipo lo pide con claridad y se hace cargo de lo que el otro escuchó.",
+  "transformacion": {
+    "de": "«yo fui claro, el problema es que no entienden» (o callar para no incomodar)",
+    "a": "«me hago cargo de lo que el otro escuchó y pido con claridad lo que necesito»"
+  },
+  "quiebre": "Sin experimento en vivo (Gio lo retiró el 2026-11-11). La clase entra directo con la pregunta de hoy y el mensaje central: «Comunicas lo que el otro escucha, no lo que dices».",
+  "conexion_anterior": 5,
+  "bucle_abierto": "Pediste con claridad y el otro te dijo que sí. ¿Cómo se sostiene ese compromiso en el tiempo sin perseguir a nadie?",
+  "temas": [
+    "Comunicar no es transmitir: el lenguaje gatilla, no transporta (Maturana)",
+    "La maldición del conocimiento y la ilusión de transparencia: quien habla sobreestima cuánto se entiende",
+    "Verificar lo que el otro escuchó: de «¿quedó claro?» a «¿qué te llevas?»",
+    "El mito de la técnica: 7-38-55, el sándwich y los gestos de escucha activa",
+    "Incongruencia: cuando el cuerpo y la palabra no coinciden, el equipo le cree al cuerpo",
+    "El ruido no es externo: los juicios y la relación deciden cómo se interpreta el contenido (Watzlawick)",
+    "Escuchar de verdad: preguntar, apoyar y aportar sin competir; las tres capas de la escucha",
+    "Callar o atacar: empatía ruinosa, agresión y franqueza (Kim Scott)",
+    "Una expectativa es un pedido que no se hizo",
+    "El pedido efectivo en 5 piezas y el no como prueba del pedido",
+    "El triángulo: claridad, asertividad y responsabilidad",
+    "Seguridad psicológica: los mejores equipos reportan más errores (Edmondson, Proyecto Aristóteles)",
+    "Los dos segundos del líder ante una mala noticia y las 3 conductas que construyen entorno seguro"
+  ],
+  "herramientas": [
+    "El pedido efectivo en 5 piezas: quién a quién, qué y cómo sabremos que está bien, para cuándo, para qué, respuesta real",
+    "La pregunta de verificación: «¿qué te llevas?» y «cuéntame cómo lo vas a hacer»",
+    "La columna izquierda (Argyris, Senge): lo que dije y lo que callé, separado en hechos y juicios",
+    "Guía práctica «El pedido efectivo» (descargable en app.becoach.pro)"
+  ],
+  "ejercicio": "Individual, en papel: una conversación pendiente con alguien del equipo escrita en dos columnas (lo que dije, lo que callé); subrayar hechos y encerrar juicios en la columna izquierda; reescribir el pedido con las 5 piezas. Cosecha en el chat: ¿qué pieza te faltaba?",
+  "terminos": [],
+  "aprendizajes": [],
+  "repaso": [],
+  "frase_ancla": "Lo que esperas y no pides, lo cobras igual.",
+  "compromiso": "Hacer esta semana el pedido que escribiste en la práctica, a quién y qué día, y después preguntar «¿qué te llevas?».",
+  "fuentes": [
+    "Rafael Echeverría, Ontología del lenguaje (actos lingüísticos; afirmaciones y juicios; pedidos, ofertas y promesas; escuchar como oír más interpretar)",
+    "Humberto Maturana: «Soy totalmente responsable de lo que digo, maravillosamente irresponsable de lo que escuchas, y absolutamente responsable de lo que mi decir dispara en ti»; el lenguaje gatilla, no transporta",
+    "Elizabeth Newton (1990), tesis doctoral, Stanford: los tamborileros (3 de 120, 2,5 %); popularizada por Chip y Dan Heath (2007), Made to Stick",
+    "Thomas Gilovich, Kenneth Savitsky y Victoria Medvec (1998), The illusion of transparency, Journal of Personality and Social Psychology, 75(2)",
+    "Paul Watzlawick, Janet Beavin y Don Jackson (1967), Pragmatics of Human Communication (axiomas 1 y 2)",
+    "Chris Argyris; Peter Senge et al. (1994), The Fifth Discipline Fieldbook (la columna izquierda)",
+    "Albert Mehrabian (1967, 1971), Silent Messages: la regla 7-38-55 aplica solo a sentimientos cuando palabras y gestos se contradicen",
+    "Jack Zenger y Joseph Folkman (2016), What Great Listeners Actually Do, Harvard Business Review (3.492 gerentes)",
+    "Kim Scott (2017), Radical Candor",
+    "Amy Edmondson (1999), Psychological Safety and Learning Behavior in Work Teams, Administrative Science Quarterly, 44(2); y (2018) The Fearless Organization",
+    "Google re:Work (2015), Project Aristotle (180 equipos, 5 dinámicas)",
+    "Gallup, State of the American Manager (2015): el jefe explica al menos el 70 % de la variación en el compromiso; Employees Want a Lot More From Their Managers"
+  ],
+  "observaciones_post_clase": "",
+  "artefacto": "https://claude.ai/artifact/X3fLm1L4FpYQo6UdASGKfF",
+  "historial": [
+    {
+      "fecha": "2026-11-10",
+      "evento": "Clase creada"
+    },
+    {
+      "fecha": "2026-11-10",
+      "evento": "Material fuente guardado en fuente/ (documento «Más allá de las palabras» y presentación del taller presencial) e inventariado: 65 elementos. Enfoque propuesto por Claude, pendiente de aprobación de Gio: pilar Conexión, arco Mito → evidencia → nueva mirada, modelo central el triángulo (claridad, asertividad, responsabilidad) dentro del entorno seguro, herramienta el pedido efectivo en 5 piezas, práctica la columna izquierda. Pendientes de Gio: las 2 reglas del taller y qué son las dinámicas C.V y A/B."
+    },
+    {
+      "fecha": "2026-11-10",
+      "evento": "Enfoque aprobado por Gio («Continúa»). Pilar Conexión, arco Mito → evidencia → nueva mirada, título provisional «Más allá de las palabras». Sin respuesta aún sobre las 2 reglas del taller ni las dinámicas C.V y A/B: se avanza sin ellas y quedan pendientes en el inventario."
+    },
+    {
+      "fecha": "2026-11-10",
+      "evento": "Temario aprobado por Gio: 4 bloques de mito → evidencia → nueva mirada (yo fui claro; es cuestión de técnica; si lo digo, hiero; si nadie se queja, vamos bien), cada uno enciende un vértice del triángulo; práctica con la columna izquierda reescrita como pedido. Ver temario.md."
+    },
+    {
+      "fecha": "2026-11-10",
+      "evento": "Escaleta escrita (pendiente de aprobación de Gio). Ejemplo único: el mismo informe tarde de la 005, ahora convertido en pedido. Frase ancla candidata: «Lo que esperas y no pides, lo cobras igual». Marcas ✂ para recortar si la clase va tarde (la 005 duró casi dos horas)."
+    },
+    {
+      "fecha": "2026-11-10",
+      "evento": "Escaleta aprobada por Gio. Se construye la presentación."
+    },
+    {
+      "fecha": "2026-11-10",
+      "evento": "Presentación construida en el sistema de cristal: 38 diapositivas (34 propias y 4 automáticas). Ilustraciones propias: la melodía y los golpes (portada), las barras del ritmo con la mano (quiebre), las dos cabezas de lo que digo y lo que escuchas, el diagrama del ruido entre los dos, el triángulo que se enciende vértice por vértice y el círculo del entorno seguro, la cara ante la mala noticia, el pedido y el reloj (próxima clase) y la guía. Datos en pantalla: tamborileros, Zenger y Folkman, Edmondson y Proyecto Aristóteles. Revisión visual con capturas: sin texto en la zona de la cámara."
+    },
+    {
+      "fecha": "2026-11-11",
+      "evento": "Ajuste de Gio: se retiran las diapositivas 4, 5, 6 y 8 (@seguimiento, quiebre «¿Qué canción es?», cifra de los tamborileros y mito «Yo fui claro»). Quedan 34 diapositivas; el mito del bloque 1 se dice de palabra (notas de gatilla). Tiempos de notas y escaleta corridos: la clase queda en 43:30 min. Las diapositivas retiradas están en descartadas/."
+    },
+    {
+      "fecha": "2026-11-11",
+      "evento": "Ajustes de Gio: nueva diapositiva triangulo (los 3 pilares de la comunicación, solo el gráfico) después de la pregunta de hoy; cada vértice pasa a abrir su bloque y los puentes se movieron al final de cada bloque; practica-1 muestra la hoja en dos columnas con el ejemplo del informe (la columna izquierda no se había presentado antes); practica-2 muestra esa columna marcada (hechos subrayados, juicios en círculo); practica-3 es la hoja «Mi pedido» con las 5 piezas. 35 diapositivas, 45 min."
+    },
+    {
+      "fecha": "2026-11-11",
+      "evento": "Ajuste de Gio: entorno-seguro (el círculo) pasa a ir justo después del mito del bloque 4, como los vértices en sus bloques. El puente a la práctica pasó a conductas."
+    },
+    {
+      "fecha": "2026-11-26",
+      "evento": "Presentación publicada como artefacto privado en claude.ai (primera clase con link de artefacto): https://claude.ai/artifact/X3fLm1L4FpYQo6UdASGKfF"
+    }
+  ]
+}

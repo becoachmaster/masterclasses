@@ -1,0 +1,26 @@
+{
+  "nota": "Fuente única de los nombres de los pilares. Los id no cambian aunque cambie el nombre (el id del pilar 3 sigue siendo 'sostenimiento').",
+  "pilares": [
+    {
+      "id": "responsabilidad",
+      "nombre": "Responsabilidad personal",
+      "descripcion": "Hacerme cargo de lo que depende de mí y de cómo respondo a lo que pasa.",
+      "icono": "Anchor",
+      "provisional": false
+    },
+    {
+      "id": "conexion",
+      "nombre": "Conexión",
+      "descripcion": "Construir confianza y conversaciones que acercan al equipo.",
+      "icono": "Heart",
+      "provisional": false
+    },
+    {
+      "id": "sostenimiento",
+      "nombre": "Integración",
+      "descripcion": "Llevar lo declarado a la práctica diaria y sostenerlo en el tiempo.",
+      "icono": "Cycle",
+      "provisional": false
+    }
+  ]
+}
