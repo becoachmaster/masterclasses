@@ -90,7 +90,7 @@ Después de dictada la clase: completa aprendizajes, frase ancla, compromiso, bu
 
 ## Presentaciones como artefactos
 
-Cada presentación se publica tal cual, con el motor de cristal, como artefacto privado de claude.ai. Así Gio tiene un link fijo para revisarla desde cualquier dispositivo o compartirla. El archivo local sigue siendo la fuente y la copia de respaldo para proyectar.
+Cada presentación se publica tal cual, con el motor del repositorio (estilo simple en las clases nuevas), como artefacto privado de claude.ai. Así Gio tiene un link fijo para revisarla desde cualquier dispositivo o compartirla. El archivo local sigue siendo la fuente y la copia de respaldo para proyectar.
 
 - **Primera publicación** (Fase 4): herramienta Artifact con `file_path` = `clases/NNN-slug/presentacion.html`, `icon: "slides"` y una `description` de una frase. Guarda el link que devuelve en el campo `artefacto` de `clase.json` y anótalo en `historial`.
 - **Republicar** (Fase 5, cierre o aviso del hook): mismo `file_path`, sin `icon`. En una conversación nueva pasa también `url` = el `artefacto` de `clase.json`, y antes lee el artefacto con `action: "read"`: sin eso la publicación se rechaza. Nunca publiques sin `url` una clase que ya tiene artefacto, porque crearía un link nuevo.
