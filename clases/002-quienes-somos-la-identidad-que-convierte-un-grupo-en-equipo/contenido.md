@@ -5,7 +5,7 @@
 - **Clase:** 002
 - **Fecha:** 2026-10-01
 - **Pilar:** Conexión
-- **Estado:** presentacion
+- **Estado:** cerrada
 
 ## Ficha
 
@@ -13,7 +13,7 @@
 - **Transformación:** de un grupo de personas responsables cada una por su lado a un equipo conectado por una brújula que declaró junto: propósito, identidad, visión y metas.
 - **Quiebre:** Si le preguntara hoy a cada persona de tu equipo para qué existe el equipo, ¿darían la misma respuesta?
 - **Ejercicio:** El equipo que declaramos: en dos columnas, tres palabras sobre lo que un observador vería hoy en el equipo y tres sobre lo que vería dentro de un año si fuera el equipo que el líder quiere; comparar la distancia y reconocer qué parte depende del líder. El borrador completo de la brújula se construye después con el equipo, usando las 4 preguntas.
-- **Compromiso:** Elegir una de las 4 preguntas (¿Para qué existimos? ¿Cómo somos? ¿Qué nos identifica? ¿Hacia dónde vamos?) y hacérsela a tu equipo esta semana, con día definido. Tú facilitas; la respuesta es del equipo.
+- **Compromiso:** Hacerle al equipo una de las cuatro preguntas, en un día definido.
 - **Bucle abierto:** Declarar quiénes somos toma una tarde. Vivirlo toma todos los días. ¿Cómo se sostiene una identidad cuando llega la presión?
 - **Frase ancla:** Solos corremos más rápido, pero juntos llegamos más lejos.
 

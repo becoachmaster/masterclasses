@@ -3,9 +3,9 @@
 > Archivo generado por `scripts/exportar_contenido.py` a partir de `clase.json` y `slides/`. No lo edites a mano.
 
 - **Clase:** 005
-- **Fecha:** por definir
+- **Fecha:** 2026-11-05
 - **Pilar:** Responsabilidad personal
-- **Estado:** presentacion
+- **Estado:** cerrada
 
 ## Ficha
 
